@@ -1,5 +1,5 @@
 ﻿namespace ScoringSystem {
-    partial class Form1 {
+    partial class MainMenu {
         /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>

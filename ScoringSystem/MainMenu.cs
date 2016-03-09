@@ -13,5 +13,12 @@ namespace ScoringSystem {
         public MainMenu() {
             InitializeComponent();
         }
+
+        private void openWorkWithDBForm_Click(object sender, EventArgs e) {
+            this.Hide();
+            WorkWithDB.WorkWithDBForm workWDB = new WorkWithDB.WorkWithDBForm();
+            workWDB.Show();
+            
+        }
     }
 }

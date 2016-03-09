@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="currentClient.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>

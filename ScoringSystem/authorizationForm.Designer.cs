@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.accountComboBox = new System.Windows.Forms.ComboBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.accontLabel = new System.Windows.Forms.Label();
+            this.accountLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.informationLabel = new System.Windows.Forms.Label();
             this.enterButton = new System.Windows.Forms.Button();
@@ -42,19 +42,19 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(13, 50);
+            this.passwordTextBox.Location = new System.Drawing.Point(12, 50);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(180, 20);
             this.passwordTextBox.TabIndex = 1;
             // 
-            // accontLabel
+            // accountLabel
             // 
-            this.accontLabel.AutoSize = true;
-            this.accontLabel.Location = new System.Drawing.Point(203, 25);
-            this.accontLabel.Name = "accontLabel";
-            this.accontLabel.Size = new System.Drawing.Size(48, 13);
-            this.accontLabel.TabIndex = 2;
-            this.accontLabel.Text = "Аккаунт";
+            this.accountLabel.AutoSize = true;
+            this.accountLabel.Location = new System.Drawing.Point(203, 25);
+            this.accountLabel.Name = "accountLabel";
+            this.accountLabel.Size = new System.Drawing.Size(48, 13);
+            this.accountLabel.TabIndex = 2;
+            this.accountLabel.Text = "Аккаунт";
             // 
             // passwordLabel
             // 
@@ -81,6 +81,7 @@
             this.enterButton.TabIndex = 5;
             this.enterButton.Text = "Войти";
             this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
             // 
             // exitButton
             // 
@@ -101,7 +102,7 @@
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.informationLabel);
             this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.accontLabel);
+            this.Controls.Add(this.accountLabel);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.accountComboBox);
             this.Name = "authorizationForm";
@@ -117,7 +118,7 @@
 
         private System.Windows.Forms.ComboBox accountComboBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label accontLabel;
+        private System.Windows.Forms.Label accountLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label informationLabel;
         private System.Windows.Forms.Button enterButton;

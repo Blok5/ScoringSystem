@@ -23,13 +23,25 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.openAddManForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // openAddManForm
+            // 
+            this.openAddManForm.Location = new System.Drawing.Point(12, 47);
+            this.openAddManForm.Name = "openAddManForm";
+            this.openAddManForm.Size = new System.Drawing.Size(259, 23);
+            this.openAddManForm.TabIndex = 0;
+            this.openAddManForm.Text = "Добавить человека";
+            this.openAddManForm.UseVisualStyleBackColor = true;
+            this.openAddManForm.Click += new System.EventHandler(this.addManForm_Click);
             // 
             // WorkWithDBForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.openAddManForm);
             this.Name = "WorkWithDBForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с БД";
@@ -38,5 +50,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button openAddManForm;
     }
 }

@@ -23,8 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.exitButton = new System.Windows.Forms.Button();
-            this.nextButton = new System.Windows.Forms.Button();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.surnameTextBox = new System.Windows.Forms.TextBox();
             this.birthPlaceTextBox = new System.Windows.Forms.TextBox();
@@ -38,13 +38,18 @@
             this.educationComboBox = new System.Windows.Forms.ComboBox();
             this.educationLabel = new System.Windows.Forms.Label();
             this.cityComboBox = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.streetComboBox = new System.Windows.Forms.ComboBox();
+            this.streetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.housingTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.nextButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -53,18 +58,9 @@
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 0;
-            this.exitButton.Text = "Выход";
+            this.exitButton.Text = "Назад";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // nextButton
-            // 
-            this.nextButton.Location = new System.Drawing.Point(348, 226);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(75, 23);
-            this.nextButton.TabIndex = 1;
-            this.nextButton.Text = "Далее";
-            this.nextButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // nameTextBox
             // 
@@ -180,19 +176,29 @@
             // 
             // cityComboBox
             // 
+            this.cityComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cityComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cityComboBox.DataSource = this.citiesBindingSource;
+            this.cityComboBox.DisplayMember = "city";
             this.cityComboBox.FormattingEnabled = true;
             this.cityComboBox.Location = new System.Drawing.Point(12, 144);
             this.cityComboBox.Name = "cityComboBox";
             this.cityComboBox.Size = new System.Drawing.Size(196, 21);
             this.cityComboBox.TabIndex = 15;
+            this.cityComboBox.ValueMember = "id";
             // 
             // streetComboBox
             // 
+            this.streetComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.streetComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.streetComboBox.DataSource = this.streetsBindingSource;
+            this.streetComboBox.DisplayMember = "street";
             this.streetComboBox.FormattingEnabled = true;
             this.streetComboBox.Location = new System.Drawing.Point(12, 171);
             this.streetComboBox.Name = "streetComboBox";
             this.streetComboBox.Size = new System.Drawing.Size(196, 21);
             this.streetComboBox.TabIndex = 16;
+            this.streetComboBox.ValueMember = "id";
             // 
             // label1
             // 
@@ -247,11 +253,22 @@
             this.birthDateTimePicker.TabIndex = 22;
             this.birthDateTimePicker.Value = new System.DateTime(2016, 3, 9, 0, 0, 0, 0);
             // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(348, 226);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
+            this.nextButton.TabIndex = 23;
+            this.nextButton.Text = "Далее";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click_1);
+            // 
             // addManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 261);
+            this.Controls.Add(this.nextButton);
             this.Controls.Add(this.birthDateTimePicker);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -272,12 +289,13 @@
             this.Controls.Add(this.birthPlaceTextBox);
             this.Controls.Add(this.surnameTextBox);
             this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.nextButton);
             this.Controls.Add(this.exitButton);
             this.Name = "addManForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить человека";
             this.Load += new System.EventHandler(this.addManForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,7 +304,6 @@
         #endregion
 
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox surnameTextBox;
         private System.Windows.Forms.TextBox birthPlaceTextBox;
@@ -307,5 +324,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker birthDateTimePicker;
+        private System.Windows.Forms.BindingSource citiesBindingSource;
+        private System.Windows.Forms.BindingSource streetsBindingSource;
+        private System.Windows.Forms.Button nextButton;
     }
 }

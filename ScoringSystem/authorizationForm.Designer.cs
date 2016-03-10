@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.accountComboBox = new System.Windows.Forms.ComboBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.accountLabel = new System.Windows.Forms.Label();
@@ -30,15 +31,23 @@
             this.informationLabel = new System.Windows.Forms.Label();
             this.enterButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.bankDataSet = new ScoringSystem.BankDataSet();
+            this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.roleTableAdapter = new ScoringSystem.BankDataSetTableAdapters.RoleTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // accountComboBox
             // 
+            this.accountComboBox.DataSource = this.roleBindingSource;
+            this.accountComboBox.DisplayMember = "role";
             this.accountComboBox.FormattingEnabled = true;
             this.accountComboBox.Location = new System.Drawing.Point(13, 22);
             this.accountComboBox.Name = "accountComboBox";
             this.accountComboBox.Size = new System.Drawing.Size(180, 21);
             this.accountComboBox.TabIndex = 0;
+            this.accountComboBox.ValueMember = "role";
             // 
             // passwordTextBox
             // 
@@ -93,6 +102,20 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // roleBindingSource
+            // 
+            this.roleBindingSource.DataMember = "Role";
+            this.roleBindingSource.DataSource = this.bankDataSet;
+            // 
+            // roleTableAdapter
+            // 
+            this.roleTableAdapter.ClearBeforeFill = true;
+            // 
             // authorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +132,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.authorizationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +148,8 @@
         private System.Windows.Forms.Label informationLabel;
         private System.Windows.Forms.Button enterButton;
         private System.Windows.Forms.Button exitButton;
+        private BankDataSet bankDataSet;
+        private System.Windows.Forms.BindingSource roleBindingSource;
+        private BankDataSetTableAdapters.RoleTableAdapter roleTableAdapter;
     }
 }

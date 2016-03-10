@@ -52,10 +52,10 @@
     <Compile Include="authorizationForm.Designer.cs">
       <DependentUpon>authorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BankDBDataSet.Designer.cs">
+    <Compile Include="BankDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BankDBDataSet.xsd</DependentUpon>
+      <DependentUpon>BankDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="currentClient.cs" />
     <Compile Include="MainMenu.cs">
@@ -99,16 +99,16 @@
     <EmbeddedResource Include="WorkWithDB\WorkWithDBForm.resx">
       <DependentUpon>WorkWithDBForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BankDBDataSet.xsc">
-      <DependentUpon>BankDBDataSet.xsd</DependentUpon>
+    <None Include="BankDataSet.xsc">
+      <DependentUpon>BankDataSet.xsd</DependentUpon>
     </None>
-    <None Include="BankDBDataSet.xsd">
+    <None Include="BankDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BankDBDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>BankDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="BankDBDataSet.xss">
-      <DependentUpon>BankDBDataSet.xsd</DependentUpon>
+    <None Include="BankDataSet.xss">
+      <DependentUpon>BankDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

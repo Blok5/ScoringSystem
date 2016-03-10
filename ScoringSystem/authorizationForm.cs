@@ -6,7 +6,6 @@ namespace ScoringSystem {
 
     public partial class authorizationForm :Form {
 
-        static public string connectionString = "Data Source=IGOR_PC;Initial Catalog=BankDB;Integrated Security=True";
         static int tryEnter = 3;
             
         public authorizationForm() {
@@ -14,15 +13,8 @@ namespace ScoringSystem {
         }
 
         private void authorizationForm_Load(object sender, EventArgs e) {
-
-            string sqlCommand = "select role from dbo.Role";
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(sqlCommand, connection);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while(dr.Read()) {
-                accountComboBox.Items.Add(dr[0]);
-            }
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Role". При необходимости она может быть перемещена или удалена.
+            this.roleTableAdapter.Fill(this.bankDataSet.Role);
 
         }
 
@@ -31,35 +23,42 @@ namespace ScoringSystem {
         }
 
         private void enterButton_Click(object sender, EventArgs e) {
-            string role = accountComboBox.Text;
-            string pass = passwordTextBox.Text;
-            string checkPass = "";
-            string sqlCommand = "select password from dbo.Role where role ='" + role + "'";                            
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
+            try {
+                connection.Open();
+                string role = accountComboBox.Text;
+                string pass = passwordTextBox.Text;
+                string checkPass = "";
+                string sqlCommand = "select password from dbo.Role where role ='" + role + "'";
+                SqlCommand cmd = new SqlCommand(sqlCommand, connection);
+                SqlDataReader dr = cmd.ExecuteReader();
 
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(sqlCommand, connection);
-            SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read()) {
+                    checkPass = dr[0].ToString();
+                }
 
-            while (dr.Read()) {
-                checkPass = dr[0].ToString();
+                if (pass == checkPass && checkPass != "") {
+                    currentClient.role = role;
+                    this.Hide();
+                    MainMenu mm = new MainMenu();
+                    mm.Show();
+                } else {
+                    --tryEnter;
+                    informationLabel.Text = "Неверный пароль, попробуйте еще раз!\nОсталось: " +
+                        tryEnter + " попыток";
+                    passwordTextBox.Text = "";
+                    accountComboBox.Text = "";
+                }
+                if (tryEnter == 0) {
+                    Application.Exit();
+                }
+            } catch {
+                MessageBox.Show(string.Format("Ошибка в Базе Данных"));
+            } finally {
+                connection.Close();
             }
-
-            if (pass == checkPass && checkPass != "") {
-                currentClient.role = role;
-                this.Hide();
-                MainMenu mm = new MainMenu();
-                mm.Show();
-            } else {
-                --tryEnter;
-                informationLabel.Text = "Неверный пароль, попробуйте еще раз!\nОсталось: " +
-                    tryEnter + " попыток";
-                passwordTextBox.Text = "";
-                accountComboBox.Text = "";
-            }
-            if (tryEnter == 0) {
-                Application.Exit();
-            }
+            
 
         }
     }

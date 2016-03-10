@@ -32,5 +32,15 @@ namespace ScoringSystem.Properties {
                 return ((string)(this["BankDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IGOR_PC;Initial Catalog=Bank;Integrated Security=True")]
+        public string BankConnectionString {
+            get {
+                return ((string)(this["BankConnectionString"]));
+            }
+        }
     }
 }

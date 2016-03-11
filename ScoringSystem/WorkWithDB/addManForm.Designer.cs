@@ -27,7 +27,6 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.surnameTextBox = new System.Windows.Forms.TextBox();
-            this.birthPlaceTextBox = new System.Windows.Forms.TextBox();
             this.homeTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -38,9 +37,7 @@
             this.educationComboBox = new System.Windows.Forms.ComboBox();
             this.educationLabel = new System.Windows.Forms.Label();
             this.cityComboBox = new System.Windows.Forms.ComboBox();
-            this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.streetComboBox = new System.Windows.Forms.ComboBox();
-            this.streetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.housingTextBox = new System.Windows.Forms.TextBox();
@@ -48,8 +45,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.nextButton = new System.Windows.Forms.Button();
+            this.birthPlaceComboBox = new System.Windows.Forms.ComboBox();
+            this.bankDataSet = new ScoringSystem.BankDataSet();
+            this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.citiesTableAdapter = new ScoringSystem.BankDataSetTableAdapters.CitiesTableAdapter();
+            this.streetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.streetsTableAdapter = new ScoringSystem.BankDataSetTableAdapters.StreetsTableAdapter();
+            this.informationLabel = new System.Windows.Forms.Label();
+            this.citiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -75,13 +82,6 @@
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(196, 20);
             this.surnameTextBox.TabIndex = 3;
-            // 
-            // birthPlaceTextBox
-            // 
-            this.birthPlaceTextBox.Location = new System.Drawing.Point(12, 90);
-            this.birthPlaceTextBox.Name = "birthPlaceTextBox";
-            this.birthPlaceTextBox.Size = new System.Drawing.Size(196, 20);
-            this.birthPlaceTextBox.TabIndex = 5;
             // 
             // homeTextBox
             // 
@@ -178,7 +178,7 @@
             // 
             this.cityComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cityComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cityComboBox.DataSource = this.citiesBindingSource;
+            this.cityComboBox.DataSource = this.citiesBindingSource1;
             this.cityComboBox.DisplayMember = "city";
             this.cityComboBox.FormattingEnabled = true;
             this.cityComboBox.Location = new System.Drawing.Point(12, 144);
@@ -263,11 +263,60 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click_1);
             // 
+            // birthPlaceComboBox
+            // 
+            this.birthPlaceComboBox.DataSource = this.citiesBindingSource;
+            this.birthPlaceComboBox.DisplayMember = "city";
+            this.birthPlaceComboBox.FormattingEnabled = true;
+            this.birthPlaceComboBox.Location = new System.Drawing.Point(12, 90);
+            this.birthPlaceComboBox.Name = "birthPlaceComboBox";
+            this.birthPlaceComboBox.Size = new System.Drawing.Size(197, 21);
+            this.birthPlaceComboBox.TabIndex = 24;
+            this.birthPlaceComboBox.ValueMember = "id";
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // citiesBindingSource
+            // 
+            this.citiesBindingSource.DataMember = "Cities";
+            this.citiesBindingSource.DataSource = this.bankDataSet;
+            // 
+            // citiesTableAdapter
+            // 
+            this.citiesTableAdapter.ClearBeforeFill = true;
+            // 
+            // streetsBindingSource
+            // 
+            this.streetsBindingSource.DataMember = "Streets";
+            this.streetsBindingSource.DataSource = this.bankDataSet;
+            // 
+            // streetsTableAdapter
+            // 
+            this.streetsTableAdapter.ClearBeforeFill = true;
+            // 
+            // informationLabel
+            // 
+            this.informationLabel.AutoSize = true;
+            this.informationLabel.Location = new System.Drawing.Point(12, 199);
+            this.informationLabel.Name = "informationLabel";
+            this.informationLabel.Size = new System.Drawing.Size(0, 13);
+            this.informationLabel.TabIndex = 25;
+            // 
+            // citiesBindingSource1
+            // 
+            this.citiesBindingSource1.DataMember = "Cities";
+            this.citiesBindingSource1.DataSource = this.bankDataSet;
+            // 
             // addManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 261);
+            this.Controls.Add(this.informationLabel);
+            this.Controls.Add(this.birthPlaceComboBox);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.birthDateTimePicker);
             this.Controls.Add(this.label4);
@@ -286,7 +335,6 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.sexComboBox);
             this.Controls.Add(this.homeTextBox);
-            this.Controls.Add(this.birthPlaceTextBox);
             this.Controls.Add(this.surnameTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.exitButton);
@@ -294,8 +342,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить человека";
             this.Load += new System.EventHandler(this.addManForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,7 +356,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox surnameTextBox;
-        private System.Windows.Forms.TextBox birthPlaceTextBox;
         private System.Windows.Forms.TextBox homeTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label surnameLabel;
@@ -324,8 +373,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker birthDateTimePicker;
-        private System.Windows.Forms.BindingSource citiesBindingSource;
-        private System.Windows.Forms.BindingSource streetsBindingSource;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.ComboBox birthPlaceComboBox;
+        private BankDataSet bankDataSet;
+        private System.Windows.Forms.BindingSource citiesBindingSource;
+        private BankDataSetTableAdapters.CitiesTableAdapter citiesTableAdapter;
+        private System.Windows.Forms.BindingSource streetsBindingSource;
+        private BankDataSetTableAdapters.StreetsTableAdapter streetsTableAdapter;
+        private System.Windows.Forms.Label informationLabel;
+        private System.Windows.Forms.BindingSource citiesBindingSource1;
     }
 }

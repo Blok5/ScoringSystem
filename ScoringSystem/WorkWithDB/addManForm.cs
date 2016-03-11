@@ -25,43 +25,73 @@ namespace ScoringSystem.WorkWithDB {
         }
 
         private void nextButton_Click_1(object sender, EventArgs e) {
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.BankConnectionString)) 
-            {
-                using (SqlCommand command = new SqlCommand()) {
-                    command.Connection = connection;
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = "insert into Mans (name, surname, birthDate, " +
-                        "id_birthPlace, sex, education, id_city, id_street, home, housing) VALUES " +
-                        "(@name, @surname, @birthDate, @id_birthPlace, @sex, @education, " +
-                        "@id_city, @id_street, @home, @housing)";
+            //using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.BankConnectionString)) 
+            //{
+            //    using (SqlCommand command = new SqlCommand()) {
+                    //command.Connection = connection;
+                    //command.CommandType = CommandType.Text;
+                    //command.CommandText = "insert into Mans (name, surname, birthDate, " +
+                    //    "id_birthPlace, sex, education, id_city, id_street, home, housing) VALUES " +
+                    //    "(@name, @surname, @birthDate, @id_birthPlace, @sex, @education, " +
+                    //    "@id_city, @id_street, @home, @housing)";
 
-                    birthDateTimePicker.CustomFormat = "yyyy-MM-dd";
-                    birthDateTimePicker.Format = DateTimePickerFormat.Custom;
+            
+            try {
+                birthDateTimePicker.CustomFormat = "yyyy-MM-dd";
+                birthDateTimePicker.Format = DateTimePickerFormat.Custom;
 
-                    command.Parameters.AddWithValue("@name", nameTextBox.Text);
-                    command.Parameters.AddWithValue("@surname", surnameTextBox.Text);
-                    command.Parameters.AddWithValue("@birthDate", birthDateTimePicker.Text);
-                    command.Parameters.AddWithValue("@id_birthPlace", birthPlaceComboBox.SelectedValue);
-                    command.Parameters.AddWithValue("@sex", sexComboBox.Text);
-                    command.Parameters.AddWithValue("@education", educationComboBox.Text);
-                    command.Parameters.AddWithValue("@id_city", cityComboBox.SelectedValue);
-                    command.Parameters.AddWithValue("@id_street", streetComboBox.SelectedValue);
-                    command.Parameters.AddWithValue("@home", homeTextBox.Text);
-                    command.Parameters.AddWithValue("@housing", housingTextBox.Text);                   
+                currentData.name = nameTextBox.Text;
+                currentData.surname = surnameTextBox.Text;
+                currentData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
+                currentData.id_city = cityComboBox.SelectedIndex;
+                currentData.id_street = streetComboBox.SelectedIndex;
+                currentData.home = Convert.ToInt32(homeTextBox.Text);
+                currentData.education = educationComboBox.Text;
+                currentData.birthDate = birthDateTimePicker.Text;
+                currentData.sex = sexComboBox.Text;
 
-                    try {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        informationLabel.Text = "Данные успешно добавлены";
-                    } catch (Exception ex) {
-                        MessageBox.Show(string.Format("Ошибка в Базе Данных"));
-                        MessageBox.Show(ex.Message);
-                    } finally {
-                        connection.Close();
-                    }
-
+                if (housingTextBox.Text == "") {
+                    currentData.housing = 0;
+                } else {
+                    currentData.housing = Convert.ToInt32(housingTextBox.Text);
                 }
+
+                addVehicleForm avf = new addVehicleForm();
+                this.Hide();
+                avf.Show();
+
+            } catch (Exception ex) {
+
+                MessageBox.Show("Введите корректные данные!\n" + ex.Message);
+                
             }
+
+
+
+            //command.Parameters.AddWithValue("@name", nameTextBox.Text);
+            //command.Parameters.AddWithValue("@surname", surnameTextBox.Text);
+            //command.Parameters.AddWithValue("@birthDate", birthDateTimePicker.Text);
+            //command.Parameters.AddWithValue("@id_birthPlace", birthPlaceComboBox.SelectedValue);
+            //command.Parameters.AddWithValue("@sex", sexComboBox.Text);
+            //command.Parameters.AddWithValue("@education", educationComboBox.Text);
+            //command.Parameters.AddWithValue("@id_city", cityComboBox.SelectedValue);
+            //command.Parameters.AddWithValue("@id_street", streetComboBox.SelectedValue);
+            //command.Parameters.AddWithValue("@home", homeTextBox.Text);
+            //command.Parameters.AddWithValue("@housing", housingTextBox.Text);                   
+
+            //try {
+            //    connection.Open();
+            //    command.ExecuteNonQuery();
+            //    informationLabel.Text = "Данные успешно добавлены";
+            //} catch (Exception ex) {
+            //    MessageBox.Show(string.Format("Ошибка в Базе Данных"));
+            //    MessageBox.Show(ex.Message);
+            //} finally {
+            //    connection.Close();
+            //}
+
+            // }
+            // }
         }
     }
 }

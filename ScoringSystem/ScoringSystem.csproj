@@ -58,6 +58,7 @@
       <DependentUpon>BankDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="currentClient.cs" />
+    <Compile Include="currentData.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>

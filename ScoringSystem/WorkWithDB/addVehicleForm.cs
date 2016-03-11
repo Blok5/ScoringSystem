@@ -13,5 +13,17 @@ namespace ScoringSystem.WorkWithDB {
         public addVehicleForm() {
             InitializeComponent();
         }
+
+        private void addVehicleForm_Load(object sender, EventArgs e) {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Marks". При необходимости она может быть перемещена или удалена.
+            this.marksTableAdapter.Fill(this.bankDataSet.Marks);
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e) {
+            this.Hide();
+            addManForm amf = new addManForm();
+            amf.Show();
+        }
     }
 }

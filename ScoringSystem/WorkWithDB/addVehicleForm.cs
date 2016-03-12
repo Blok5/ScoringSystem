@@ -51,7 +51,7 @@ namespace ScoringSystem.WorkWithDB {
                     vd[0].price = Convert.ToInt32(priceTextBox.Text);
 
                     currentData.addVehicle(vd,1);
-                }
+                }             
 
                 addRealEstateForm reform = new addRealEstateForm();
                 this.Hide();

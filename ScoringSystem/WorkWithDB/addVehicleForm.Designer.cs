@@ -52,6 +52,8 @@
             this.nextbutton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.marksBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.addButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -171,12 +173,13 @@
             this.groupBox1.Controls.Add(this.priceLabel);
             this.groupBox1.Controls.Add(this.markLabel);
             this.groupBox1.Controls.Add(this.rubLabel);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(280, 129);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Транспорт 1";
+            this.groupBox1.Visible = false;
             // 
             // groupBox2
             // 
@@ -190,12 +193,13 @@
             this.groupBox2.Controls.Add(this.priceLabel1);
             this.groupBox2.Controls.Add(this.markLabel1);
             this.groupBox2.Controls.Add(this.rubLabel1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 147);
+            this.groupBox2.Location = new System.Drawing.Point(12, 176);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(280, 129);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Транспорт 2";
+            this.groupBox2.Visible = false;
             // 
             // priceTextBox1
             // 
@@ -285,16 +289,17 @@
             // 
             // nextbutton
             // 
-            this.nextbutton.Location = new System.Drawing.Point(216, 286);
+            this.nextbutton.Location = new System.Drawing.Point(217, 311);
             this.nextbutton.Name = "nextbutton";
             this.nextbutton.Size = new System.Drawing.Size(75, 23);
             this.nextbutton.TabIndex = 12;
             this.nextbutton.Text = "Далее";
             this.nextbutton.UseVisualStyleBackColor = true;
+            this.nextbutton.Click += new System.EventHandler(this.nextbutton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 285);
+            this.backButton.Location = new System.Drawing.Point(12, 311);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 13;
@@ -307,11 +312,33 @@
             this.marksBindingSource1.DataMember = "Marks";
             this.marksBindingSource1.DataSource = this.bankDataSet;
             // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(12, 12);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 10;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(217, 12);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 14;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // addVehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 321);
+            this.ClientSize = new System.Drawing.Size(304, 342);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.nextbutton);
             this.Controls.Add(this.groupBox2);
@@ -361,5 +388,7 @@
         private System.Windows.Forms.Button nextbutton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.BindingSource marksBindingSource1;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

@@ -79,6 +79,12 @@
     <Compile Include="WorkWithDB\addVehicleForm.Designer.cs">
       <DependentUpon>addVehicleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkWithDB\addRealEstateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithDB\addRealEstateForm.Designer.cs">
+      <DependentUpon>addRealEstateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkWithDB\WorkWithDBForm.cs">
       <SubType>Form</SubType>
     </Compile>

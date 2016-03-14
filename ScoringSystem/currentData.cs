@@ -4,6 +4,14 @@ using System.Reflection;
 using System.Collections.Generic;
 
 namespace ScoringSystem {
+    public class realEstateData {
+        public string type;
+        public int location;
+        public string dateBuy;
+        public int square;
+        public decimal price;
+        public int id_man;
+    }
 
     public class vehicleData {
         public int id_mark;
@@ -17,6 +25,7 @@ namespace ScoringSystem {
         public string mail;
 
     }
+
     public static class currentData {
         public static string name;
         public static string surname;
@@ -30,7 +39,8 @@ namespace ScoringSystem {
         public static int housing;
 
         public static vehicleData[] vehicles;
-        public static vehicleData[] contacts;
+        public static contactData[] contacts;
+        public static realEstateData[] realEstates;
 
         public static void addVehicle (vehicleData[] vd, int j) {
            vehicles = new vehicleData[j];
@@ -51,7 +61,13 @@ namespace ScoringSystem {
                 MessageBox.Show("Возраст= " + v.age + " Марка= " + v.id_mark +
                     "\nНомер= " + v.number + " Цена= " + v.price);
                 }
-            
+
+            foreach (var v in realEstates) {
+                MessageBox.Show("Дата покупки= " + v.dateBuy + " id человека= " + v.id_man +
+                    "\nМесто расположения= " + v.location + " Цена= " + v.price + " Площадь= " + v.square +
+                    " Тип= " + v.type);
+            }
+
         }
     }
 }

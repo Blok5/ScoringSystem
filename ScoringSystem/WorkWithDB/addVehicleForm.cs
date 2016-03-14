@@ -9,9 +9,8 @@ namespace ScoringSystem.WorkWithDB {
         }
 
         private void addVehicleForm_Load(object sender, EventArgs e) {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Marks". При необходимости она может быть перемещена или удалена.
+            
             this.marksTableAdapter.Fill(this.bankDataSet.Marks);
-
         }
 
         private void backButton_Click(object sender, EventArgs e) {
@@ -42,7 +41,7 @@ namespace ScoringSystem.WorkWithDB {
 
                     currentData.addVehicle(vd,2);
 
-                } else {
+                } else if (groupBox2.Visible == false && groupBox1.Visible==true) {
                     vd[0] = new vehicleData();
                                   
                     vd[0].age = Convert.ToInt32(ageTextBox.Text);
@@ -51,8 +50,9 @@ namespace ScoringSystem.WorkWithDB {
                     vd[0].price = Convert.ToInt32(priceTextBox.Text);
 
                     currentData.addVehicle(vd,1);
-                }             
 
+                }      
+                
                 addRealEstateForm reform = new addRealEstateForm();
                 this.Hide();
                 reform.Show();

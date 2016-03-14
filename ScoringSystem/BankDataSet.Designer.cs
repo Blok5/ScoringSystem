@@ -38,6 +38,8 @@ namespace ScoringSystem {
         
         private PeopleRelationsDataTable tablePeopleRelations;
         
+        private RealEstateDataTable tableRealEstate;
+        
         private RelationsDataTable tableRelations;
         
         private RoleDataTable tableRole;
@@ -45,6 +47,8 @@ namespace ScoringSystem {
         private StreetsDataTable tableStreets;
         
         private VehicleDataTable tableVehicle;
+        
+        private WorkDataTable tableWork;
         
         private global::System.Data.DataRelation relationFK_Clients_Mans;
         
@@ -56,11 +60,17 @@ namespace ScoringSystem {
         
         private global::System.Data.DataRelation relationFK_Mans_Streets;
         
+        private global::System.Data.DataRelation relationFK_Mans_Work;
+        
         private global::System.Data.DataRelation relationFK_PeopleRelations_Clients;
         
         private global::System.Data.DataRelation relationFK_PeopleRelations_Mans;
         
         private global::System.Data.DataRelation relationFK_PeopleRelations_Relations;
+        
+        private global::System.Data.DataRelation relationFK_RealEstate_Cities;
+        
+        private global::System.Data.DataRelation relationFK_RealEstate_Mans;
         
         private global::System.Data.DataRelation relationFK_Vehicle_Mans;
         
@@ -115,6 +125,9 @@ namespace ScoringSystem {
                 if ((ds.Tables["PeopleRelations"] != null)) {
                     base.Tables.Add(new PeopleRelationsDataTable(ds.Tables["PeopleRelations"]));
                 }
+                if ((ds.Tables["RealEstate"] != null)) {
+                    base.Tables.Add(new RealEstateDataTable(ds.Tables["RealEstate"]));
+                }
                 if ((ds.Tables["Relations"] != null)) {
                     base.Tables.Add(new RelationsDataTable(ds.Tables["Relations"]));
                 }
@@ -126,6 +139,9 @@ namespace ScoringSystem {
                 }
                 if ((ds.Tables["Vehicle"] != null)) {
                     base.Tables.Add(new VehicleDataTable(ds.Tables["Vehicle"]));
+                }
+                if ((ds.Tables["Work"] != null)) {
+                    base.Tables.Add(new WorkDataTable(ds.Tables["Work"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -219,6 +235,16 @@ namespace ScoringSystem {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public RealEstateDataTable RealEstate {
+            get {
+                return this.tableRealEstate;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public RelationsDataTable _Relations {
             get {
                 return this.tableRelations;
@@ -252,6 +278,16 @@ namespace ScoringSystem {
         public VehicleDataTable Vehicle {
             get {
                 return this.tableVehicle;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public WorkDataTable Work {
+            get {
+                return this.tableWork;
             }
         }
         
@@ -343,6 +379,9 @@ namespace ScoringSystem {
                 if ((ds.Tables["PeopleRelations"] != null)) {
                     base.Tables.Add(new PeopleRelationsDataTable(ds.Tables["PeopleRelations"]));
                 }
+                if ((ds.Tables["RealEstate"] != null)) {
+                    base.Tables.Add(new RealEstateDataTable(ds.Tables["RealEstate"]));
+                }
                 if ((ds.Tables["Relations"] != null)) {
                     base.Tables.Add(new RelationsDataTable(ds.Tables["Relations"]));
                 }
@@ -354,6 +393,9 @@ namespace ScoringSystem {
                 }
                 if ((ds.Tables["Vehicle"] != null)) {
                     base.Tables.Add(new VehicleDataTable(ds.Tables["Vehicle"]));
+                }
+                if ((ds.Tables["Work"] != null)) {
+                    base.Tables.Add(new WorkDataTable(ds.Tables["Work"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -430,6 +472,12 @@ namespace ScoringSystem {
                     this.tablePeopleRelations.InitVars();
                 }
             }
+            this.tableRealEstate = ((RealEstateDataTable)(base.Tables["RealEstate"]));
+            if ((initTable == true)) {
+                if ((this.tableRealEstate != null)) {
+                    this.tableRealEstate.InitVars();
+                }
+            }
             this.tableRelations = ((RelationsDataTable)(base.Tables["Relations"]));
             if ((initTable == true)) {
                 if ((this.tableRelations != null)) {
@@ -454,14 +502,23 @@ namespace ScoringSystem {
                     this.tableVehicle.InitVars();
                 }
             }
+            this.tableWork = ((WorkDataTable)(base.Tables["Work"]));
+            if ((initTable == true)) {
+                if ((this.tableWork != null)) {
+                    this.tableWork.InitVars();
+                }
+            }
             this.relationFK_Clients_Mans = this.Relations["FK_Clients_Mans"];
             this.relationFK_Contacts_Mans = this.Relations["FK_Contacts_Mans"];
             this.relationFK_Mans_Cities = this.Relations["FK_Mans_Cities"];
             this.relationFK_Mans_Cities1 = this.Relations["FK_Mans_Cities1"];
             this.relationFK_Mans_Streets = this.Relations["FK_Mans_Streets"];
+            this.relationFK_Mans_Work = this.Relations["FK_Mans_Work"];
             this.relationFK_PeopleRelations_Clients = this.Relations["FK_PeopleRelations_Clients"];
             this.relationFK_PeopleRelations_Mans = this.Relations["FK_PeopleRelations_Mans"];
             this.relationFK_PeopleRelations_Relations = this.Relations["FK_PeopleRelations_Relations"];
+            this.relationFK_RealEstate_Cities = this.Relations["FK_RealEstate_Cities"];
+            this.relationFK_RealEstate_Mans = this.Relations["FK_RealEstate_Mans"];
             this.relationFK_Vehicle_Mans = this.Relations["FK_Vehicle_Mans"];
             this.relationFK_Vehicle_Marks = this.Relations["FK_Vehicle_Marks"];
         }
@@ -488,6 +545,8 @@ namespace ScoringSystem {
             base.Tables.Add(this.tableMarks);
             this.tablePeopleRelations = new PeopleRelationsDataTable();
             base.Tables.Add(this.tablePeopleRelations);
+            this.tableRealEstate = new RealEstateDataTable();
+            base.Tables.Add(this.tableRealEstate);
             this.tableRelations = new RelationsDataTable();
             base.Tables.Add(this.tableRelations);
             this.tableRole = new RoleDataTable();
@@ -496,6 +555,8 @@ namespace ScoringSystem {
             base.Tables.Add(this.tableStreets);
             this.tableVehicle = new VehicleDataTable();
             base.Tables.Add(this.tableVehicle);
+            this.tableWork = new WorkDataTable();
+            base.Tables.Add(this.tableWork);
             this.relationFK_Clients_Mans = new global::System.Data.DataRelation("FK_Clients_Mans", new global::System.Data.DataColumn[] {
                         this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableClients.id_manColumn}, false);
@@ -516,6 +577,10 @@ namespace ScoringSystem {
                         this.tableStreets.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableMans.id_streetColumn}, false);
             this.Relations.Add(this.relationFK_Mans_Streets);
+            this.relationFK_Mans_Work = new global::System.Data.DataRelation("FK_Mans_Work", new global::System.Data.DataColumn[] {
+                        this.tableWork.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableMans.id_workColumn}, false);
+            this.Relations.Add(this.relationFK_Mans_Work);
             this.relationFK_PeopleRelations_Clients = new global::System.Data.DataRelation("FK_PeopleRelations_Clients", new global::System.Data.DataColumn[] {
                         this.tableClients.id_manColumn}, new global::System.Data.DataColumn[] {
                         this.tablePeopleRelations.id_clientColumn}, false);
@@ -528,6 +593,14 @@ namespace ScoringSystem {
                         this.tableRelations.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablePeopleRelations.id_relationColumn}, false);
             this.Relations.Add(this.relationFK_PeopleRelations_Relations);
+            this.relationFK_RealEstate_Cities = new global::System.Data.DataRelation("FK_RealEstate_Cities", new global::System.Data.DataColumn[] {
+                        this.tableCities.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRealEstate.locationColumn}, false);
+            this.Relations.Add(this.relationFK_RealEstate_Cities);
+            this.relationFK_RealEstate_Mans = new global::System.Data.DataRelation("FK_RealEstate_Mans", new global::System.Data.DataColumn[] {
+                        this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRealEstate.id_manColumn}, false);
+            this.Relations.Add(this.relationFK_RealEstate_Mans);
             this.relationFK_Vehicle_Mans = new global::System.Data.DataRelation("FK_Vehicle_Mans", new global::System.Data.DataColumn[] {
                         this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableVehicle.id_manColumn}, false);
@@ -582,6 +655,12 @@ namespace ScoringSystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeRealEstate() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerialize_Relations() {
             return false;
         }
@@ -601,6 +680,12 @@ namespace ScoringSystem {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeVehicle() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeWork() {
             return false;
         }
         
@@ -681,6 +766,9 @@ namespace ScoringSystem {
         public delegate void PeopleRelationsRowChangeEventHandler(object sender, PeopleRelationsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void RealEstateRowChangeEventHandler(object sender, RealEstateRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RelationsRowChangeEventHandler(object sender, RelationsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -691,6 +779,9 @@ namespace ScoringSystem {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void VehicleRowChangeEventHandler(object sender, VehicleRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void WorkRowChangeEventHandler(object sender, WorkRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1846,6 +1937,14 @@ namespace ScoringSystem {
             
             private global::System.Data.DataColumn columnhousing;
             
+            private global::System.Data.DataColumn columnfamilyIncome;
+            
+            private global::System.Data.DataColumn columnincome;
+            
+            private global::System.Data.DataColumn columnoutcome;
+            
+            private global::System.Data.DataColumn columnid_work;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MansDataTable() {
@@ -1969,6 +2068,38 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn familyIncomeColumn {
+                get {
+                    return this.columnfamilyIncome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn incomeColumn {
+                get {
+                    return this.columnincome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn outcomeColumn {
+                get {
+                    return this.columnoutcome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_workColumn {
+                get {
+                    return this.columnid_work;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2004,7 +2135,7 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MansRow AddMansRow(string name, string surname, System.DateTime birthDate, CitiesRow parentCitiesRowByFK_Mans_Cities1, string sex, string education, CitiesRow parentCitiesRowByFK_Mans_Cities, StreetsRow parentStreetsRowByFK_Mans_Streets, int home, int housing) {
+            public MansRow AddMansRow(string name, string surname, System.DateTime birthDate, CitiesRow parentCitiesRowByFK_Mans_Cities1, string sex, string education, CitiesRow parentCitiesRowByFK_Mans_Cities, StreetsRow parentStreetsRowByFK_Mans_Streets, int home, int housing, decimal familyIncome, decimal income, decimal outcome, WorkRow parentWorkRowByFK_Mans_Work) {
                 MansRow rowMansRow = ((MansRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2017,7 +2148,11 @@ namespace ScoringSystem {
                         null,
                         null,
                         home,
-                        housing};
+                        housing,
+                        familyIncome,
+                        income,
+                        outcome,
+                        null};
                 if ((parentCitiesRowByFK_Mans_Cities1 != null)) {
                     columnValuesArray[4] = parentCitiesRowByFK_Mans_Cities1[0];
                 }
@@ -2026,6 +2161,9 @@ namespace ScoringSystem {
                 }
                 if ((parentStreetsRowByFK_Mans_Streets != null)) {
                     columnValuesArray[8] = parentStreetsRowByFK_Mans_Streets[0];
+                }
+                if ((parentWorkRowByFK_Mans_Work != null)) {
+                    columnValuesArray[14] = parentWorkRowByFK_Mans_Work[0];
                 }
                 rowMansRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMansRow);
@@ -2067,6 +2205,10 @@ namespace ScoringSystem {
                 this.columnid_street = base.Columns["id_street"];
                 this.columnhome = base.Columns["home"];
                 this.columnhousing = base.Columns["housing"];
+                this.columnfamilyIncome = base.Columns["familyIncome"];
+                this.columnincome = base.Columns["income"];
+                this.columnoutcome = base.Columns["outcome"];
+                this.columnid_work = base.Columns["id_work"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2094,6 +2236,14 @@ namespace ScoringSystem {
                 base.Columns.Add(this.columnhome);
                 this.columnhousing = new global::System.Data.DataColumn("housing", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhousing);
+                this.columnfamilyIncome = new global::System.Data.DataColumn("familyIncome", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfamilyIncome);
+                this.columnincome = new global::System.Data.DataColumn("income", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnincome);
+                this.columnoutcome = new global::System.Data.DataColumn("outcome", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoutcome);
+                this.columnid_work = new global::System.Data.DataColumn("id_work", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_work);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -2115,6 +2265,9 @@ namespace ScoringSystem {
                 this.columnid_city.AllowDBNull = false;
                 this.columnid_street.AllowDBNull = false;
                 this.columnhome.AllowDBNull = false;
+                this.columnfamilyIncome.AllowDBNull = false;
+                this.columnincome.AllowDBNull = false;
+                this.columnoutcome.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2794,6 +2947,335 @@ namespace ScoringSystem {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "PeopleRelationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class RealEstateDataTable : global::System.Data.TypedTableBase<RealEstateRow> {
+            
+            private global::System.Data.DataColumn columntype;
+            
+            private global::System.Data.DataColumn columnlocation;
+            
+            private global::System.Data.DataColumn columndateBuy;
+            
+            private global::System.Data.DataColumn columnsquare;
+            
+            private global::System.Data.DataColumn columnprice;
+            
+            private global::System.Data.DataColumn columnid_man;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateDataTable() {
+                this.TableName = "RealEstate";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RealEstateDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected RealEstateDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn typeColumn {
+                get {
+                    return this.columntype;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn locationColumn {
+                get {
+                    return this.columnlocation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dateBuyColumn {
+                get {
+                    return this.columndateBuy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn squareColumn {
+                get {
+                    return this.columnsquare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn priceColumn {
+                get {
+                    return this.columnprice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_manColumn {
+                get {
+                    return this.columnid_man;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow this[int index] {
+                get {
+                    return ((RealEstateRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RealEstateRowChangeEventHandler RealEstateRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RealEstateRowChangeEventHandler RealEstateRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RealEstateRowChangeEventHandler RealEstateRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RealEstateRowChangeEventHandler RealEstateRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddRealEstateRow(RealEstateRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow AddRealEstateRow(string type, CitiesRow parentCitiesRowByFK_RealEstate_Cities, System.DateTime dateBuy, int square, decimal price, MansRow parentMansRowByFK_RealEstate_Mans) {
+                RealEstateRow rowRealEstateRow = ((RealEstateRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        type,
+                        null,
+                        dateBuy,
+                        square,
+                        price,
+                        null};
+                if ((parentCitiesRowByFK_RealEstate_Cities != null)) {
+                    columnValuesArray[1] = parentCitiesRowByFK_RealEstate_Cities[0];
+                }
+                if ((parentMansRowByFK_RealEstate_Mans != null)) {
+                    columnValuesArray[5] = parentMansRowByFK_RealEstate_Mans[0];
+                }
+                rowRealEstateRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRealEstateRow);
+                return rowRealEstateRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                RealEstateDataTable cln = ((RealEstateDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new RealEstateDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columntype = base.Columns["type"];
+                this.columnlocation = base.Columns["location"];
+                this.columndateBuy = base.Columns["dateBuy"];
+                this.columnsquare = base.Columns["square"];
+                this.columnprice = base.Columns["price"];
+                this.columnid_man = base.Columns["id_man"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columntype = new global::System.Data.DataColumn("type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype);
+                this.columnlocation = new global::System.Data.DataColumn("location", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlocation);
+                this.columndateBuy = new global::System.Data.DataColumn("dateBuy", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateBuy);
+                this.columnsquare = new global::System.Data.DataColumn("square", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsquare);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprice);
+                this.columnid_man = new global::System.Data.DataColumn("id_man", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_man);
+                this.columntype.MaxLength = 20;
+                this.columnlocation.AllowDBNull = false;
+                this.columndateBuy.AllowDBNull = false;
+                this.columnsquare.AllowDBNull = false;
+                this.columnprice.AllowDBNull = false;
+                this.columnid_man.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow NewRealEstateRow() {
+                return ((RealEstateRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new RealEstateRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(RealEstateRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.RealEstateRowChanged != null)) {
+                    this.RealEstateRowChanged(this, new RealEstateRowChangeEvent(((RealEstateRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.RealEstateRowChanging != null)) {
+                    this.RealEstateRowChanging(this, new RealEstateRowChangeEvent(((RealEstateRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.RealEstateRowDeleted != null)) {
+                    this.RealEstateRowDeleted(this, new RealEstateRowChangeEvent(((RealEstateRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.RealEstateRowDeleting != null)) {
+                    this.RealEstateRowDeleting(this, new RealEstateRowChangeEvent(((RealEstateRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveRealEstateRow(RealEstateRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BankDataSet ds = new BankDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "RealEstateDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3973,6 +4455,315 @@ namespace ScoringSystem {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class WorkDataTable : global::System.Data.TypedTableBase<WorkRow> {
+            
+            private global::System.Data.DataColumn columnid;
+            
+            private global::System.Data.DataColumn columnname;
+            
+            private global::System.Data.DataColumn columnposition;
+            
+            private global::System.Data.DataColumn columnworkDuration;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkDataTable() {
+                this.TableName = "Work";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal WorkDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected WorkDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nameColumn {
+                get {
+                    return this.columnname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn positionColumn {
+                get {
+                    return this.columnposition;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn workDurationColumn {
+                get {
+                    return this.columnworkDuration;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow this[int index] {
+                get {
+                    return ((WorkRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event WorkRowChangeEventHandler WorkRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event WorkRowChangeEventHandler WorkRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event WorkRowChangeEventHandler WorkRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event WorkRowChangeEventHandler WorkRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddWorkRow(WorkRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow AddWorkRow(string name, string position, int workDuration) {
+                WorkRow rowWorkRow = ((WorkRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        name,
+                        position,
+                        workDuration};
+                rowWorkRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowWorkRow);
+                return rowWorkRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow FindByid(int id) {
+                return ((WorkRow)(this.Rows.Find(new object[] {
+                            id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                WorkDataTable cln = ((WorkDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new WorkDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnid = base.Columns["id"];
+                this.columnname = base.Columns["name"];
+                this.columnposition = base.Columns["position"];
+                this.columnworkDuration = base.Columns["workDuration"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnname);
+                this.columnposition = new global::System.Data.DataColumn("position", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnposition);
+                this.columnworkDuration = new global::System.Data.DataColumn("workDuration", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnworkDuration);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
+                this.columnname.AllowDBNull = false;
+                this.columnname.MaxLength = 50;
+                this.columnposition.AllowDBNull = false;
+                this.columnposition.MaxLength = 50;
+                this.columnworkDuration.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow NewWorkRow() {
+                return ((WorkRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new WorkRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(WorkRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.WorkRowChanged != null)) {
+                    this.WorkRowChanged(this, new WorkRowChangeEvent(((WorkRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.WorkRowChanging != null)) {
+                    this.WorkRowChanging(this, new WorkRowChangeEvent(((WorkRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.WorkRowDeleted != null)) {
+                    this.WorkRowDeleted(this, new WorkRowChangeEvent(((WorkRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.WorkRowDeleting != null)) {
+                    this.WorkRowDeleting(this, new WorkRowChangeEvent(((WorkRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveWorkRow(WorkRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BankDataSet ds = new BankDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "WorkDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class CitiesRow : global::System.Data.DataRow {
@@ -4044,6 +4835,17 @@ namespace ScoringSystem {
                 }
                 else {
                     return ((MansRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Mans_Cities1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow[] GetRealEstateRows() {
+                if ((this.Table.ChildRelations["FK_RealEstate_Cities"] == null)) {
+                    return new RealEstateRow[0];
+                }
+                else {
+                    return ((RealEstateRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RealEstate_Cities"])));
                 }
             }
         }
@@ -4469,6 +5271,55 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal familyIncome {
+                get {
+                    return ((decimal)(this[this.tableMans.familyIncomeColumn]));
+                }
+                set {
+                    this[this.tableMans.familyIncomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal income {
+                get {
+                    return ((decimal)(this[this.tableMans.incomeColumn]));
+                }
+                set {
+                    this[this.tableMans.incomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal outcome {
+                get {
+                    return ((decimal)(this[this.tableMans.outcomeColumn]));
+                }
+                set {
+                    this[this.tableMans.outcomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_work {
+                get {
+                    try {
+                        return ((int)(this[this.tableMans.id_workColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'id_work\' в таблице \'Mans\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMans.id_workColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CitiesRow CitiesRowByFK_Mans_Cities {
                 get {
                     return ((CitiesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Mans_Cities"])));
@@ -4502,6 +5353,17 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow WorkRow {
+                get {
+                    return ((WorkRow)(this.GetParentRow(this.Table.ParentRelations["FK_Mans_Work"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Mans_Work"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IshousingNull() {
                 return this.IsNull(this.tableMans.housingColumn);
             }
@@ -4510,6 +5372,18 @@ namespace ScoringSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SethousingNull() {
                 this[this.tableMans.housingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isid_workNull() {
+                return this.IsNull(this.tableMans.id_workColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setid_workNull() {
+                this[this.tableMans.id_workColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4542,6 +5416,17 @@ namespace ScoringSystem {
                 }
                 else {
                     return ((PeopleRelationsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PeopleRelations_Mans"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow[] GetRealEstateRows() {
+                if ((this.Table.ChildRelations["FK_RealEstate_Mans"] == null)) {
+                    return new RealEstateRow[0];
+                }
+                else {
+                    return ((RealEstateRow[])(base.GetChildRows(this.Table.ChildRelations["FK_RealEstate_Mans"])));
                 }
             }
             
@@ -4711,6 +5596,126 @@ namespace ScoringSystem {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_PeopleRelations_Relations"]);
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class RealEstateRow : global::System.Data.DataRow {
+            
+            private RealEstateDataTable tableRealEstate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RealEstateRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRealEstate = ((RealEstateDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string type {
+                get {
+                    try {
+                        return ((string)(this[this.tableRealEstate.typeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'type\' в таблице \'RealEstate\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRealEstate.typeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int location {
+                get {
+                    return ((int)(this[this.tableRealEstate.locationColumn]));
+                }
+                set {
+                    this[this.tableRealEstate.locationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime dateBuy {
+                get {
+                    return ((global::System.DateTime)(this[this.tableRealEstate.dateBuyColumn]));
+                }
+                set {
+                    this[this.tableRealEstate.dateBuyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int square {
+                get {
+                    return ((int)(this[this.tableRealEstate.squareColumn]));
+                }
+                set {
+                    this[this.tableRealEstate.squareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal price {
+                get {
+                    return ((decimal)(this[this.tableRealEstate.priceColumn]));
+                }
+                set {
+                    this[this.tableRealEstate.priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_man {
+                get {
+                    return ((int)(this[this.tableRealEstate.id_manColumn]));
+                }
+                set {
+                    this[this.tableRealEstate.id_manColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CitiesRow CitiesRow {
+                get {
+                    return ((CitiesRow)(this.GetParentRow(this.Table.ParentRelations["FK_RealEstate_Cities"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_RealEstate_Cities"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MansRow MansRow {
+                get {
+                    return ((MansRow)(this.GetParentRow(this.Table.ParentRelations["FK_RealEstate_Mans"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_RealEstate_Mans"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstypeNull() {
+                return this.IsNull(this.tableRealEstate.typeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettypeNull() {
+                this[this.tableRealEstate.typeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4935,6 +5940,76 @@ namespace ScoringSystem {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Vehicle_Marks"]);
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class WorkRow : global::System.Data.DataRow {
+            
+            private WorkDataTable tableWork;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal WorkRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableWork = ((WorkDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id {
+                get {
+                    return ((int)(this[this.tableWork.idColumn]));
+                }
+                set {
+                    this[this.tableWork.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string name {
+                get {
+                    return ((string)(this[this.tableWork.nameColumn]));
+                }
+                set {
+                    this[this.tableWork.nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string position {
+                get {
+                    return ((string)(this[this.tableWork.positionColumn]));
+                }
+                set {
+                    this[this.tableWork.positionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int workDuration {
+                get {
+                    return ((int)(this[this.tableWork.workDurationColumn]));
+                }
+                set {
+                    this[this.tableWork.workDurationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MansRow[] GetMansRows() {
+                if ((this.Table.ChildRelations["FK_Mans_Work"] == null)) {
+                    return new MansRow[0];
+                }
+                else {
+                    return ((MansRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Mans_Work"])));
                 }
             }
         }
@@ -5181,6 +6256,40 @@ namespace ScoringSystem {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class RealEstateRowChangeEvent : global::System.EventArgs {
+            
+            private RealEstateRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRowChangeEvent(RealEstateRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RealEstateRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public class RelationsRowChangeEvent : global::System.EventArgs {
             
             private RelationsRow eventRow;
@@ -5299,6 +6408,40 @@ namespace ScoringSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public VehicleRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class WorkRowChangeEvent : global::System.EventArgs {
+            
+            private WorkRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRowChangeEvent(WorkRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WorkRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6599,10 +7742,14 @@ SELECT id_man, entryDate, settlementAccount FROM Clients WHERE (id_man = @id_man
             tableMapping.ColumnMappings.Add("id_street", "id_street");
             tableMapping.ColumnMappings.Add("home", "home");
             tableMapping.ColumnMappings.Add("housing", "housing");
+            tableMapping.ColumnMappings.Add("familyIncome", "familyIncome");
+            tableMapping.ColumnMappings.Add("income", "income");
+            tableMapping.ColumnMappings.Add("outcome", "outcome");
+            tableMapping.ColumnMappings.Add("id_work", "id_work");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Mans] WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([surname] = @Original_surname) AND ([birthDate] = @Original_birthDate) AND ([id_birthPlace] = @Original_id_birthPlace) AND ([sex] = @Original_sex) AND ([education] = @Original_education) AND ([id_city] = @Original_id_city) AND ([id_street] = @Original_id_street) AND ([home] = @Original_home) AND ((@IsNull_housing = 1 AND [housing] IS NULL) OR ([housing] = @Original_housing)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Mans] WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([surname] = @Original_surname) AND ([birthDate] = @Original_birthDate) AND ([id_birthPlace] = @Original_id_birthPlace) AND ([sex] = @Original_sex) AND ([education] = @Original_education) AND ([id_city] = @Original_id_city) AND ([id_street] = @Original_id_street) AND ([home] = @Original_home) AND ((@IsNull_housing = 1 AND [housing] IS NULL) OR ([housing] = @Original_housing)) AND ([familyIncome] = @Original_familyIncome) AND ([income] = @Original_income) AND ([outcome] = @Original_outcome) AND ((@IsNull_id_work = 1 AND [id_work] IS NULL) OR ([id_work] = @Original_id_work)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6616,10 +7763,15 @@ SELECT id_man, entryDate, settlementAccount FROM Clients WHERE (id_man = @id_man
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_home", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "home", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_familyIncome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "familyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_income", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "income", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_outcome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "outcome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Mans] ([name], [surname], [birthDate], [id_birthPlace], [sex], [education], [id_city], [id_street], [home], [housing]) VALUES (@name, @surname, @birthDate, @id_birthPlace, @sex, @education, @id_city, @id_street, @home, @housing);
-SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing FROM Mans WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Mans] ([name], [surname], [birthDate], [id_birthPlace], [sex], [education], [id_city], [id_street], [home], [housing], [familyIncome], [income], [outcome], [id_work]) VALUES (@name, @surname, @birthDate, @id_birthPlace, @sex, @education, @id_city, @id_street, @home, @housing, @familyIncome, @income, @outcome, @id_work);
+SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing, familyIncome, income, outcome, id_work FROM Mans WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6631,10 +7783,14 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_street", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_street", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@home", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "home", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@familyIncome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "familyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@income", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "income", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@outcome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "outcome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Mans] SET [name] = @name, [surname] = @surname, [birthDate] = @birthDate, [id_birthPlace] = @id_birthPlace, [sex] = @sex, [education] = @education, [id_city] = @id_city, [id_street] = @id_street, [home] = @home, [housing] = @housing WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([surname] = @Original_surname) AND ([birthDate] = @Original_birthDate) AND ([id_birthPlace] = @Original_id_birthPlace) AND ([sex] = @Original_sex) AND ([education] = @Original_education) AND ([id_city] = @Original_id_city) AND ([id_street] = @Original_id_street) AND ([home] = @Original_home) AND ((@IsNull_housing = 1 AND [housing] IS NULL) OR ([housing] = @Original_housing)));
-SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing FROM Mans WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Mans] SET [name] = @name, [surname] = @surname, [birthDate] = @birthDate, [id_birthPlace] = @id_birthPlace, [sex] = @sex, [education] = @education, [id_city] = @id_city, [id_street] = @id_street, [home] = @home, [housing] = @housing, [familyIncome] = @familyIncome, [income] = @income, [outcome] = @outcome, [id_work] = @id_work WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([surname] = @Original_surname) AND ([birthDate] = @Original_birthDate) AND ([id_birthPlace] = @Original_id_birthPlace) AND ([sex] = @Original_sex) AND ([education] = @Original_education) AND ([id_city] = @Original_id_city) AND ([id_street] = @Original_id_street) AND ([home] = @Original_home) AND ((@IsNull_housing = 1 AND [housing] IS NULL) OR ([housing] = @Original_housing)) AND ([familyIncome] = @Original_familyIncome) AND ([income] = @Original_income) AND ([outcome] = @Original_outcome) AND ((@IsNull_id_work = 1 AND [id_work] IS NULL) OR ([id_work] = @Original_id_work)));
+SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing, familyIncome, income, outcome, id_work FROM Mans WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6646,6 +7802,10 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_street", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_street", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@home", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "home", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@familyIncome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "familyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@income", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "income", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@outcome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "outcome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_surname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6658,6 +7818,11 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_home", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "home", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_housing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "housing", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_familyIncome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "familyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_income", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "income", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_outcome", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "outcome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_work", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_work", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -6675,7 +7840,7 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_s" +
-                "treet, home, housing FROM dbo.Mans";
+                "treet, home, housing, familyIncome, income, outcome, id_work FROM dbo.Mans";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6736,7 +7901,7 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_name, string Original_surname, System.DateTime Original_birthDate, int Original_id_birthPlace, string Original_sex, string Original_education, int Original_id_city, int Original_id_street, int Original_home, global::System.Nullable<int> Original_housing) {
+        public virtual int Delete(int Original_id, string Original_name, string Original_surname, System.DateTime Original_birthDate, int Original_id_birthPlace, string Original_sex, string Original_education, int Original_id_city, int Original_id_street, int Original_home, global::System.Nullable<int> Original_housing, decimal Original_familyIncome, decimal Original_income, decimal Original_outcome, global::System.Nullable<int> Original_id_work) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_name == null)) {
                 throw new global::System.ArgumentNullException("Original_name");
@@ -6775,6 +7940,17 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_familyIncome));
+            this.Adapter.DeleteCommand.Parameters[13].Value = ((decimal)(Original_income));
+            this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_outcome));
+            if ((Original_id_work.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_id_work.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6795,7 +7971,7 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, string surname, System.DateTime birthDate, int id_birthPlace, string sex, string education, int id_city, int id_street, int home, global::System.Nullable<int> housing) {
+        public virtual int Insert(string name, string surname, System.DateTime birthDate, int id_birthPlace, string sex, string education, int id_city, int id_street, int home, global::System.Nullable<int> housing, decimal familyIncome, decimal income, decimal outcome, global::System.Nullable<int> id_work) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
@@ -6831,6 +8007,15 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
+            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(familyIncome));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(income));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(outcome));
+            if ((id_work.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(id_work.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6862,6 +8047,10 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
                     int id_street, 
                     int home, 
                     global::System.Nullable<int> housing, 
+                    decimal familyIncome, 
+                    decimal income, 
+                    decimal outcome, 
+                    global::System.Nullable<int> id_work, 
                     int Original_id, 
                     string Original_name, 
                     string Original_surname, 
@@ -6873,6 +8062,10 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
                     int Original_id_street, 
                     int Original_home, 
                     global::System.Nullable<int> Original_housing, 
+                    decimal Original_familyIncome, 
+                    decimal Original_income, 
+                    decimal Original_outcome, 
+                    global::System.Nullable<int> Original_id_work, 
                     int id) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
@@ -6909,45 +8102,65 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(familyIncome));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(income));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(outcome));
+            if ((id_work.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(id_work.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_id));
             if ((Original_name == null)) {
                 throw new global::System.ArgumentNullException("Original_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_name));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_name));
             }
             if ((Original_surname == null)) {
                 throw new global::System.ArgumentNullException("Original_surname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_surname));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_surname));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_birthDate));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_id_birthPlace));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_birthDate));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_id_birthPlace));
             if ((Original_sex == null)) {
                 throw new global::System.ArgumentNullException("Original_sex");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_sex));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_sex));
             }
             if ((Original_education == null)) {
                 throw new global::System.ArgumentNullException("Original_education");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_education));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_education));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_id_city));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_id_street));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_home));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_id_city));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_id_street));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_home));
             if ((Original_housing.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_housing.Value));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_housing.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_familyIncome));
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(Original_income));
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(Original_outcome));
+            if ((Original_id_work.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_id_work.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6979,6 +8192,10 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
                     int id_street, 
                     int home, 
                     global::System.Nullable<int> housing, 
+                    decimal familyIncome, 
+                    decimal income, 
+                    decimal outcome, 
+                    global::System.Nullable<int> id_work, 
                     int Original_id, 
                     string Original_name, 
                     string Original_surname, 
@@ -6989,8 +8206,12 @@ SELECT id, name, surname, birthDate, id_birthPlace, sex, education, id_city, id_
                     int Original_id_city, 
                     int Original_id_street, 
                     int Original_home, 
-                    global::System.Nullable<int> Original_housing) {
-            return this.Update(name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing, Original_id, Original_name, Original_surname, Original_birthDate, Original_id_birthPlace, Original_sex, Original_education, Original_id_city, Original_id_street, Original_home, Original_housing, Original_id);
+                    global::System.Nullable<int> Original_housing, 
+                    decimal Original_familyIncome, 
+                    decimal Original_income, 
+                    decimal Original_outcome, 
+                    global::System.Nullable<int> Original_id_work) {
+            return this.Update(name, surname, birthDate, id_birthPlace, sex, education, id_city, id_street, home, housing, familyIncome, income, outcome, id_work, Original_id, Original_name, Original_surname, Original_birthDate, Original_id_birthPlace, Original_sex, Original_education, Original_id_city, Original_id_street, Original_home, Original_housing, Original_familyIncome, Original_income, Original_outcome, Original_id_work, Original_id);
         }
     }
     
@@ -7632,6 +8853,250 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int id_man, int id_client, int id_relation, int Original_id, int Original_id_man, int Original_id_client, int Original_id_relation) {
             return this.Update(id_man, id_client, id_relation, Original_id, Original_id_man, Original_id_client, Original_id_relation, Original_id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class RealEstateTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public RealEstateTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "RealEstate";
+            tableMapping.ColumnMappings.Add("type", "type");
+            tableMapping.ColumnMappings.Add("location", "location");
+            tableMapping.ColumnMappings.Add("dateBuy", "dateBuy");
+            tableMapping.ColumnMappings.Add("square", "square");
+            tableMapping.ColumnMappings.Add("price", "price");
+            tableMapping.ColumnMappings.Add("id_man", "id_man");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[RealEstate] ([type], [location], [dateBuy], [square], [price]," +
+                " [id_man]) VALUES (@type, @location, @dateBuy, @square, @price, @id_man)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@location", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateBuy", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateBuy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@square", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "square", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_man", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_man", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::ScoringSystem.Properties.Settings.Default.BankConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT type, location, dateBuy, square, price, id_man FROM dbo.RealEstate";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BankDataSet.RealEstateDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BankDataSet.RealEstateDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BankDataSet.RealEstateDataTable dataTable = new BankDataSet.RealEstateDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BankDataSet.RealEstateDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BankDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "RealEstate");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string type, int location, System.DateTime dateBuy, int square, decimal price, int id_man) {
+            if ((type == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(type));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(location));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(dateBuy));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(square));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(price));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(id_man));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
         }
     }
     
@@ -8733,6 +10198,363 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class WorkTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public WorkTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Work";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.ColumnMappings.Add("position", "position");
+            tableMapping.ColumnMappings.Add("workDuration", "workDuration");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Work] WHERE (([id] = @Original_id) AND ([name] = @Original_nam" +
+                "e) AND ([position] = @Original_position) AND ([workDuration] = @Original_workDur" +
+                "ation))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_position", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_workDuration", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "workDuration", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Work] ([name], [position], [workDuration]) VALUES (@name, @pos" +
+                "ition, @workDuration);\r\nSELECT id, name, position, workDuration FROM Work WHERE " +
+                "(id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@position", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@workDuration", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "workDuration", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Work] SET [name] = @name, [position] = @position, [workDuration] = @workDuration WHERE (([id] = @Original_id) AND ([name] = @Original_name) AND ([position] = @Original_position) AND ([workDuration] = @Original_workDuration));
+SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@position", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@workDuration", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "workDuration", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_position", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "position", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_workDuration", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "workDuration", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::ScoringSystem.Properties.Settings.Default.BankConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT id, name, position, workDuration FROM dbo.[Work]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BankDataSet.WorkDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BankDataSet.WorkDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BankDataSet.WorkDataTable dataTable = new BankDataSet.WorkDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BankDataSet.WorkDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BankDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Work");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_id, string Original_name, string Original_position, int Original_workDuration) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
+            if ((Original_name == null)) {
+                throw new global::System.ArgumentNullException("Original_name");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_name));
+            }
+            if ((Original_position == null)) {
+                throw new global::System.ArgumentNullException("Original_position");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_position));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_workDuration));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string name, string position, int workDuration) {
+            if ((name == null)) {
+                throw new global::System.ArgumentNullException("name");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
+            }
+            if ((position == null)) {
+                throw new global::System.ArgumentNullException("position");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(position));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(workDuration));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string name, string position, int workDuration, int Original_id, string Original_name, string Original_position, int Original_workDuration, int id) {
+            if ((name == null)) {
+                throw new global::System.ArgumentNullException("name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(name));
+            }
+            if ((position == null)) {
+                throw new global::System.ArgumentNullException("position");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(position));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(workDuration));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_id));
+            if ((Original_name == null)) {
+                throw new global::System.ArgumentNullException("Original_name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_name));
+            }
+            if ((Original_position == null)) {
+                throw new global::System.ArgumentNullException("Original_position");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_position));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_workDuration));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string name, string position, int workDuration, int Original_id, string Original_name, string Original_position, int Original_workDuration) {
+            return this.Update(name, position, workDuration, Original_id, Original_name, Original_position, Original_workDuration, Original_id);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -8758,6 +10580,8 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
         
         private PeopleRelationsTableAdapter _peopleRelationsTableAdapter;
         
+        private RealEstateTableAdapter _realEstateTableAdapter;
+        
         private RelationsTableAdapter _relationsTableAdapter;
         
         private RoleTableAdapter _roleTableAdapter;
@@ -8765,6 +10589,8 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
         private StreetsTableAdapter _streetsTableAdapter;
         
         private VehicleTableAdapter _vehicleTableAdapter;
+        
+        private WorkTableAdapter _workTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -8884,6 +10710,20 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public RealEstateTableAdapter RealEstateTableAdapter {
+            get {
+                return this._realEstateTableAdapter;
+            }
+            set {
+                this._realEstateTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public RelationsTableAdapter RelationsTableAdapter {
             get {
                 return this._relationsTableAdapter;
@@ -8937,6 +10777,20 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public WorkTableAdapter WorkTableAdapter {
+            get {
+                return this._workTableAdapter;
+            }
+            set {
+                this._workTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -8982,6 +10836,10 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                             && (this._peopleRelationsTableAdapter.Connection != null))) {
                     return this._peopleRelationsTableAdapter.Connection;
                 }
+                if (((this._realEstateTableAdapter != null) 
+                            && (this._realEstateTableAdapter.Connection != null))) {
+                    return this._realEstateTableAdapter.Connection;
+                }
                 if (((this._relationsTableAdapter != null) 
                             && (this._relationsTableAdapter.Connection != null))) {
                     return this._relationsTableAdapter.Connection;
@@ -8997,6 +10855,10 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if (((this._vehicleTableAdapter != null) 
                             && (this._vehicleTableAdapter.Connection != null))) {
                     return this._vehicleTableAdapter.Connection;
+                }
+                if (((this._workTableAdapter != null) 
+                            && (this._workTableAdapter.Connection != null))) {
+                    return this._workTableAdapter.Connection;
                 }
                 return null;
             }
@@ -9032,6 +10894,9 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if ((this._peopleRelationsTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._realEstateTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._relationsTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -9042,6 +10907,9 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                     count = (count + 1);
                 }
                 if ((this._vehicleTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._workTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -9070,6 +10938,15 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._streetsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._workTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Work.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._workTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9136,6 +11013,15 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._realEstateTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RealEstate.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._realEstateTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._roleTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Role.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -9177,6 +11063,14 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._streetsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._workTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Work.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._workTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -9236,6 +11130,14 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._realEstateTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RealEstate.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._realEstateTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._roleTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Role.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -9275,6 +11177,14 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._roleTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._realEstateTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.RealEstate.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._realEstateTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9331,6 +11241,14 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._mansTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._workTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Work.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._workTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9424,6 +11342,11 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._realEstateTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._realEstateTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             if (((this._relationsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._relationsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
@@ -9441,6 +11364,11 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
             }
             if (((this._vehicleTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._vehicleTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._workTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._workTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -9539,6 +11467,15 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                         adaptersWithAcceptChangesDuringUpdate.Add(this._peopleRelationsTableAdapter.Adapter);
                     }
                 }
+                if ((this._realEstateTableAdapter != null)) {
+                    revertConnections.Add(this._realEstateTableAdapter, this._realEstateTableAdapter.Connection);
+                    this._realEstateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._realEstateTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._realEstateTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._realEstateTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._realEstateTableAdapter.Adapter);
+                    }
+                }
                 if ((this._relationsTableAdapter != null)) {
                     revertConnections.Add(this._relationsTableAdapter, this._relationsTableAdapter.Connection);
                     this._relationsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -9573,6 +11510,15 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                     if (this._vehicleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._vehicleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._vehicleTableAdapter.Adapter);
+                    }
+                }
+                if ((this._workTableAdapter != null)) {
+                    revertConnections.Add(this._workTableAdapter, this._workTableAdapter.Connection);
+                    this._workTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._workTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._workTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._workTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._workTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -9661,6 +11607,10 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                     this._peopleRelationsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._peopleRelationsTableAdapter]));
                     this._peopleRelationsTableAdapter.Transaction = null;
                 }
+                if ((this._realEstateTableAdapter != null)) {
+                    this._realEstateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._realEstateTableAdapter]));
+                    this._realEstateTableAdapter.Transaction = null;
+                }
                 if ((this._relationsTableAdapter != null)) {
                     this._relationsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._relationsTableAdapter]));
                     this._relationsTableAdapter.Transaction = null;
@@ -9676,6 +11626,10 @@ SELECT id, id_man, id_client, id_relation FROM PeopleRelations WHERE (id = @id)"
                 if ((this._vehicleTableAdapter != null)) {
                     this._vehicleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._vehicleTableAdapter]));
                     this._vehicleTableAdapter.Transaction = null;
+                }
+                if ((this._workTableAdapter != null)) {
+                    this._workTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._workTableAdapter]));
+                    this._workTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

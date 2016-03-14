@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithDB {
@@ -11,9 +9,9 @@ namespace ScoringSystem.WorkWithDB {
         }
 
         private void addManForm_Load(object sender, EventArgs e) {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Streets". При необходимости она может быть перемещена или удалена.
+            
             this.streetsTableAdapter.Fill(this.bankDataSet.Streets);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Cities". При необходимости она может быть перемещена или удалена.
+           
             this.citiesTableAdapter.Fill(this.bankDataSet.Cities);
 
         }

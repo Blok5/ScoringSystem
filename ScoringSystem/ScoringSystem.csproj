@@ -109,6 +109,9 @@
     <EmbeddedResource Include="WorkWithDB\addManForm.resx">
       <DependentUpon>addManForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithDB\addRealEstateForm.resx">
+      <DependentUpon>addRealEstateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkWithDB\addVehicleForm.resx">
       <DependentUpon>addVehicleForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -23,7 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bankDataSet = new ScoringSystem.BankDataSet();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.squareLabel = new System.Windows.Forms.Label();
             this.squareTextBox = new System.Windows.Forms.TextBox();
             this.priceTextBox = new System.Windows.Forms.TextBox();
@@ -31,11 +36,13 @@
             this.yearLabel = new System.Windows.Forms.Label();
             this.locationLabel = new System.Windows.Forms.Label();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
-            this.locationTextBox = new System.Windows.Forms.TextBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.typeLabel = new System.Windows.Forms.Label();
             this.rubLabel = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.locationComboBox1 = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.squareLabel1 = new System.Windows.Forms.Label();
             this.squareTextBox1 = new System.Windows.Forms.TextBox();
             this.priceTextBox1 = new System.Windows.Forms.TextBox();
@@ -43,7 +50,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.locationLabel1 = new System.Windows.Forms.Label();
             this.typeComboBox1 = new System.Windows.Forms.ComboBox();
-            this.locationTextBox1 = new System.Windows.Forms.TextBox();
             this.priceLabel1 = new System.Windows.Forms.Label();
             this.typeLabel1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,15 +57,18 @@
             this.addButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.nextbutton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.citiesTableAdapter = new ScoringSystem.BankDataSetTableAdapters.CitiesTableAdapter();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.locationComboBox);
+            this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.squareLabel);
             this.groupBox1.Controls.Add(this.squareTextBox);
             this.groupBox1.Controls.Add(this.priceTextBox);
@@ -67,7 +76,6 @@
             this.groupBox1.Controls.Add(this.yearLabel);
             this.groupBox1.Controls.Add(this.locationLabel);
             this.groupBox1.Controls.Add(this.typeComboBox);
-            this.groupBox1.Controls.Add(this.locationTextBox);
             this.groupBox1.Controls.Add(this.priceLabel);
             this.groupBox1.Controls.Add(this.typeLabel);
             this.groupBox1.Controls.Add(this.rubLabel);
@@ -78,6 +86,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Недвижимость 1";
             this.groupBox1.Visible = false;
+            // 
+            // locationComboBox
+            // 
+            this.locationComboBox.DataSource = this.citiesBindingSource;
+            this.locationComboBox.DisplayMember = "city";
+            this.locationComboBox.FormattingEnabled = true;
+            this.locationComboBox.Location = new System.Drawing.Point(114, 72);
+            this.locationComboBox.Name = "locationComboBox";
+            this.locationComboBox.Size = new System.Drawing.Size(168, 21);
+            this.locationComboBox.TabIndex = 13;
+            this.locationComboBox.ValueMember = "id";
+            // 
+            // citiesBindingSource
+            // 
+            this.citiesBindingSource.DataMember = "Cities";
+            this.citiesBindingSource.DataSource = this.bankDataSet;
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(114, 99);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePicker.TabIndex = 12;
             // 
             // squareLabel
             // 
@@ -133,18 +169,16 @@
             // 
             this.typeComboBox.DisplayMember = "mark";
             this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Items.AddRange(new object[] {
+            "Квартира",
+            "Комната",
+            "Дом",
+            "Земельный участок"});
             this.typeComboBox.Location = new System.Drawing.Point(114, 18);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(168, 21);
             this.typeComboBox.TabIndex = 0;
             this.typeComboBox.ValueMember = "id";
-            // 
-            // locationTextBox
-            // 
-            this.locationTextBox.Location = new System.Drawing.Point(114, 73);
-            this.locationTextBox.Name = "locationTextBox";
-            this.locationTextBox.Size = new System.Drawing.Size(168, 20);
-            this.locationTextBox.TabIndex = 2;
             // 
             // priceLabel
             // 
@@ -175,7 +209,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.locationComboBox1);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.squareLabel1);
             this.groupBox2.Controls.Add(this.squareTextBox1);
             this.groupBox2.Controls.Add(this.priceTextBox1);
@@ -183,7 +218,6 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.locationLabel1);
             this.groupBox2.Controls.Add(this.typeComboBox1);
-            this.groupBox2.Controls.Add(this.locationTextBox1);
             this.groupBox2.Controls.Add(this.priceLabel1);
             this.groupBox2.Controls.Add(this.typeLabel1);
             this.groupBox2.Controls.Add(this.label7);
@@ -194,6 +228,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Недвижимость 2";
             this.groupBox2.Visible = false;
+            // 
+            // locationComboBox1
+            // 
+            this.locationComboBox1.DataSource = this.citiesBindingSource1;
+            this.locationComboBox1.DisplayMember = "city";
+            this.locationComboBox1.FormattingEnabled = true;
+            this.locationComboBox1.Location = new System.Drawing.Point(114, 72);
+            this.locationComboBox1.Name = "locationComboBox1";
+            this.locationComboBox1.Size = new System.Drawing.Size(168, 21);
+            this.locationComboBox1.TabIndex = 14;
+            this.locationComboBox1.ValueMember = "id";
+            // 
+            // citiesBindingSource1
+            // 
+            this.citiesBindingSource1.DataMember = "Cities";
+            this.citiesBindingSource1.DataSource = this.bankDataSet;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(114, 99);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePicker1.TabIndex = 13;
             // 
             // squareLabel1
             // 
@@ -249,18 +306,16 @@
             // 
             this.typeComboBox1.DisplayMember = "mark";
             this.typeComboBox1.FormattingEnabled = true;
+            this.typeComboBox1.Items.AddRange(new object[] {
+            "Квартира",
+            "Комната",
+            "Дом",
+            "Земельный участок"});
             this.typeComboBox1.Location = new System.Drawing.Point(114, 18);
             this.typeComboBox1.Name = "typeComboBox1";
             this.typeComboBox1.Size = new System.Drawing.Size(168, 21);
             this.typeComboBox1.TabIndex = 0;
             this.typeComboBox1.ValueMember = "id";
-            // 
-            // locationTextBox1
-            // 
-            this.locationTextBox1.Location = new System.Drawing.Point(114, 73);
-            this.locationTextBox1.Name = "locationTextBox1";
-            this.locationTextBox1.Size = new System.Drawing.Size(168, 20);
-            this.locationTextBox1.TabIndex = 2;
             // 
             // priceLabel1
             // 
@@ -329,19 +384,9 @@
             this.nextbutton.UseVisualStyleBackColor = true;
             this.nextbutton.Click += new System.EventHandler(this.nextbutton_Click);
             // 
-            // dateTimePicker1
+            // citiesTableAdapter
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(114, 99);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(168, 20);
-            this.dateTimePicker1.TabIndex = 12;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(114, 99);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(168, 20);
-            this.dateTimePicker2.TabIndex = 13;
+            this.citiesTableAdapter.ClearBeforeFill = true;
             // 
             // addRealEstateForm
             // 
@@ -357,10 +402,14 @@
             this.Name = "addRealEstateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление недвижимости";
+            this.Load += new System.EventHandler(this.addRealEstateForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,7 +422,6 @@
         private System.Windows.Forms.Label yearLabel;
         private System.Windows.Forms.Label locationLabel;
         private System.Windows.Forms.ComboBox typeComboBox;
-        private System.Windows.Forms.TextBox locationTextBox;
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.Label rubLabel;
@@ -387,7 +435,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label locationLabel1;
         private System.Windows.Forms.ComboBox typeComboBox1;
-        private System.Windows.Forms.TextBox locationTextBox1;
         private System.Windows.Forms.Label priceLabel1;
         private System.Windows.Forms.Label typeLabel1;
         private System.Windows.Forms.Label label7;
@@ -395,7 +442,13 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button nextbutton;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.ComboBox locationComboBox;
+        private System.Windows.Forms.ComboBox locationComboBox1;
+        private BankDataSet bankDataSet;
+        private System.Windows.Forms.BindingSource citiesBindingSource;
+        private BankDataSetTableAdapters.CitiesTableAdapter citiesTableAdapter;
+        private System.Windows.Forms.BindingSource citiesBindingSource1;
     }
 }

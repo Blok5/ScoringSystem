@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace ScoringSystem {
 
@@ -26,9 +28,9 @@ namespace ScoringSystem {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
             try {
+                ;
                 connection.Open();
                 string role = accountComboBox.Text;
-                string pass = passwordTextBox.Text;
                 string checkPass = "";
                 string sqlCommand = "select password from dbo.Role where role ='" + role + "'";
                 SqlCommand cmd = new SqlCommand(sqlCommand, connection);
@@ -38,7 +40,7 @@ namespace ScoringSystem {
                     checkPass = dr[0].ToString();
                 }
 
-                if (pass == checkPass && checkPass != "") {
+                if (GetHashString(passwordTextBox.Text) == checkPass && checkPass != "") {
                     currentClient.role = role;
                     this.Hide();
                     MainMenu mm = new MainMenu();
@@ -60,6 +62,21 @@ namespace ScoringSystem {
             }
             
 
+        }
+
+        string GetHashString(string pass) {
+            byte[] bytes = Encoding.Unicode.GetBytes(pass);
+
+            MD5CryptoServiceProvider CSP = new MD5CryptoServiceProvider();
+
+            byte[] byteHash = CSP.ComputeHash(bytes);
+            string hash = string.Empty;
+
+            //формируем одну цельную строку из массива  
+            foreach (byte b in byteHash)
+                hash += string.Format("{0:x2}", b);
+
+            return hash;
         }
     }
 }

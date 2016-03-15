@@ -37,7 +37,10 @@
             this.educationComboBox = new System.Windows.Forms.ComboBox();
             this.educationLabel = new System.Windows.Forms.Label();
             this.cityComboBox = new System.Windows.Forms.ComboBox();
+            this.citiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bankDataSet = new ScoringSystem.BankDataSet();
             this.streetComboBox = new System.Windows.Forms.ComboBox();
+            this.streetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.housingTextBox = new System.Windows.Forms.TextBox();
@@ -46,17 +49,20 @@
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.nextButton = new System.Windows.Forms.Button();
             this.birthPlaceComboBox = new System.Windows.Forms.ComboBox();
-            this.bankDataSet = new ScoringSystem.BankDataSet();
             this.citiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.citiesTableAdapter = new ScoringSystem.BankDataSetTableAdapters.CitiesTableAdapter();
-            this.streetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.streetsTableAdapter = new ScoringSystem.BankDataSetTableAdapters.StreetsTableAdapter();
             this.informationLabel = new System.Windows.Forms.Label();
-            this.citiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
+            this.incomeLabel = new System.Windows.Forms.Label();
+            this.incomeTextBox = new System.Windows.Forms.TextBox();
+            this.familyIncomeTextBox = new System.Windows.Forms.TextBox();
+            this.familyIncomeLabel = new System.Windows.Forms.Label();
+            this.outcomeTextBox = new System.Windows.Forms.TextBox();
+            this.outcomeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -187,6 +193,16 @@
             this.cityComboBox.TabIndex = 15;
             this.cityComboBox.ValueMember = "id";
             // 
+            // citiesBindingSource1
+            // 
+            this.citiesBindingSource1.DataMember = "Cities";
+            this.citiesBindingSource1.DataSource = this.bankDataSet;
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // streetComboBox
             // 
             this.streetComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
@@ -199,6 +215,11 @@
             this.streetComboBox.Size = new System.Drawing.Size(196, 21);
             this.streetComboBox.TabIndex = 16;
             this.streetComboBox.ValueMember = "id";
+            // 
+            // streetsBindingSource
+            // 
+            this.streetsBindingSource.DataMember = "Streets";
+            this.streetsBindingSource.DataSource = this.bankDataSet;
             // 
             // label1
             // 
@@ -274,11 +295,6 @@
             this.birthPlaceComboBox.TabIndex = 24;
             this.birthPlaceComboBox.ValueMember = "id";
             // 
-            // bankDataSet
-            // 
-            this.bankDataSet.DataSetName = "BankDataSet";
-            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // citiesBindingSource
             // 
             this.citiesBindingSource.DataMember = "Cities";
@@ -287,11 +303,6 @@
             // citiesTableAdapter
             // 
             this.citiesTableAdapter.ClearBeforeFill = true;
-            // 
-            // streetsBindingSource
-            // 
-            this.streetsBindingSource.DataMember = "Streets";
-            this.streetsBindingSource.DataSource = this.bankDataSet;
             // 
             // streetsTableAdapter
             // 
@@ -305,16 +316,65 @@
             this.informationLabel.Size = new System.Drawing.Size(0, 13);
             this.informationLabel.TabIndex = 25;
             // 
-            // citiesBindingSource1
+            // incomeLabel
             // 
-            this.citiesBindingSource1.DataMember = "Cities";
-            this.citiesBindingSource1.DataSource = this.bankDataSet;
+            this.incomeLabel.AutoSize = true;
+            this.incomeLabel.Location = new System.Drawing.Point(373, 93);
+            this.incomeLabel.Name = "incomeLabel";
+            this.incomeLabel.Size = new System.Drawing.Size(39, 13);
+            this.incomeLabel.TabIndex = 26;
+            this.incomeLabel.Text = "Доход";
+            // 
+            // incomeTextBox
+            // 
+            this.incomeTextBox.Location = new System.Drawing.Point(313, 90);
+            this.incomeTextBox.Name = "incomeTextBox";
+            this.incomeTextBox.Size = new System.Drawing.Size(54, 20);
+            this.incomeTextBox.TabIndex = 27;
+            // 
+            // familyIncomeTextBox
+            // 
+            this.familyIncomeTextBox.Location = new System.Drawing.Point(313, 135);
+            this.familyIncomeTextBox.Name = "familyIncomeTextBox";
+            this.familyIncomeTextBox.Size = new System.Drawing.Size(115, 20);
+            this.familyIncomeTextBox.TabIndex = 29;
+            // 
+            // familyIncomeLabel
+            // 
+            this.familyIncomeLabel.AutoSize = true;
+            this.familyIncomeLabel.Location = new System.Drawing.Point(311, 116);
+            this.familyIncomeLabel.Name = "familyIncomeLabel";
+            this.familyIncomeLabel.Size = new System.Drawing.Size(92, 13);
+            this.familyIncomeLabel.TabIndex = 28;
+            this.familyIncomeLabel.Text = "Семейный доход";
+            // 
+            // outcomeTextBox
+            // 
+            this.outcomeTextBox.Location = new System.Drawing.Point(314, 174);
+            this.outcomeTextBox.Name = "outcomeTextBox";
+            this.outcomeTextBox.Size = new System.Drawing.Size(115, 20);
+            this.outcomeTextBox.TabIndex = 31;
+            // 
+            // outcomeLabel
+            // 
+            this.outcomeLabel.AutoSize = true;
+            this.outcomeLabel.Location = new System.Drawing.Point(311, 158);
+            this.outcomeLabel.Name = "outcomeLabel";
+            this.outcomeLabel.Size = new System.Drawing.Size(51, 13);
+            this.outcomeLabel.TabIndex = 30;
+            this.outcomeLabel.Text = "Расходы";
             // 
             // addManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 261);
+            this.Controls.Add(this.outcomeTextBox);
+            this.Controls.Add(this.outcomeLabel);
+            this.Controls.Add(this.familyIncomeTextBox);
+            this.Controls.Add(this.familyIncomeLabel);
+            this.Controls.Add(this.incomeTextBox);
+            this.Controls.Add(this.incomeLabel);
             this.Controls.Add(this.informationLabel);
             this.Controls.Add(this.birthPlaceComboBox);
             this.Controls.Add(this.nextButton);
@@ -342,10 +402,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить человека";
             this.Load += new System.EventHandler(this.addManForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +442,11 @@
         private BankDataSetTableAdapters.StreetsTableAdapter streetsTableAdapter;
         private System.Windows.Forms.Label informationLabel;
         private System.Windows.Forms.BindingSource citiesBindingSource1;
+        private System.Windows.Forms.Label incomeLabel;
+        private System.Windows.Forms.TextBox incomeTextBox;
+        private System.Windows.Forms.TextBox familyIncomeTextBox;
+        private System.Windows.Forms.Label familyIncomeLabel;
+        private System.Windows.Forms.TextBox outcomeTextBox;
+        private System.Windows.Forms.Label outcomeLabel;
     }
 }

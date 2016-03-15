@@ -38,20 +38,23 @@ namespace ScoringSystem.WorkWithDB {
                 birthDateTimePicker.CustomFormat = "yyyy-MM-dd";
                 birthDateTimePicker.Format = DateTimePickerFormat.Custom;
 
-                currentData.name = nameTextBox.Text;
-                currentData.surname = surnameTextBox.Text;
-                currentData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
-                currentData.id_city = cityComboBox.SelectedIndex;
-                currentData.id_street = streetComboBox.SelectedIndex;
-                currentData.home = Convert.ToInt32(homeTextBox.Text);
-                currentData.education = educationComboBox.Text;
-                currentData.birthDate = birthDateTimePicker.Text;
-                currentData.sex = sexComboBox.Text;
+                CurrentData.name = nameTextBox.Text;
+                CurrentData.surname = surnameTextBox.Text;
+                CurrentData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
+                CurrentData.id_city = cityComboBox.SelectedIndex;
+                CurrentData.id_street = streetComboBox.SelectedIndex;
+                CurrentData.home = Convert.ToInt32(homeTextBox.Text);
+                CurrentData.education = educationComboBox.Text;
+                CurrentData.birthDate = birthDateTimePicker.Text;
+                CurrentData.sex = sexComboBox.Text;
+                CurrentData.income = Convert.ToDecimal(incomeTextBox.Text);
+                CurrentData.familyIncome = Convert.ToDecimal(familyIncomeTextBox.Text);
+                CurrentData.outcome = Convert.ToDecimal(outcomeTextBox.Text);
 
                 if (housingTextBox.Text == "") {
-                    currentData.housing = 0;
+                    CurrentData.housing = 0;
                 } else {
-                    currentData.housing = Convert.ToInt32(housingTextBox.Text);
+                    CurrentData.housing = Convert.ToInt32(housingTextBox.Text);
                 }
 
                 addVehicleForm avf = new addVehicleForm();
@@ -60,7 +63,7 @@ namespace ScoringSystem.WorkWithDB {
 
             } catch (Exception ex) {
 
-                MessageBox.Show("Введите корректные данные!\n" + ex.Message);
+                MessageBox.Show(ex.Message + ex.Source);
                 
             }
 

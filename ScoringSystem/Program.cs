@@ -13,7 +13,7 @@ namespace ScoringSystem {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new authorizationForm());
+            Application.Run(new WorkWithDB.addRelationsForm());
         }
     }
 }

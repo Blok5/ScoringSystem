@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithDB {
-    public partial class addRelationsForm :Form {
+    /// <summary>
+    /// Класс AddRelationsForm открывает форму для добавления родственных 
+    /// связей клиента
+    /// </summary>
+    public partial class AddRelationsForm :Form {
 
         public int x = 12;
         public int y = 41;
-        public addRelationsForm() {
+        public AddRelationsForm() {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Метод addButton_Click добавляет очередной GroupBox 
+        /// с элементами на форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e) {
 
             GroupBox gb = new GroupBox();
@@ -66,8 +70,17 @@ namespace ScoringSystem.WorkWithDB {
 
         private void backButton_Click(object sender, EventArgs e) {
             this.Hide();
-            addWorkForm awf = new addWorkForm();
+            AddWorkForm awf = new AddWorkForm();
             awf.Show();
+        }
+
+        private void nextButton_Click(object sender, EventArgs e) {
+            try {
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message + ex.Source);
+                
+            }
         }
     }
 }

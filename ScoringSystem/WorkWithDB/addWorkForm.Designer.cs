@@ -1,5 +1,5 @@
 ﻿namespace ScoringSystem.WorkWithDB {
-    partial class addWorkForm {
+    partial class AddWorkForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

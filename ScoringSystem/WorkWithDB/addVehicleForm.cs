@@ -2,9 +2,12 @@
 using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithDB {
-    public partial class addVehicleForm :Form {
+    /// <summary>
+    /// Класс AddVehicleForm открывает форму для добавления транспортного средства
+    /// </summary>
+    public partial class AddVehicleForm :Form {
 
-        public addVehicleForm() {
+        public AddVehicleForm() {
             InitializeComponent();
         }
 
@@ -15,10 +18,16 @@ namespace ScoringSystem.WorkWithDB {
 
         private void backButton_Click(object sender, EventArgs e) {
             this.Hide();
-            addManForm amf = new addManForm();
+            AddManForm amf = new AddManForm();
             amf.Show();
         }
 
+        /// <summary>
+        /// Пытается добавить транспортное средство к клиенту.
+        /// При успехе открывает AddRealEstate форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextbutton_Click(object sender, EventArgs e) {
 
             try {          
@@ -55,7 +64,7 @@ namespace ScoringSystem.WorkWithDB {
 
                 }      
                 
-                addRealEstateForm reform = new addRealEstateForm();
+                AddRealEstateForm reform = new AddRealEstateForm();
                 this.Hide();
                 reform.Show();
 

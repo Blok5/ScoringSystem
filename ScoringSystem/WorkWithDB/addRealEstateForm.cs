@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithDB {
-    public partial class addRealEstateForm :Form {
-        public addRealEstateForm() {
+    /// <summary>
+    /// Класс AddRealEstateForm открывает форму для добавления 
+    /// недвижимости к клиенту
+    /// </summary>
+    public partial class AddRealEstateForm :Form {
+        public AddRealEstateForm() {
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e) {
-            addVehicleForm avf = new addVehicleForm();
+            AddVehicleForm avf = new AddVehicleForm();
             this.Hide();
             avf.Show();
         }
@@ -36,6 +33,12 @@ namespace ScoringSystem.WorkWithDB {
             }
         }
 
+        /// <summary>
+        /// При нажатии пытается добавить данные к клиенту. 
+        /// При успехе открывает AddWorkForm форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Параметр с событиями</param>
         private void nextbutton_Click(object sender, EventArgs e) {
 
             try {
@@ -78,7 +81,7 @@ namespace ScoringSystem.WorkWithDB {
                     CurrentData.addRealEstate(red, 1);
                 }
 
-                addWorkForm awf = new addWorkForm();
+                AddWorkForm awf = new AddWorkForm();
                 this.Hide();
                 awf.Show();
 

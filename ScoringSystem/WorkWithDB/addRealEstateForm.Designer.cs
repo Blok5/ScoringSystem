@@ -1,5 +1,5 @@
 ﻿namespace ScoringSystem.WorkWithDB {
-    partial class addRealEstateForm {
+    partial class AddRealEstateForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

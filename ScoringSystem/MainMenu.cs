@@ -2,6 +2,10 @@
 using System.Windows.Forms;
 
 namespace ScoringSystem {
+
+    /// <summary>
+    /// Класс MainMenu открывает форму с главным меню приложения
+    /// </summary>
     public partial class MainMenu :Form {
         public MainMenu() {
             InitializeComponent();
@@ -14,7 +18,7 @@ namespace ScoringSystem {
         }
 
         private void MainMenu_Load(object sender, EventArgs e) {
-            helloLabel.Text = "Здравствуйте " + currentClient.role + "!";
+            helloLabel.Text = "Здравствуйте " + СurrentClient.role + "!";
         }
     }
 }

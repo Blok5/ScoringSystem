@@ -9,7 +9,7 @@ namespace ScoringSystem.WorkWithDB {
 
         private void addManForm_Click(object sender, EventArgs e) {
             this.Hide();
-            addManForm amf = new addManForm();
+            AddManForm amf = new AddManForm();
             amf.Show();
         }
     }

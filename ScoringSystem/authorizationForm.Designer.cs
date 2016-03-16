@@ -1,5 +1,5 @@
 ﻿namespace ScoringSystem {
-    partial class authorizationForm {
+    partial class AuthorizationForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

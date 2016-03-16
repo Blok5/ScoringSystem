@@ -1,5 +1,5 @@
 ﻿namespace ScoringSystem.WorkWithDB {
-    partial class addVehicleForm {
+    partial class AddVehicleForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

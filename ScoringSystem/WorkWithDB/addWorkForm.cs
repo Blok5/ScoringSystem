@@ -1,30 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithDB {
-    public partial class addWorkForm :Form {
-        public addWorkForm() {
+    /// <summary>
+    /// Класс AddWorkForm открывает форму для добавления информации о работе,
+    /// на которой работает клиент
+    /// </summary>
+    public partial class AddWorkForm :Form {
+        public AddWorkForm() {
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e) {
             this.Hide();
-            addRealEstateForm aref = new addRealEstateForm();
+            AddRealEstateForm aref = new AddRealEstateForm();
             aref.Show();
         }
 
+        /// <summary>
+        /// Метод nextButton_Click пытается добавить инф-ю о работе клиенту.
+        /// При успехе открывает AddRelationsForm форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextButton_Click(object sender, EventArgs e) {
             try {
                 CurrentData.addWork(nameTextBox.Text, positionComboBox.Text, workDurationComboBox.Text);
 
-                addRelationsForm arf = new addRelationsForm();
+                AddRelationsForm arf = new AddRelationsForm();
                 this.Hide();
                 arf.Show();
 

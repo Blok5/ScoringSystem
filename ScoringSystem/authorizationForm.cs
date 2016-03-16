@@ -6,16 +6,20 @@ using System.Security.Cryptography;
 
 namespace ScoringSystem {
 
-    public partial class authorizationForm :Form {
+    /// <summary>
+    /// Класс AuthorizationForm открывает форму для авторизации пользователя
+    /// При успехе открывается класс MainMenu
+    /// </summary>
+    public partial class AuthorizationForm :Form {
 
         static int tryEnter = 3;
             
-        public authorizationForm() {
+        public AuthorizationForm() {
             InitializeComponent();
         }
 
         private void authorizationForm_Load(object sender, EventArgs e) {
-            // данная строка кода позволяет загрузить данные в таблицу "bankDataSet.Role". При необходимости она может быть перемещена или удалена.
+            
             this.roleTableAdapter.Fill(this.bankDataSet.Role);
 
         }
@@ -39,9 +43,9 @@ namespace ScoringSystem {
                 while (dr.Read()) {
                     checkPass = dr[0].ToString();
                 }
-
+                
                 if (GetHashString(passwordTextBox.Text) == checkPass && checkPass != "") {
-                    currentClient.role = role;
+                    СurrentClient.role = role;
                     this.Hide();
                     MainMenu mm = new MainMenu();
                     mm.Show();
@@ -64,6 +68,11 @@ namespace ScoringSystem {
 
         }
 
+        /// <summary>
+        /// Метод GetHashString нужен для перевода строки в хэш
+        /// </summary>
+        /// <param name="pass">Входная строка, которая будет переведена в хэш</param>
+        /// <returns>Метод возвращает строку с хэшем</returns>
         string GetHashString(string pass) {
             byte[] bytes = Encoding.Unicode.GetBytes(pass);
 

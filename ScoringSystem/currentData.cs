@@ -116,6 +116,18 @@ namespace ScoringSystem {
         }
 
         /// <summary>
+        /// Метод addRelation добавляет родственные связи к клиенту
+        /// </summary>
+        /// <param name="rd">Массив родственных связей</param>
+        public static void addRelation(RelationsData[] rd) {
+            relations = new RelationsData[rd.Length];
+
+            for (int i = 0; i < rd.Length; i++ ) {
+                relations[i] = new RelationsData();
+                relations[i] = rd[i]; 
+            }
+        }
+        /// <summary>
         /// Метод showValues выводит все значения о текущем клиенте
         /// </summary>
         public static void showValues() {
@@ -144,6 +156,13 @@ namespace ScoringSystem {
             if (work!= null) {
                 MessageBox.Show("Название организации: " + work.name + "\nКатегория должности" + work.position +
                     " Продолжительность работы" + work.workDuration);
+            }
+
+            if (relations != null) {
+                foreach (var r in relations) {
+                    MessageBox.Show("id человека: " + r.id_man.ToString() +
+                        "id связи: " + r.id_relation.ToString());
+                }
             }
         }
     }

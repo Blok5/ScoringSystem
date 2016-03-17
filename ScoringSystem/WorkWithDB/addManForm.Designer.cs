@@ -59,15 +59,21 @@
             this.familyIncomeLabel = new System.Windows.Forms.Label();
             this.outcomeTextBox = new System.Windows.Forms.TextBox();
             this.outcomeLabel = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(12, 226);
+            this.exitButton.Location = new System.Drawing.Point(12, 238);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 0;
@@ -77,21 +83,21 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(12, 12);
+            this.nameTextBox.Location = new System.Drawing.Point(7, 34);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(197, 20);
             this.nameTextBox.TabIndex = 2;
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(12, 38);
+            this.surnameTextBox.Location = new System.Drawing.Point(7, 60);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(196, 20);
             this.surnameTextBox.TabIndex = 3;
             // 
             // homeTextBox
             // 
-            this.homeTextBox.Location = new System.Drawing.Point(313, 38);
+            this.homeTextBox.Location = new System.Drawing.Point(308, 60);
             this.homeTextBox.Name = "homeTextBox";
             this.homeTextBox.Size = new System.Drawing.Size(54, 20);
             this.homeTextBox.TabIndex = 6;
@@ -104,7 +110,7 @@
             this.sexComboBox.Items.AddRange(new object[] {
             "М",
             "Ж"});
-            this.sexComboBox.Location = new System.Drawing.Point(313, 11);
+            this.sexComboBox.Location = new System.Drawing.Point(308, 33);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(54, 21);
             this.sexComboBox.TabIndex = 7;
@@ -112,7 +118,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(215, 15);
+            this.nameLabel.Location = new System.Drawing.Point(210, 37);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(29, 13);
             this.nameLabel.TabIndex = 8;
@@ -121,7 +127,7 @@
             // surnameLabel
             // 
             this.surnameLabel.AutoSize = true;
-            this.surnameLabel.Location = new System.Drawing.Point(215, 41);
+            this.surnameLabel.Location = new System.Drawing.Point(210, 63);
             this.surnameLabel.Name = "surnameLabel";
             this.surnameLabel.Size = new System.Drawing.Size(56, 13);
             this.surnameLabel.TabIndex = 9;
@@ -130,7 +136,7 @@
             // birthDateLabel
             // 
             this.birthDateLabel.AutoSize = true;
-            this.birthDateLabel.Location = new System.Drawing.Point(215, 67);
+            this.birthDateLabel.Location = new System.Drawing.Point(210, 89);
             this.birthDateLabel.Name = "birthDateLabel";
             this.birthDateLabel.Size = new System.Drawing.Size(86, 13);
             this.birthDateLabel.TabIndex = 10;
@@ -139,7 +145,7 @@
             // birthPlaceLabel
             // 
             this.birthPlaceLabel.AutoSize = true;
-            this.birthPlaceLabel.Location = new System.Drawing.Point(215, 93);
+            this.birthPlaceLabel.Location = new System.Drawing.Point(210, 115);
             this.birthPlaceLabel.Name = "birthPlaceLabel";
             this.birthPlaceLabel.Size = new System.Drawing.Size(92, 13);
             this.birthPlaceLabel.TabIndex = 11;
@@ -148,7 +154,7 @@
             // sexLabel
             // 
             this.sexLabel.AutoSize = true;
-            this.sexLabel.Location = new System.Drawing.Point(373, 15);
+            this.sexLabel.Location = new System.Drawing.Point(368, 37);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(27, 13);
             this.sexLabel.TabIndex = 12;
@@ -166,7 +172,7 @@
             "Среднее специальное",
             "Среднее",
             "Ниже среднего"});
-            this.educationComboBox.Location = new System.Drawing.Point(12, 116);
+            this.educationComboBox.Location = new System.Drawing.Point(7, 138);
             this.educationComboBox.Name = "educationComboBox";
             this.educationComboBox.Size = new System.Drawing.Size(196, 21);
             this.educationComboBox.TabIndex = 13;
@@ -174,7 +180,7 @@
             // educationLabel
             // 
             this.educationLabel.AutoSize = true;
-            this.educationLabel.Location = new System.Drawing.Point(215, 119);
+            this.educationLabel.Location = new System.Drawing.Point(210, 141);
             this.educationLabel.Name = "educationLabel";
             this.educationLabel.Size = new System.Drawing.Size(75, 13);
             this.educationLabel.TabIndex = 14;
@@ -182,12 +188,12 @@
             // 
             // cityComboBox
             // 
-            this.cityComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cityComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cityComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cityComboBox.DataSource = this.citiesBindingSource1;
             this.cityComboBox.DisplayMember = "city";
             this.cityComboBox.FormattingEnabled = true;
-            this.cityComboBox.Location = new System.Drawing.Point(12, 144);
+            this.cityComboBox.Location = new System.Drawing.Point(7, 166);
             this.cityComboBox.Name = "cityComboBox";
             this.cityComboBox.Size = new System.Drawing.Size(196, 21);
             this.cityComboBox.TabIndex = 15;
@@ -205,12 +211,12 @@
             // 
             // streetComboBox
             // 
-            this.streetComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.streetComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.streetComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.streetComboBox.DataSource = this.streetsBindingSource;
             this.streetComboBox.DisplayMember = "street";
             this.streetComboBox.FormattingEnabled = true;
-            this.streetComboBox.Location = new System.Drawing.Point(12, 171);
+            this.streetComboBox.Location = new System.Drawing.Point(7, 193);
             this.streetComboBox.Name = "streetComboBox";
             this.streetComboBox.Size = new System.Drawing.Size(196, 21);
             this.streetComboBox.TabIndex = 16;
@@ -224,7 +230,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 147);
+            this.label1.Location = new System.Drawing.Point(210, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 17;
@@ -233,7 +239,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 174);
+            this.label2.Location = new System.Drawing.Point(210, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 18;
@@ -241,7 +247,7 @@
             // 
             // housingTextBox
             // 
-            this.housingTextBox.Location = new System.Drawing.Point(313, 64);
+            this.housingTextBox.Location = new System.Drawing.Point(308, 86);
             this.housingTextBox.Name = "housingTextBox";
             this.housingTextBox.Size = new System.Drawing.Size(54, 20);
             this.housingTextBox.TabIndex = 19;
@@ -249,7 +255,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(373, 42);
+            this.label3.Location = new System.Drawing.Point(368, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 20;
@@ -258,7 +264,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(373, 68);
+            this.label4.Location = new System.Drawing.Point(368, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 21;
@@ -266,7 +272,7 @@
             // 
             // birthDateTimePicker
             // 
-            this.birthDateTimePicker.Location = new System.Drawing.Point(12, 64);
+            this.birthDateTimePicker.Location = new System.Drawing.Point(7, 86);
             this.birthDateTimePicker.MaxDate = new System.DateTime(2016, 3, 9, 0, 0, 0, 0);
             this.birthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.birthDateTimePicker.Name = "birthDateTimePicker";
@@ -276,7 +282,7 @@
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(348, 226);
+            this.nextButton.Location = new System.Drawing.Point(348, 238);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 23;
@@ -289,7 +295,7 @@
             this.birthPlaceComboBox.DataSource = this.citiesBindingSource;
             this.birthPlaceComboBox.DisplayMember = "city";
             this.birthPlaceComboBox.FormattingEnabled = true;
-            this.birthPlaceComboBox.Location = new System.Drawing.Point(12, 90);
+            this.birthPlaceComboBox.Location = new System.Drawing.Point(7, 112);
             this.birthPlaceComboBox.Name = "birthPlaceComboBox";
             this.birthPlaceComboBox.Size = new System.Drawing.Size(197, 21);
             this.birthPlaceComboBox.TabIndex = 24;
@@ -311,7 +317,7 @@
             // informationLabel
             // 
             this.informationLabel.AutoSize = true;
-            this.informationLabel.Location = new System.Drawing.Point(12, 199);
+            this.informationLabel.Location = new System.Drawing.Point(7, 221);
             this.informationLabel.Name = "informationLabel";
             this.informationLabel.Size = new System.Drawing.Size(0, 13);
             this.informationLabel.TabIndex = 25;
@@ -319,7 +325,7 @@
             // incomeLabel
             // 
             this.incomeLabel.AutoSize = true;
-            this.incomeLabel.Location = new System.Drawing.Point(373, 93);
+            this.incomeLabel.Location = new System.Drawing.Point(368, 115);
             this.incomeLabel.Name = "incomeLabel";
             this.incomeLabel.Size = new System.Drawing.Size(39, 13);
             this.incomeLabel.TabIndex = 26;
@@ -327,14 +333,14 @@
             // 
             // incomeTextBox
             // 
-            this.incomeTextBox.Location = new System.Drawing.Point(313, 90);
+            this.incomeTextBox.Location = new System.Drawing.Point(308, 112);
             this.incomeTextBox.Name = "incomeTextBox";
             this.incomeTextBox.Size = new System.Drawing.Size(54, 20);
             this.incomeTextBox.TabIndex = 27;
             // 
             // familyIncomeTextBox
             // 
-            this.familyIncomeTextBox.Location = new System.Drawing.Point(313, 135);
+            this.familyIncomeTextBox.Location = new System.Drawing.Point(308, 157);
             this.familyIncomeTextBox.Name = "familyIncomeTextBox";
             this.familyIncomeTextBox.Size = new System.Drawing.Size(115, 20);
             this.familyIncomeTextBox.TabIndex = 29;
@@ -342,7 +348,7 @@
             // familyIncomeLabel
             // 
             this.familyIncomeLabel.AutoSize = true;
-            this.familyIncomeLabel.Location = new System.Drawing.Point(311, 116);
+            this.familyIncomeLabel.Location = new System.Drawing.Point(306, 138);
             this.familyIncomeLabel.Name = "familyIncomeLabel";
             this.familyIncomeLabel.Size = new System.Drawing.Size(92, 13);
             this.familyIncomeLabel.TabIndex = 28;
@@ -350,7 +356,7 @@
             // 
             // outcomeTextBox
             // 
-            this.outcomeTextBox.Location = new System.Drawing.Point(314, 174);
+            this.outcomeTextBox.Location = new System.Drawing.Point(309, 196);
             this.outcomeTextBox.Name = "outcomeTextBox";
             this.outcomeTextBox.Size = new System.Drawing.Size(115, 20);
             this.outcomeTextBox.TabIndex = 31;
@@ -358,17 +364,60 @@
             // outcomeLabel
             // 
             this.outcomeLabel.AutoSize = true;
-            this.outcomeLabel.Location = new System.Drawing.Point(311, 158);
+            this.outcomeLabel.Location = new System.Drawing.Point(306, 180);
             this.outcomeLabel.Name = "outcomeLabel";
             this.outcomeLabel.Size = new System.Drawing.Size(51, 13);
             this.outcomeLabel.TabIndex = 30;
             this.outcomeLabel.Text = "Расходы";
             // 
-            // addManForm
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.referenceToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(435, 24);
+            this.menuStrip1.TabIndex = 32;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.fileToolStripMenuItem.Text = "Файл";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Выйти";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // referenceToolStripMenuItem
+            // 
+            this.referenceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutProgramToolStripMenuItem});
+            this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
+            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.referenceToolStripMenuItem.Text = "Справка";
+            // 
+            // aboutProgramToolStripMenuItem
+            // 
+            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutProgramToolStripMenuItem.Text = "О программе";
+            this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
+            // 
+            // AddManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 261);
+            this.ClientSize = new System.Drawing.Size(435, 273);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.outcomeTextBox);
             this.Controls.Add(this.outcomeLabel);
             this.Controls.Add(this.familyIncomeTextBox);
@@ -398,7 +447,7 @@
             this.Controls.Add(this.surnameTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.exitButton);
-            this.Name = "addManForm";
+            this.Name = "AddManForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить человека";
             this.Load += new System.EventHandler(this.addManForm_Load);
@@ -406,6 +455,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,5 +499,10 @@
         private System.Windows.Forms.Label familyIncomeLabel;
         private System.Windows.Forms.TextBox outcomeTextBox;
         private System.Windows.Forms.Label outcomeLabel;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
     }
 }

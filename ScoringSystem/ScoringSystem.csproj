@@ -61,6 +61,18 @@
     </Compile>
     <Compile Include="currentClient.cs" />
     <Compile Include="currentData.cs" />
+    <Compile Include="InformationAboutClients\InfoAboutMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationAboutClients\InfoAboutMan.Designer.cs">
+      <DependentUpon>InfoAboutMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformationAboutClients\InformationAboutClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationAboutClients\InformationAboutClients.Designer.cs">
+      <DependentUpon>InformationAboutClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +119,12 @@
     </Compile>
     <EmbeddedResource Include="authorizationForm.resx">
       <DependentUpon>authorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationAboutClients\InfoAboutMan.resx">
+      <DependentUpon>InfoAboutMan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationAboutClients\InformationAboutClients.resx">
+      <DependentUpon>InformationAboutClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

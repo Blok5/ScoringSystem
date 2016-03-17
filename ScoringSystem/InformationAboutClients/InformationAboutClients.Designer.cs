@@ -1,14 +1,14 @@
-﻿namespace ScoringSystem {
-    partial class MainMenu {
+﻿namespace ScoringSystem.InformationAboutClients {
+    partial class InformationAboutClients {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null)) {
                 components.Dispose();
@@ -16,42 +16,21 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.openWorkWithDBForm = new System.Windows.Forms.Button();
-            this.helloLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informationAboutClientButton = new System.Windows.Forms.Button();
+            this.openInfoAboutManFormButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // openWorkWithDBForm
-            // 
-            this.openWorkWithDBForm.Location = new System.Drawing.Point(15, 64);
-            this.openWorkWithDBForm.Name = "openWorkWithDBForm";
-            this.openWorkWithDBForm.Size = new System.Drawing.Size(257, 23);
-            this.openWorkWithDBForm.TabIndex = 0;
-            this.openWorkWithDBForm.Text = "Работа с базой данных";
-            this.openWorkWithDBForm.UseVisualStyleBackColor = true;
-            this.openWorkWithDBForm.Click += new System.EventHandler(this.openWorkWithDBForm_Click);
-            // 
-            // helloLabel
-            // 
-            this.helloLabel.AutoSize = true;
-            this.helloLabel.Location = new System.Drawing.Point(12, 30);
-            this.helloLabel.Name = "helloLabel";
-            this.helloLabel.Size = new System.Drawing.Size(77, 13);
-            this.helloLabel.TabIndex = 1;
-            this.helloLabel.Text = "Здравствуйте";
             // 
             // menuStrip1
             // 
@@ -62,7 +41,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(284, 24);
-            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -95,30 +74,26 @@
             this.aboutProgramToolStripMenuItem.Text = "О программе";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
-            // informationAboutClientButton
+            // openInfoAboutManFormButton
             // 
-            this.informationAboutClientButton.Location = new System.Drawing.Point(15, 94);
-            this.informationAboutClientButton.Name = "informationAboutClientButton";
-            this.informationAboutClientButton.Size = new System.Drawing.Size(257, 23);
-            this.informationAboutClientButton.TabIndex = 3;
-            this.informationAboutClientButton.Text = "Информация о клиентах";
-            this.informationAboutClientButton.UseVisualStyleBackColor = true;
-            this.informationAboutClientButton.Click += new System.EventHandler(this.informationAboutClientButton_Click);
+            this.openInfoAboutManFormButton.Location = new System.Drawing.Point(13, 56);
+            this.openInfoAboutManFormButton.Name = "openInfoAboutManFormButton";
+            this.openInfoAboutManFormButton.Size = new System.Drawing.Size(259, 23);
+            this.openInfoAboutManFormButton.TabIndex = 4;
+            this.openInfoAboutManFormButton.Text = "Посмотреть информацию о человеке";
+            this.openInfoAboutManFormButton.UseVisualStyleBackColor = true;
+            this.openInfoAboutManFormButton.Click += new System.EventHandler(this.openInfoAboutManFormButton_Click);
             // 
-            // MainMenu
+            // InformationAboutClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.informationAboutClientButton);
-            this.Controls.Add(this.helloLabel);
-            this.Controls.Add(this.openWorkWithDBForm);
+            this.Controls.Add(this.openInfoAboutManFormButton);
             this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainMenu";
+            this.Name = "InformationAboutClients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Главное меню";
-            this.Load += new System.EventHandler(this.MainMenu_Load);
+            this.Text = "Информация о клиентах";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,14 +103,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button openWorkWithDBForm;
-        private System.Windows.Forms.Label helloLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
-        private System.Windows.Forms.Button informationAboutClientButton;
+        private System.Windows.Forms.Button openInfoAboutManFormButton;
     }
 }
-

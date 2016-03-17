@@ -62,5 +62,13 @@ namespace ScoringSystem.WorkWithDB {
             }
 
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show("Разработал: Симаков Игорь\nГруппа: ИУ5-83");
+        }
     }
 }

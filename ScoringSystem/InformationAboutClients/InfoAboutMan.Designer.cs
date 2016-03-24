@@ -23,61 +23,17 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.mansBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bankDataSet = new ScoringSystem.BankDataSet();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.mansTableAdapter = new ScoringSystem.BankDataSetTableAdapters.MansTableAdapter();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.mansBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
+            this.searchNameTextBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.resultListBox = new System.Windows.Forms.ListBox();
+            this.searchSurnametextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.DataSource = this.mansBindingSource;
-            this.comboBox1.DisplayMember = "surname";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.ValueMember = "id";
-            // 
-            // mansBindingSource
-            // 
-            this.mansBindingSource.DataMember = "Mans";
-            this.mansBindingSource.DataSource = this.bankDataSet;
-            // 
-            // bankDataSet
-            // 
-            this.bankDataSet.DataSetName = "BankDataSet";
-            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.DataSource = this.mansBindingSource;
-            this.comboBox2.DisplayMember = "name";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 70);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(209, 21);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.ValueMember = "id";
-            // 
-            // mansTableAdapter
-            // 
-            this.mansTableAdapter.ClearBeforeFill = true;
             // 
             // menuStrip1
             // 
@@ -102,7 +58,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -117,24 +73,57 @@
             // aboutProgramToolStripMenuItem
             // 
             this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutProgramToolStripMenuItem.Text = "О программе";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
+            // 
+            // searchNameTextBox
+            // 
+            this.searchNameTextBox.Location = new System.Drawing.Point(12, 27);
+            this.searchNameTextBox.Name = "searchNameTextBox";
+            this.searchNameTextBox.Size = new System.Drawing.Size(90, 20);
+            this.searchNameTextBox.TabIndex = 4;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(234, 25);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(93, 23);
+            this.searchButton.TabIndex = 5;
+            this.searchButton.Text = "Поиск";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // resultListBox
+            // 
+            this.resultListBox.FormattingEnabled = true;
+            this.resultListBox.Location = new System.Drawing.Point(12, 54);
+            this.resultListBox.Name = "resultListBox";
+            this.resultListBox.ScrollAlwaysVisible = true;
+            this.resultListBox.Size = new System.Drawing.Size(315, 251);
+            this.resultListBox.TabIndex = 6;
+            // 
+            // searchSurnametextBox
+            // 
+            this.searchSurnametextBox.Location = new System.Drawing.Point(108, 27);
+            this.searchSurnametextBox.Name = "searchSurnametextBox";
+            this.searchSurnametextBox.Size = new System.Drawing.Size(120, 20);
+            this.searchSurnametextBox.TabIndex = 7;
             // 
             // InfoAboutMan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 318);
+            this.Controls.Add(this.searchSurnametextBox);
+            this.Controls.Add(this.resultListBox);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.searchNameTextBox);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
             this.Name = "InfoAboutMan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация о человеке";
             this.Load += new System.EventHandler(this.InfoAboutMan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mansBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -143,16 +132,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private BankDataSet bankDataSet;
-        private System.Windows.Forms.BindingSource mansBindingSource;
-        private BankDataSetTableAdapters.MansTableAdapter mansTableAdapter;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
+        private System.Windows.Forms.TextBox searchNameTextBox;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ListBox resultListBox;
+        private System.Windows.Forms.TextBox searchSurnametextBox;
     }
 }

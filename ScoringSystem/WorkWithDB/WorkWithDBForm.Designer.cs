@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.openAddManForm = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
+            this.openDeleteManFormButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openAddManForm
@@ -36,11 +38,32 @@
             this.openAddManForm.UseVisualStyleBackColor = true;
             this.openAddManForm.Click += new System.EventHandler(this.addManForm_Click);
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(12, 226);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 1;
+            this.backButton.Text = "Назад";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // openDeleteManFormButton
+            // 
+            this.openDeleteManFormButton.Location = new System.Drawing.Point(12, 77);
+            this.openDeleteManFormButton.Name = "openDeleteManFormButton";
+            this.openDeleteManFormButton.Size = new System.Drawing.Size(259, 23);
+            this.openDeleteManFormButton.TabIndex = 2;
+            this.openDeleteManFormButton.Text = "Удалить человека";
+            this.openDeleteManFormButton.UseVisualStyleBackColor = true;
+            // 
             // WorkWithDBForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.openDeleteManFormButton);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.openAddManForm);
             this.Name = "WorkWithDBForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -52,5 +75,7 @@
         #endregion
 
         private System.Windows.Forms.Button openAddManForm;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button openDeleteManFormButton;
     }
 }

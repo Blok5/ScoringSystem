@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+//TODO: Добавить транзакцию добавления всего класса в базу данных
+
 namespace ScoringSystem.WorkWithDB {
     /// <summary>
     /// Класс AddRelationsForm открывает форму для добавления родственных 
@@ -11,6 +13,7 @@ namespace ScoringSystem.WorkWithDB {
 
         public int x = 12;
         public int y = 41;
+
         public AddRelationsForm() {
             InitializeComponent();
         }

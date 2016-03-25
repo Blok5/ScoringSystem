@@ -117,6 +117,12 @@
     <Compile Include="WorkWithDB\addWorkForm.Designer.cs">
       <DependentUpon>addWorkForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkWithDB\DeleteManForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithDB\DeleteManForm.Designer.cs">
+      <DependentUpon>DeleteManForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkWithDB\WorkWithDBForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithDB\addWorkForm.resx">
       <DependentUpon>addWorkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithDB\DeleteManForm.resx">
+      <DependentUpon>DeleteManForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithDB\WorkWithDBForm.resx">
       <DependentUpon>WorkWithDBForm.cs</DependentUpon>

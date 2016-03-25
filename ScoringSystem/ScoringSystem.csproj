@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="currentClient.cs" />
     <Compile Include="currentData.cs" />
+    <Compile Include="InformationAboutClients\InfoAboutCreditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationAboutClients\InfoAboutCreditForm.Designer.cs">
+      <DependentUpon>InfoAboutCreditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformationAboutClients\InfoAboutMan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="authorizationForm.resx">
       <DependentUpon>authorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationAboutClients\InfoAboutCreditForm.resx">
+      <DependentUpon>InfoAboutCreditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformationAboutClients\InfoAboutMan.resx">
       <DependentUpon>InfoAboutMan.cs</DependentUpon>

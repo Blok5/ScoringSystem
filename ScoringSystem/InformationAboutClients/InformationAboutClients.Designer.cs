@@ -29,6 +29,7 @@
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInfoAboutManFormButton = new System.Windows.Forms.Button();
+            this.infoAboutCreditButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,11 +85,22 @@
             this.openInfoAboutManFormButton.UseVisualStyleBackColor = true;
             this.openInfoAboutManFormButton.Click += new System.EventHandler(this.openInfoAboutManFormButton_Click);
             // 
+            // infoAboutCreditButton
+            // 
+            this.infoAboutCreditButton.Location = new System.Drawing.Point(13, 86);
+            this.infoAboutCreditButton.Name = "infoAboutCreditButton";
+            this.infoAboutCreditButton.Size = new System.Drawing.Size(259, 23);
+            this.infoAboutCreditButton.TabIndex = 5;
+            this.infoAboutCreditButton.Text = "Информация о кредите";
+            this.infoAboutCreditButton.UseVisualStyleBackColor = true;
+            this.infoAboutCreditButton.Click += new System.EventHandler(this.infoAboutCreditButton_Click);
+            // 
             // InformationAboutClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.infoAboutCreditButton);
             this.Controls.Add(this.openInfoAboutManFormButton);
             this.Controls.Add(this.menuStrip1);
             this.Name = "InformationAboutClients";
@@ -109,5 +121,6 @@
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.Button openInfoAboutManFormButton;
+        private System.Windows.Forms.Button infoAboutCreditButton;
     }
 }

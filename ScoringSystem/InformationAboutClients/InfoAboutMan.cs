@@ -2,8 +2,15 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
+// TODO: Добавить вывод всех родственных связей этого человекаы
+
 namespace ScoringSystem.InformationAboutClients {
+
+    /// <summary>
+    /// Форма для вывода всей информации о человеке
+    /// </summary>
     public partial class InfoAboutMan :Form {
+
         public InfoAboutMan() {
             InitializeComponent();
         }
@@ -20,6 +27,12 @@ namespace ScoringSystem.InformationAboutClients {
             MessageBox.Show("Разработал: Симаков Игорь\nГруппа: ИУ5-83");
         }
 
+        /// <summary>
+        /// Событие, при срабатывании которое выводит всю информацию в listBox 
+        /// о человеке
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchButton_Click(object sender, EventArgs e) {
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
@@ -33,59 +46,73 @@ namespace ScoringSystem.InformationAboutClients {
                 SqlCommand cmd = new SqlCommand(sqlCommand, connection);
                 SqlDataReader dr = cmd.ExecuteReader();
 
-                resultListBox.Items.Add("Личная информация:");
+                if (dr.HasRows) {
 
-                while (dr.Read()) {
-                    resultListBox.Items.Add("Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
-                    resultListBox.Items.Add("Образование: " + dr[2].ToString());
-                    resultListBox.Items.Add("Доход: " + dr[3].ToString() + " руб." +
-                    "Семейные доход: " + dr[4].ToString() + " руб.");
-                    resultListBox.Items.Add("Расход: " + dr[4].ToString() + " руб.");
-                }
+                    resultListBox.Items.Add("Личная информация:");
 
-                dr.Close();
+                    while (dr.Read()) {
+                        resultListBox.Items.Add("Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
+                        resultListBox.Items.Add("Образование: " + dr[2].ToString());
+                        resultListBox.Items.Add("Доход: " + dr[3].ToString() + " руб." +
+                        "Семейные доход: " + dr[4].ToString() + " руб.");
+                        resultListBox.Items.Add("Расход: " + dr[4].ToString() + " руб.");
+                    }
 
-                sqlCommand = "select mark.mark, v.price, v.age " + 
-                    "from dbo.Vehicle as v " +
-                    "JOIN dbo.Marks as mark ON mark.id = v.id_mark " +
-                    "JOIN dbo.Mans as man  ON v.id_man = man.id  where name ='" + 
+                    dr.Close();
+
+                    sqlCommand = "select mark.mark, v.price, v.age " +
+                        "from dbo.Vehicle as v " +
+                        "JOIN dbo.Marks as mark ON mark.id = v.id_mark " +
+                        "JOIN dbo.Mans as man  ON v.id_man = man.id  where name ='" +
+                        searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
+
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    resultListBox.Items.Add("");
+                    resultListBox.Items.Add("Транспортные средства:");
+
+                    while (dr.Read()) {
+                        resultListBox.Items.Add("Марка: " + dr[0].ToString() + " Цена:" + dr[1].ToString() + " руб.");
+                        resultListBox.Items.Add("Возраст: " + dr[2].ToString());
+                    }
+
+                    dr.Close();
+
+                    sqlCommand = "select r.type, c.city, r.price, r.square from dbo.RealEstate as r " +
+                    "JOIN dbo.Cities as c ON c.id = r.location " +
+                    "JOIN dbo.Mans as man ON r.id_man = man.id where man.name = '" +
                     searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
 
-                cmd = new SqlCommand(sqlCommand, connection);
-                dr = cmd.ExecuteReader();
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
 
-                resultListBox.Items.Add("");
-                resultListBox.Items.Add("Транспортные средства:");
+                    resultListBox.Items.Add("");
+                    resultListBox.Items.Add("Недвижимость:");
 
-                while (dr.Read()) {
-                    resultListBox.Items.Add("Марка: " + dr[0].ToString() + " Цена:" + dr[1].ToString() + " руб.");
-                    resultListBox.Items.Add("Возраст: " + dr[2].ToString());
+                    while (dr.Read()) {
+                        resultListBox.Items.Add("Тип: " + dr[0].ToString() + " Расположение: " + dr[1].ToString());
+                        resultListBox.Items.Add("Цена: " + dr[2].ToString() + " руб. Площадь: " + dr[3].ToString() + " м. кв.");
+                    }
+                    dr.Close();
+
+
+                } else {
+                    resultListBox.Items.Add("Клиент не найден");
                 }
-
-                dr.Close();
-
-                sqlCommand = "select r.type, c.city, r.price, r.square from dbo.RealEstate as r " +
-                "JOIN dbo.Cities as c ON c.id = r.location " +
-                "JOIN dbo.Mans as man ON r.id_man = man.id where man.name = '" +
-                searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
-
-                cmd = new SqlCommand(sqlCommand, connection);
-                dr = cmd.ExecuteReader();
-
-                resultListBox.Items.Add("");
-                resultListBox.Items.Add("Недвижимость:");
-
-                while (dr.Read()) {
-                    resultListBox.Items.Add("Тип: " + dr[0].ToString() + " Расположение: " + dr[1].ToString());
-                    resultListBox.Items.Add("Цена: " + dr[2].ToString() + " руб. Площадь: " + dr[3].ToString() + " м. кв.");
-                }
-                dr.Close();
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Source + ex.Message);
             } finally {
                 connection.Close();
             }
+        }
+
+
+        private void backButton_Click(object sender, EventArgs e) {
+            this.Hide();
+            InformationAboutClients iac = new InformationAboutClients();
+            iac.Show();
         }
     }
 }

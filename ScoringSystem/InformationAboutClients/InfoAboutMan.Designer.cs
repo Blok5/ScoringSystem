@@ -32,6 +32,9 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.resultListBox = new System.Windows.Forms.ListBox();
             this.searchSurnametextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.surnameLabel = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,14 +82,14 @@
             // 
             // searchNameTextBox
             // 
-            this.searchNameTextBox.Location = new System.Drawing.Point(12, 27);
+            this.searchNameTextBox.Location = new System.Drawing.Point(12, 52);
             this.searchNameTextBox.Name = "searchNameTextBox";
             this.searchNameTextBox.Size = new System.Drawing.Size(90, 20);
             this.searchNameTextBox.TabIndex = 4;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(234, 25);
+            this.searchButton.Location = new System.Drawing.Point(234, 50);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(93, 23);
             this.searchButton.TabIndex = 5;
@@ -97,24 +100,55 @@
             // resultListBox
             // 
             this.resultListBox.FormattingEnabled = true;
-            this.resultListBox.Location = new System.Drawing.Point(12, 54);
+            this.resultListBox.Location = new System.Drawing.Point(12, 80);
             this.resultListBox.Name = "resultListBox";
             this.resultListBox.ScrollAlwaysVisible = true;
-            this.resultListBox.Size = new System.Drawing.Size(315, 251);
+            this.resultListBox.Size = new System.Drawing.Size(315, 199);
             this.resultListBox.TabIndex = 6;
             // 
             // searchSurnametextBox
             // 
-            this.searchSurnametextBox.Location = new System.Drawing.Point(108, 27);
+            this.searchSurnametextBox.Location = new System.Drawing.Point(108, 52);
             this.searchSurnametextBox.Name = "searchSurnametextBox";
             this.searchSurnametextBox.Size = new System.Drawing.Size(120, 20);
             this.searchSurnametextBox.TabIndex = 7;
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(12, 36);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(32, 13);
+            this.nameLabel.TabIndex = 8;
+            this.nameLabel.Text = "Имя:";
+            // 
+            // surnameLabel
+            // 
+            this.surnameLabel.AutoSize = true;
+            this.surnameLabel.Location = new System.Drawing.Point(105, 36);
+            this.surnameLabel.Name = "surnameLabel";
+            this.surnameLabel.Size = new System.Drawing.Size(59, 13);
+            this.surnameLabel.TabIndex = 9;
+            this.surnameLabel.Text = "Фамилия:";
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(12, 285);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 10;
+            this.backButton.Text = "Назад";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // InfoAboutMan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 318);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.surnameLabel);
+            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.searchSurnametextBox);
             this.Controls.Add(this.resultListBox);
             this.Controls.Add(this.searchButton);
@@ -141,5 +175,8 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ListBox resultListBox;
         private System.Windows.Forms.TextBox searchSurnametextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label surnameLabel;
+        private System.Windows.Forms.Button backButton;
     }
 }

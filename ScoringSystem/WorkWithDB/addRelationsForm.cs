@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
-//TODO: Добавить транзакцию добавления всего класса в базу данных
+
 
 namespace ScoringSystem.WorkWithDB {
     /// <summary>

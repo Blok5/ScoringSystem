@@ -54,11 +54,11 @@ namespace ScoringSystem {
         
         private WorkDataTable tableWork;
         
-        private global::System.Data.DataRelation relationFK_Clients_Credit;
-        
         private global::System.Data.DataRelation relationFK_Clients_Mans;
         
         private global::System.Data.DataRelation relationFK_Contacts_Mans;
+        
+        private global::System.Data.DataRelation relationFK_Credit_Clients;
         
         private global::System.Data.DataRelation relationFK_CreditParts_Credit;
         
@@ -67,8 +67,6 @@ namespace ScoringSystem {
         private global::System.Data.DataRelation relationFK_Mans_Cities1;
         
         private global::System.Data.DataRelation relationFK_Mans_Streets;
-        
-        private global::System.Data.DataRelation relationFK_PeopleRelations_Clients;
         
         private global::System.Data.DataRelation relationFK_PeopleRelations_Mans;
         
@@ -560,14 +558,13 @@ namespace ScoringSystem {
                     this.tableWork.InitVars();
                 }
             }
-            this.relationFK_Clients_Credit = this.Relations["FK_Clients_Credit"];
             this.relationFK_Clients_Mans = this.Relations["FK_Clients_Mans"];
             this.relationFK_Contacts_Mans = this.Relations["FK_Contacts_Mans"];
+            this.relationFK_Credit_Clients = this.Relations["FK_Credit_Clients"];
             this.relationFK_CreditParts_Credit = this.Relations["FK_CreditParts_Credit"];
             this.relationFK_Mans_Cities = this.Relations["FK_Mans_Cities"];
             this.relationFK_Mans_Cities1 = this.Relations["FK_Mans_Cities1"];
             this.relationFK_Mans_Streets = this.Relations["FK_Mans_Streets"];
-            this.relationFK_PeopleRelations_Clients = this.Relations["FK_PeopleRelations_Clients"];
             this.relationFK_PeopleRelations_Mans = this.Relations["FK_PeopleRelations_Mans"];
             this.relationFK_PeopleRelations_Relations = this.Relations["FK_PeopleRelations_Relations"];
             this.relationFK_RealEstate_Cities = this.Relations["FK_RealEstate_Cities"];
@@ -615,10 +612,6 @@ namespace ScoringSystem {
             base.Tables.Add(this.tableVehicle);
             this.tableWork = new WorkDataTable();
             base.Tables.Add(this.tableWork);
-            this.relationFK_Clients_Credit = new global::System.Data.DataRelation("FK_Clients_Credit", new global::System.Data.DataColumn[] {
-                        this.tableCredit.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClients.id_creditColumn}, false);
-            this.Relations.Add(this.relationFK_Clients_Credit);
             this.relationFK_Clients_Mans = new global::System.Data.DataRelation("FK_Clients_Mans", new global::System.Data.DataColumn[] {
                         this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableClients.id_manColumn}, false);
@@ -627,6 +620,10 @@ namespace ScoringSystem {
                         this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableContacts.id_manColumn}, false);
             this.Relations.Add(this.relationFK_Contacts_Mans);
+            this.relationFK_Credit_Clients = new global::System.Data.DataRelation("FK_Credit_Clients", new global::System.Data.DataColumn[] {
+                        this.tableClients.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCredit.id_clientColumn}, false);
+            this.Relations.Add(this.relationFK_Credit_Clients);
             this.relationFK_CreditParts_Credit = new global::System.Data.DataRelation("FK_CreditParts_Credit", new global::System.Data.DataColumn[] {
                         this.tableCredit.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableCreditParts.id_creditColumn}, false);
@@ -643,10 +640,6 @@ namespace ScoringSystem {
                         this.tableStreets.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableMans.id_streetColumn}, false);
             this.Relations.Add(this.relationFK_Mans_Streets);
-            this.relationFK_PeopleRelations_Clients = new global::System.Data.DataRelation("FK_PeopleRelations_Clients", new global::System.Data.DataColumn[] {
-                        this.tableClients.id_manColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePeopleRelations.id_clientColumn}, false);
-            this.Relations.Add(this.relationFK_PeopleRelations_Clients);
             this.relationFK_PeopleRelations_Mans = new global::System.Data.DataRelation("FK_PeopleRelations_Mans", new global::System.Data.DataColumn[] {
                         this.tableMans.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablePeopleRelations.id_manColumn}, false);
@@ -1157,7 +1150,9 @@ namespace ScoringSystem {
             
             private global::System.Data.DataColumn columnsettlementAccount;
             
-            private global::System.Data.DataColumn columnid_credit;
+            private global::System.Data.DataColumn columncreditScore;
+            
+            private global::System.Data.DataColumn columnid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1218,9 +1213,17 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_creditColumn {
+            public global::System.Data.DataColumn creditScoreColumn {
                 get {
-                    return this.columnid_credit;
+                    return this.columncreditScore;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
                 }
             }
             
@@ -1261,18 +1264,16 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow AddClientsRow(MansRow parentMansRowByFK_Clients_Mans, System.DateTime entryDate, string settlementAccount, CreditRow parentCreditRowByFK_Clients_Credit) {
+            public ClientsRow AddClientsRow(MansRow parentMansRowByFK_Clients_Mans, System.DateTime entryDate, string settlementAccount, int creditScore) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         entryDate,
                         settlementAccount,
+                        creditScore,
                         null};
                 if ((parentMansRowByFK_Clients_Mans != null)) {
                     columnValuesArray[0] = parentMansRowByFK_Clients_Mans[0];
-                }
-                if ((parentCreditRowByFK_Clients_Credit != null)) {
-                    columnValuesArray[3] = parentCreditRowByFK_Clients_Credit[0];
                 }
                 rowClientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientsRow);
@@ -1281,9 +1282,9 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow FindByid_man(int id_man) {
+            public ClientsRow FindByid(int id) {
                 return ((ClientsRow)(this.Rows.Find(new object[] {
-                            id_man})));
+                            id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1306,7 +1307,8 @@ namespace ScoringSystem {
                 this.columnid_man = base.Columns["id_man"];
                 this.columnentryDate = base.Columns["entryDate"];
                 this.columnsettlementAccount = base.Columns["settlementAccount"];
-                this.columnid_credit = base.Columns["id_credit"];
+                this.columncreditScore = base.Columns["creditScore"];
+                this.columnid = base.Columns["id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1318,14 +1320,21 @@ namespace ScoringSystem {
                 base.Columns.Add(this.columnentryDate);
                 this.columnsettlementAccount = new global::System.Data.DataColumn("settlementAccount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsettlementAccount);
-                this.columnid_credit = new global::System.Data.DataColumn("id_credit", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_credit);
+                this.columncreditScore = new global::System.Data.DataColumn("creditScore", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreditScore);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_man}, true));
+                                this.columnid}, true));
                 this.columnid_man.AllowDBNull = false;
-                this.columnid_man.Unique = true;
                 this.columnentryDate.AllowDBNull = false;
                 this.columnsettlementAccount.MaxLength = 25;
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1750,6 +1759,10 @@ namespace ScoringSystem {
             
             private global::System.Data.DataColumn columnalreadyPaid;
             
+            private global::System.Data.DataColumn columnid_client;
+            
+            private global::System.Data.DataColumn columnisComplited;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CreditDataTable() {
@@ -1825,6 +1838,22 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_clientColumn {
+                get {
+                    return this.columnid_client;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn isComplitedColumn {
+                get {
+                    return this.columnisComplited;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1860,14 +1889,19 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CreditRow AddCreditRow(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid) {
+            public CreditRow AddCreditRow(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, ClientsRow parentClientsRowByFK_Credit_Clients, bool isComplited) {
                 CreditRow rowCreditRow = ((CreditRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         summ,
                         dateBegin,
                         dateEnd,
-                        alreadyPaid};
+                        alreadyPaid,
+                        null,
+                        isComplited};
+                if ((parentClientsRowByFK_Credit_Clients != null)) {
+                    columnValuesArray[5] = parentClientsRowByFK_Credit_Clients[4];
+                }
                 rowCreditRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCreditRow);
                 return rowCreditRow;
@@ -1902,6 +1936,8 @@ namespace ScoringSystem {
                 this.columndateBegin = base.Columns["dateBegin"];
                 this.columndateEnd = base.Columns["dateEnd"];
                 this.columnalreadyPaid = base.Columns["alreadyPaid"];
+                this.columnid_client = base.Columns["id_client"];
+                this.columnisComplited = base.Columns["isComplited"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1917,6 +1953,10 @@ namespace ScoringSystem {
                 base.Columns.Add(this.columndateEnd);
                 this.columnalreadyPaid = new global::System.Data.DataColumn("alreadyPaid", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnalreadyPaid);
+                this.columnid_client = new global::System.Data.DataColumn("id_client", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_client);
+                this.columnisComplited = new global::System.Data.DataColumn("isComplited", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnisComplited);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1929,6 +1969,8 @@ namespace ScoringSystem {
                 this.columndateBegin.AllowDBNull = false;
                 this.columndateEnd.AllowDBNull = false;
                 this.columnalreadyPaid.AllowDBNull = false;
+                this.columnid_client.AllowDBNull = false;
+                this.columnisComplited.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3504,18 +3546,15 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRelationsRow AddPeopleRelationsRow(MansRow parentMansRowByFK_PeopleRelations_Mans, ClientsRow parentClientsRowByFK_PeopleRelations_Clients, RelationsRow parentRelationsRowByFK_PeopleRelations_Relations) {
+            public PeopleRelationsRow AddPeopleRelationsRow(MansRow parentMansRowByFK_PeopleRelations_Mans, int id_client, RelationsRow parentRelationsRowByFK_PeopleRelations_Relations) {
                 PeopleRelationsRow rowPeopleRelationsRow = ((PeopleRelationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        null,
+                        id_client,
                         null};
                 if ((parentMansRowByFK_PeopleRelations_Mans != null)) {
                     columnValuesArray[1] = parentMansRowByFK_PeopleRelations_Mans[0];
-                }
-                if ((parentClientsRowByFK_PeopleRelations_Clients != null)) {
-                    columnValuesArray[2] = parentClientsRowByFK_PeopleRelations_Clients[0];
                 }
                 if ((parentRelationsRowByFK_PeopleRelations_Relations != null)) {
                     columnValuesArray[3] = parentRelationsRowByFK_PeopleRelations_Relations[0];
@@ -5621,28 +5660,28 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_credit {
+            public int creditScore {
                 get {
                     try {
-                        return ((int)(this[this.tableClients.id_creditColumn]));
+                        return ((int)(this[this.tableClients.creditScoreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'id_credit\' в таблице \'Clients\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'creditScore\' в таблице \'Clients\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableClients.id_creditColumn] = value;
+                    this[this.tableClients.creditScoreColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CreditRow CreditRow {
+            public int id {
                 get {
-                    return ((CreditRow)(this.GetParentRow(this.Table.ParentRelations["FK_Clients_Credit"])));
+                    return ((int)(this[this.tableClients.idColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Clients_Credit"]);
+                    this[this.tableClients.idColumn] = value;
                 }
             }
             
@@ -5671,24 +5710,24 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_creditNull() {
-                return this.IsNull(this.tableClients.id_creditColumn);
+            public bool IscreditScoreNull() {
+                return this.IsNull(this.tableClients.creditScoreColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_creditNull() {
-                this[this.tableClients.id_creditColumn] = global::System.Convert.DBNull;
+            public void SetcreditScoreNull() {
+                this[this.tableClients.creditScoreColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeopleRelationsRow[] GetPeopleRelationsRows() {
-                if ((this.Table.ChildRelations["FK_PeopleRelations_Clients"] == null)) {
-                    return new PeopleRelationsRow[0];
+            public CreditRow[] GetCreditRows() {
+                if ((this.Table.ChildRelations["FK_Credit_Clients"] == null)) {
+                    return new CreditRow[0];
                 }
                 else {
-                    return ((PeopleRelationsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PeopleRelations_Clients"])));
+                    return ((CreditRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Credit_Clients"])));
                 }
             }
         }
@@ -5857,12 +5896,34 @@ namespace ScoringSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow[] GetClientsRows() {
-                if ((this.Table.ChildRelations["FK_Clients_Credit"] == null)) {
-                    return new ClientsRow[0];
+            public int id_client {
+                get {
+                    return ((int)(this[this.tableCredit.id_clientColumn]));
                 }
-                else {
-                    return ((ClientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Clients_Credit"])));
+                set {
+                    this[this.tableCredit.id_clientColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool isComplited {
+                get {
+                    return ((bool)(this[this.tableCredit.isComplitedColumn]));
+                }
+                set {
+                    this[this.tableCredit.isComplitedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClientsRow ClientsRow {
+                get {
+                    return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Credit_Clients"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Credit_Clients"]);
                 }
             }
             
@@ -6452,17 +6513,6 @@ namespace ScoringSystem {
                 }
                 set {
                     this[this.tablePeopleRelations.id_relationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow ClientsRow {
-                get {
-                    return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_PeopleRelations_Clients"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_PeopleRelations_Clients"]);
                 }
             }
             
@@ -7866,44 +7916,46 @@ namespace ScoringSystem.BankDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("id_man", "id_man");
             tableMapping.ColumnMappings.Add("entryDate", "entryDate");
             tableMapping.ColumnMappings.Add("settlementAccount", "settlementAccount");
-            tableMapping.ColumnMappings.Add("id_credit", "id_credit");
+            tableMapping.ColumnMappings.Add("creditScore", "creditScore");
+            tableMapping.ColumnMappings.Add("id", "id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Clients] WHERE (([id_man] = @Original_id_man) AND ([entryDate] = @Original_entryDate) AND ((@IsNull_settlementAccount = 1 AND [settlementAccount] IS NULL) OR ([settlementAccount] = @Original_settlementAccount)) AND ((@IsNull_id_credit = 1 AND [id_credit] IS NULL) OR ([id_credit] = @Original_id_credit)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Clients] WHERE (([id_man] = @Original_id_man) AND ([entryDate] = @Original_entryDate) AND ((@IsNull_settlementAccount = 1 AND [settlementAccount] IS NULL) OR ([settlementAccount] = @Original_settlementAccount)) AND ((@IsNull_creditScore = 1 AND [creditScore] IS NULL) OR ([creditScore] = @Original_creditScore)) AND ([id] = @Original_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_man", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_man", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_entryDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "entryDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_settlementAccount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_settlementAccount", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Clients] ([id_man], [entryDate], [settlementAccount], [id_cred" +
-                "it]) VALUES (@id_man, @entryDate, @settlementAccount, @id_credit);\r\nSELECT id_ma" +
-                "n, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_man = @id_man)" +
-                "";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Clients] ([id_man], [entryDate], [settlementAccount], [creditScore]) VALUES (@id_man, @entryDate, @settlementAccount, @creditScore);
+SELECT id_man, entryDate, settlementAccount, creditScore, id FROM Clients WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_man", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_man", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@entryDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "entryDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@settlementAccount", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Clients] SET [id_man] = @id_man, [entryDate] = @entryDate, [settlementAccount] = @settlementAccount, [id_credit] = @id_credit WHERE (([id_man] = @Original_id_man) AND ([entryDate] = @Original_entryDate) AND ((@IsNull_settlementAccount = 1 AND [settlementAccount] IS NULL) OR ([settlementAccount] = @Original_settlementAccount)) AND ((@IsNull_id_credit = 1 AND [id_credit] IS NULL) OR ([id_credit] = @Original_id_credit)));
-SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_man = @id_man)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Clients] SET [id_man] = @id_man, [entryDate] = @entryDate, [settlementAccount] = @settlementAccount, [creditScore] = @creditScore WHERE (([id_man] = @Original_id_man) AND ([entryDate] = @Original_entryDate) AND ((@IsNull_settlementAccount = 1 AND [settlementAccount] IS NULL) OR ([settlementAccount] = @Original_settlementAccount)) AND ((@IsNull_creditScore = 1 AND [creditScore] IS NULL) OR ([creditScore] = @Original_creditScore)) AND ([id] = @Original_id));
+SELECT id_man, entryDate, settlementAccount, creditScore, id FROM Clients WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_man", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_man", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@entryDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "entryDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@settlementAccount", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_man", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_man", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_entryDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "entryDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_settlementAccount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_settlementAccount", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "settlementAccount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_credit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_credit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_creditScore", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "creditScore", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7919,7 +7971,7 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_man, entryDate, settlementAccount, id_credit FROM dbo.Clients";
+            this._commandCollection[0].CommandText = "SELECT id_man, entryDate, settlementAccount, creditScore, id FROM dbo.Clients";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7980,7 +8032,7 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_id_credit) {
+        public virtual int Delete(int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_creditScore, int Original_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id_man));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_entryDate));
             if ((Original_settlementAccount == null)) {
@@ -7991,14 +8043,15 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_settlementAccount));
             }
-            if ((Original_id_credit.HasValue == true)) {
+            if ((Original_creditScore.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_credit.Value));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_creditScore.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8019,7 +8072,7 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int id_man, System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> id_credit) {
+        public virtual int Insert(int id_man, System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> creditScore) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_man));
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(entryDate));
             if ((settlementAccount == null)) {
@@ -8028,8 +8081,8 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(settlementAccount));
             }
-            if ((id_credit.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(id_credit.Value));
+            if ((creditScore.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(creditScore.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -8054,7 +8107,7 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int id_man, System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> id_credit, int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_id_credit) {
+        public virtual int Update(int id_man, System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> creditScore, int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_creditScore, int Original_id, int id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_man));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(entryDate));
             if ((settlementAccount == null)) {
@@ -8063,8 +8116,8 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(settlementAccount));
             }
-            if ((id_credit.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(id_credit.Value));
+            if ((creditScore.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(creditScore.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -8079,14 +8132,16 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_settlementAccount));
             }
-            if ((Original_id_credit.HasValue == true)) {
+            if ((Original_creditScore.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_id_credit.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_creditScore.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8107,8 +8162,8 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> id_credit, int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_id_credit) {
-            return this.Update(Original_id_man, entryDate, settlementAccount, id_credit, Original_id_man, Original_entryDate, Original_settlementAccount, Original_id_credit);
+        public virtual int Update(int id_man, System.DateTime entryDate, string settlementAccount, global::System.Nullable<int> creditScore, int Original_id_man, System.DateTime Original_entryDate, string Original_settlementAccount, global::System.Nullable<int> Original_creditScore, int Original_id) {
+            return this.Update(id_man, entryDate, settlementAccount, creditScore, Original_id_man, Original_entryDate, Original_settlementAccount, Original_creditScore, Original_id, Original_id);
         }
     }
     
@@ -8483,42 +8538,49 @@ SELECT id_man, entryDate, settlementAccount, id_credit FROM Clients WHERE (id_ma
             tableMapping.ColumnMappings.Add("dateBegin", "dateBegin");
             tableMapping.ColumnMappings.Add("dateEnd", "dateEnd");
             tableMapping.ColumnMappings.Add("alreadyPaid", "alreadyPaid");
+            tableMapping.ColumnMappings.Add("id_client", "id_client");
+            tableMapping.ColumnMappings.Add("isComplited", "isComplited");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Credit] WHERE (([id] = @Original_id) AND ([summ] = @Original_s" +
-                "umm) AND ([dateBegin] = @Original_dateBegin) AND ([dateEnd] = @Original_dateEnd)" +
-                " AND ([alreadyPaid] = @Original_alreadyPaid))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Credit] WHERE (([id] = @Original_id) AND ([summ] = @Original_summ) AND ([dateBegin] = @Original_dateBegin) AND ([dateEnd] = @Original_dateEnd) AND ([alreadyPaid] = @Original_alreadyPaid) AND ([id_client] = @Original_id_client) AND ([isComplited] = @Original_isComplited))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_summ", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "summ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateBegin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateBegin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateEnd", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateEnd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_alreadyPaid", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alreadyPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isComplited", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isComplited", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Credit] ([summ], [dateBegin], [dateEnd], [alreadyPaid]) VALUES" +
-                " (@summ, @dateBegin, @dateEnd, @alreadyPaid);\r\nSELECT id, summ, dateBegin, dateE" +
-                "nd, alreadyPaid FROM Credit WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Credit] ([summ], [dateBegin], [dateEnd], [alreadyPaid], [id_client], [isComplited]) VALUES (@summ, @dateBegin, @dateEnd, @alreadyPaid, @id_client, @isComplited);
+SELECT id, summ, dateBegin, dateEnd, alreadyPaid, id_client, isComplited FROM Credit WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@summ", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "summ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateBegin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateBegin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEnd", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateEnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alreadyPaid", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alreadyPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isComplited", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isComplited", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Credit] SET [summ] = @summ, [dateBegin] = @dateBegin, [dateEnd] = @dateEnd, [alreadyPaid] = @alreadyPaid WHERE (([id] = @Original_id) AND ([summ] = @Original_summ) AND ([dateBegin] = @Original_dateBegin) AND ([dateEnd] = @Original_dateEnd) AND ([alreadyPaid] = @Original_alreadyPaid));
-SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Credit] SET [summ] = @summ, [dateBegin] = @dateBegin, [dateEnd] = @dateEnd, [alreadyPaid] = @alreadyPaid, [id_client] = @id_client, [isComplited] = @isComplited WHERE (([id] = @Original_id) AND ([summ] = @Original_summ) AND ([dateBegin] = @Original_dateBegin) AND ([dateEnd] = @Original_dateEnd) AND ([alreadyPaid] = @Original_alreadyPaid) AND ([id_client] = @Original_id_client) AND ([isComplited] = @Original_isComplited));
+SELECT id, summ, dateBegin, dateEnd, alreadyPaid, id_client, isComplited FROM Credit WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@summ", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "summ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateBegin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateBegin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEnd", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateEnd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alreadyPaid", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alreadyPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isComplited", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isComplited", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_summ", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "summ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateBegin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateBegin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateEnd", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateEnd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_alreadyPaid", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alreadyPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_client", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isComplited", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isComplited", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -8535,7 +8597,8 @@ SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM dbo.Credit";
+            this._commandCollection[0].CommandText = "SELECT id, summ, dateBegin, dateEnd, alreadyPaid, id_client, isComplited FROM dbo" +
+                ".Credit";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8596,12 +8659,14 @@ SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid) {
+        public virtual int Delete(int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid, int Original_id_client, bool Original_isComplited) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_summ));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_dateBegin));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_dateEnd));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_alreadyPaid));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_client));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_isComplited));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8622,11 +8687,13 @@ SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid) {
+        public virtual int Insert(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, int id_client, bool isComplited) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(summ));
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(dateBegin));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(dateEnd));
             this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(alreadyPaid));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(id_client));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(isComplited));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8647,17 +8714,21 @@ SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid, int id) {
+        public virtual int Update(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, int id_client, bool isComplited, int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid, int Original_id_client, bool Original_isComplited, int id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(summ));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(dateBegin));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(dateEnd));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(alreadyPaid));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_summ));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_dateBegin));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_dateEnd));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_alreadyPaid));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(id_client));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(isComplited));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_summ));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_dateBegin));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_dateEnd));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_alreadyPaid));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_id_client));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_isComplited));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8678,8 +8749,8 @@ SELECT id, summ, dateBegin, dateEnd, alreadyPaid FROM Credit WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid) {
-            return this.Update(summ, dateBegin, dateEnd, alreadyPaid, Original_id, Original_summ, Original_dateBegin, Original_dateEnd, Original_alreadyPaid, Original_id);
+        public virtual int Update(decimal summ, System.DateTime dateBegin, System.DateTime dateEnd, decimal alreadyPaid, int id_client, bool isComplited, int Original_id, decimal Original_summ, System.DateTime Original_dateBegin, System.DateTime Original_dateEnd, decimal Original_alreadyPaid, int Original_id_client, bool Original_isComplited) {
+            return this.Update(summ, dateBegin, dateEnd, alreadyPaid, id_client, isComplited, Original_id, Original_summ, Original_dateBegin, Original_dateEnd, Original_alreadyPaid, Original_id_client, Original_isComplited, Original_id);
         }
     }
     
@@ -12603,15 +12674,6 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._creditTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._creditTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._mansTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Mans.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -12627,6 +12689,15 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._clientsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._creditTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._creditTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -12746,14 +12817,6 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._creditTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._creditTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._mansTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Mans.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -12767,6 +12830,14 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._clientsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._creditTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._creditTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12940,6 +13011,14 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._creditTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._creditTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._clientsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12953,14 +13032,6 @@ SELECT id, name, position, workDuration FROM Work WHERE (id = @id)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._mansTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._creditTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Credit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._creditTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

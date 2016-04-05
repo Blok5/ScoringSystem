@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+//TODO: Добавить транзакцию добавления всего класса в базу данных
 
 namespace ScoringSystem {
     /// <summary>
@@ -127,6 +130,28 @@ namespace ScoringSystem {
                 relations[i] = rd[i]; 
             }
         }
+
+        /// <summary>
+        /// Метод addValuesToDB добавляет все текущие значения в базу данных
+        /// </summary>
+        public static void addValuesToDB() {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
+            try {
+                connection.Open();
+
+
+                string sqlCommand = "";
+
+                SqlCommand cmd = new SqlCommand(sqlCommand, connection);
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message + ' ' + ex.Source + ' ' + ex.InnerException);
+            } finally {
+                connection.Close();
+            }
+        }
+                
         /// <summary>
         /// Метод showValues выводит все значения о текущем клиенте
         /// </summary>

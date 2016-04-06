@@ -34,5 +34,9 @@ namespace ScoringSystem {
             this.Hide();
             iac.Show();
         }
+
+        private void workWithNeuralNetworkButton_Click(object sender, EventArgs e) {
+            
+        }
     }
 }

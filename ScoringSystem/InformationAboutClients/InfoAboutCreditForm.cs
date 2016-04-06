@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace ScoringSystem.InformationAboutClients {
     /// <summary>
     /// Форма для вывода информации о кредите 

@@ -31,7 +31,7 @@ namespace ScoringSystem {
         public int id_mark;
         public decimal price;
         public string number;
-        public int age;       
+        public string productionDate;       
     }
 
     /// <summary>
@@ -73,6 +73,8 @@ namespace ScoringSystem {
         public static string personalStatus;
         public static string creditHistory;
         public static decimal checkingAccount;
+        public static bool foreignWorker;
+        
 
         public static VehicleData[] vehicles;
         public static ContactData[] contacts;
@@ -188,11 +190,6 @@ namespace ScoringSystem {
             creditHistory = null;
             checkingAccount = 0;
 
-            vehicles = null;
-            contacts = null;
-            realEstates = null;
-            work = null;
-            relations = null;
     }
 
         /// <summary>
@@ -207,20 +204,22 @@ namespace ScoringSystem {
                 "\nДоходы= " + income + " Семейные доходы= " + familyIncome + " Расходы= " + outcome +
                 "\nСемейное положение= " + personalStatus);
 
-            if (vehicles != null) {
-                foreach (var v in vehicles) {
-                    MessageBox.Show("Возраст= " + v.age + " Марка= " + v.id_mark +
-                        "\nНомер= " + v.number + " Цена= " + v.price);
-                }
-            }
-
             if (realEstates != null) {
                 foreach (var v in realEstates) {
-                    MessageBox.Show("Дата покупки= " + v.dateBuy  + "\nМесто расположения= " + 
+                    MessageBox.Show("Дата покупки= " + v.dateBuy + "\nМесто расположения= " +
                         v.location + " Цена= " + v.price + " Площадь= " + v.square +
                         " Тип= " + v.type);
                 }
             }
+
+            if (vehicles != null) {
+                foreach (var v in vehicles) {
+                    MessageBox.Show("Возраст= " + v.productionDate + " Марка= " + v.id_mark +
+                        "\nНомер= " + v.number + " Цена= " + v.price);
+                }
+            }
+
+
             
             if (work!= null) {
                 MessageBox.Show("Название организации: " + work.name + "\nКатегория должности" + work.position +
@@ -230,14 +229,14 @@ namespace ScoringSystem {
             if (relations != null) {
                 foreach (var r in relations) {
                     MessageBox.Show("id человека: " + r.id_man.ToString() +
-                        "id связи: " + r.id_relation.ToString());
+                        " id связи: " + r.id_relation.ToString());
                 }
             }
 
             if (contacts != null) {
                 foreach (var c in contacts) {
                     MessageBox.Show("Контакт: " + c.phone.ToString() +
-                        "Почта " + c.mail.ToString());
+                        " Электронная почта: " + c.mail.ToString());
                 }
             }
         }

@@ -25,12 +25,11 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.markComboBox = new System.Windows.Forms.ComboBox();
+            this.marksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bankDataSet = new ScoringSystem.BankDataSet();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.numberTextBox = new System.Windows.Forms.TextBox();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
             this.markLabel = new System.Windows.Forms.Label();
-            this.bankDataSet = new ScoringSystem.BankDataSet();
-            this.marksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.marksTableAdapter = new ScoringSystem.BankDataSetTableAdapters.MarksTableAdapter();
             this.priceLabel = new System.Windows.Forms.Label();
             this.numberLabel = new System.Windows.Forms.Label();
@@ -41,21 +40,22 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.priceTextBox1 = new System.Windows.Forms.TextBox();
             this.ageLabel1 = new System.Windows.Forms.Label();
-            this.ageTextBox1 = new System.Windows.Forms.TextBox();
             this.yearLabel1 = new System.Windows.Forms.Label();
             this.numberLabel1 = new System.Windows.Forms.Label();
             this.markComboBox1 = new System.Windows.Forms.ComboBox();
+            this.marksBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.numberTextBox1 = new System.Windows.Forms.TextBox();
             this.priceLabel1 = new System.Windows.Forms.Label();
             this.markLabel1 = new System.Windows.Forms.Label();
             this.rubLabel1 = new System.Windows.Forms.Label();
             this.nextbutton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.marksBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
+            this.productionDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.productionDateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource1)).BeginInit();
@@ -72,6 +72,16 @@
             this.markComboBox.TabIndex = 0;
             this.markComboBox.ValueMember = "id";
             // 
+            // marksBindingSource
+            // 
+            this.marksBindingSource.DataMember = "Marks";
+            this.marksBindingSource.DataSource = this.bankDataSet;
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // priceTextBox
             // 
             this.priceTextBox.Location = new System.Drawing.Point(74, 46);
@@ -86,13 +96,6 @@
             this.numberTextBox.Size = new System.Drawing.Size(168, 20);
             this.numberTextBox.TabIndex = 2;
             // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Location = new System.Drawing.Point(74, 99);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(168, 20);
-            this.ageTextBox.TabIndex = 3;
-            // 
             // markLabel
             // 
             this.markLabel.AutoSize = true;
@@ -101,16 +104,6 @@
             this.markLabel.Size = new System.Drawing.Size(40, 13);
             this.markLabel.TabIndex = 4;
             this.markLabel.Text = "Марка";
-            // 
-            // bankDataSet
-            // 
-            this.bankDataSet.DataSetName = "BankDataSet";
-            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // marksBindingSource
-            // 
-            this.marksBindingSource.DataMember = "Marks";
-            this.marksBindingSource.DataSource = this.bankDataSet;
             // 
             // marksTableAdapter
             // 
@@ -139,9 +132,9 @@
             this.ageLabel.AutoSize = true;
             this.ageLabel.Location = new System.Drawing.Point(6, 102);
             this.ageLabel.Name = "ageLabel";
-            this.ageLabel.Size = new System.Drawing.Size(49, 13);
+            this.ageLabel.Size = new System.Drawing.Size(40, 13);
             this.ageLabel.TabIndex = 7;
-            this.ageLabel.Text = "Возраст";
+            this.ageLabel.Text = "Выпск";
             // 
             // rubLabel
             // 
@@ -159,13 +152,13 @@
             this.yearLabel.Name = "yearLabel";
             this.yearLabel.Size = new System.Drawing.Size(24, 13);
             this.yearLabel.TabIndex = 9;
-            this.yearLabel.Text = "лет";
+            this.yearLabel.Text = "год";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.productionDateTimePicker1);
             this.groupBox1.Controls.Add(this.priceTextBox);
             this.groupBox1.Controls.Add(this.ageLabel);
-            this.groupBox1.Controls.Add(this.ageTextBox);
             this.groupBox1.Controls.Add(this.yearLabel);
             this.groupBox1.Controls.Add(this.numberLabel);
             this.groupBox1.Controls.Add(this.markComboBox);
@@ -183,9 +176,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.productionDateTimePicker2);
             this.groupBox2.Controls.Add(this.priceTextBox1);
             this.groupBox2.Controls.Add(this.ageLabel1);
-            this.groupBox2.Controls.Add(this.ageTextBox1);
             this.groupBox2.Controls.Add(this.yearLabel1);
             this.groupBox2.Controls.Add(this.numberLabel1);
             this.groupBox2.Controls.Add(this.markComboBox1);
@@ -213,16 +206,9 @@
             this.ageLabel1.AutoSize = true;
             this.ageLabel1.Location = new System.Drawing.Point(6, 102);
             this.ageLabel1.Name = "ageLabel1";
-            this.ageLabel1.Size = new System.Drawing.Size(49, 13);
+            this.ageLabel1.Size = new System.Drawing.Size(45, 13);
             this.ageLabel1.TabIndex = 7;
-            this.ageLabel1.Text = "Возраст";
-            // 
-            // ageTextBox1
-            // 
-            this.ageTextBox1.Location = new System.Drawing.Point(74, 99);
-            this.ageTextBox1.Name = "ageTextBox1";
-            this.ageTextBox1.Size = new System.Drawing.Size(168, 20);
-            this.ageTextBox1.TabIndex = 3;
+            this.ageLabel1.Text = "Выпуск";
             // 
             // yearLabel1
             // 
@@ -231,7 +217,7 @@
             this.yearLabel1.Name = "yearLabel1";
             this.yearLabel1.Size = new System.Drawing.Size(24, 13);
             this.yearLabel1.TabIndex = 9;
-            this.yearLabel1.Text = "лет";
+            this.yearLabel1.Text = "год";
             // 
             // numberLabel1
             // 
@@ -252,6 +238,11 @@
             this.markComboBox1.Size = new System.Drawing.Size(168, 21);
             this.markComboBox1.TabIndex = 0;
             this.markComboBox1.ValueMember = "id";
+            // 
+            // marksBindingSource1
+            // 
+            this.marksBindingSource1.DataMember = "Marks";
+            this.marksBindingSource1.DataSource = this.bankDataSet;
             // 
             // numberTextBox1
             // 
@@ -307,11 +298,6 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // marksBindingSource1
-            // 
-            this.marksBindingSource1.DataMember = "Marks";
-            this.marksBindingSource1.DataSource = this.bankDataSet;
-            // 
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(12, 12);
@@ -332,7 +318,21 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // addVehicleForm
+            // productionDateTimePicker1
+            // 
+            this.productionDateTimePicker1.Location = new System.Drawing.Point(74, 96);
+            this.productionDateTimePicker1.Name = "productionDateTimePicker1";
+            this.productionDateTimePicker1.Size = new System.Drawing.Size(168, 20);
+            this.productionDateTimePicker1.TabIndex = 10;
+            // 
+            // productionDateTimePicker2
+            // 
+            this.productionDateTimePicker2.Location = new System.Drawing.Point(73, 99);
+            this.productionDateTimePicker2.Name = "productionDateTimePicker2";
+            this.productionDateTimePicker2.Size = new System.Drawing.Size(168, 20);
+            this.productionDateTimePicker2.TabIndex = 11;
+            // 
+            // AddVehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -343,12 +343,12 @@
             this.Controls.Add(this.nextbutton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "addVehicleForm";
+            this.Name = "AddVehicleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить транспорт";
             this.Load += new System.EventHandler(this.addVehicleForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -363,7 +363,6 @@
         private System.Windows.Forms.ComboBox markComboBox;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.TextBox numberTextBox;
-        private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Label markLabel;
         private BankDataSet bankDataSet;
         private System.Windows.Forms.BindingSource marksBindingSource;
@@ -377,7 +376,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox priceTextBox1;
         private System.Windows.Forms.Label ageLabel1;
-        private System.Windows.Forms.TextBox ageTextBox1;
         private System.Windows.Forms.Label yearLabel1;
         private System.Windows.Forms.Label numberLabel1;
         private System.Windows.Forms.ComboBox markComboBox1;
@@ -390,5 +388,7 @@
         private System.Windows.Forms.BindingSource marksBindingSource1;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DateTimePicker productionDateTimePicker1;
+        private System.Windows.Forms.DateTimePicker productionDateTimePicker2;
     }
 }

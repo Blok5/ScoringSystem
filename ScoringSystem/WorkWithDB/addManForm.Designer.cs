@@ -64,10 +64,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personalStatusComboBox = new System.Windows.Forms.ComboBox();
-            this.personalStatusLabel = new System.Windows.Forms.Label();
-            this.creditHistoryComboBox = new System.Windows.Forms.ComboBox();
-            this.creditHistoryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
@@ -77,7 +73,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(7, 288);
+            this.exitButton.Location = new System.Drawing.Point(12, 238);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 0;
@@ -118,7 +114,7 @@
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(54, 21);
             this.sexComboBox.TabIndex = 7;
-          
+            // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
@@ -286,7 +282,7 @@
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(348, 288);
+            this.nextButton.Location = new System.Drawing.Point(348, 238);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 23;
@@ -397,7 +393,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -412,59 +408,15 @@
             // aboutProgramToolStripMenuItem
             // 
             this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutProgramToolStripMenuItem.Text = "О программе";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
-            // 
-            // personalStatusComboBox
-            // 
-            this.personalStatusComboBox.FormattingEnabled = true;
-            this.personalStatusComboBox.Location = new System.Drawing.Point(7, 221);
-            this.personalStatusComboBox.Name = "personalStatusComboBox";
-            this.personalStatusComboBox.Size = new System.Drawing.Size(196, 21);
-            this.personalStatusComboBox.TabIndex = 33;
-            // 
-            // personalStatusLabel
-            // 
-            this.personalStatusLabel.AutoSize = true;
-            this.personalStatusLabel.Location = new System.Drawing.Point(210, 224);
-            this.personalStatusLabel.Name = "personalStatusLabel";
-            this.personalStatusLabel.Size = new System.Drawing.Size(117, 13);
-            this.personalStatusLabel.TabIndex = 34;
-            this.personalStatusLabel.Text = "Семейное положение";
-            // 
-            // creditHistoryComboBox
-            // 
-            this.creditHistoryComboBox.FormattingEnabled = true;
-            this.creditHistoryComboBox.Items.AddRange(new object[] {
-            "Не брал кредитов/Все кредиты выплачены вовремя",
-            "Все кредиты в этом банке выплачены вовремя",
-            "Существуют кредиты, которые выплачиваются вовремя до сих пор",
-            "Были задержки в погашении в прошлом",
-            "Критический счет/Существуют кредиты в другом банке"});
-            this.creditHistoryComboBox.Location = new System.Drawing.Point(7, 249);
-            this.creditHistoryComboBox.Name = "creditHistoryComboBox";
-            this.creditHistoryComboBox.Size = new System.Drawing.Size(196, 21);
-            this.creditHistoryComboBox.TabIndex = 35;
-            // 
-            // creditHistoryLabel
-            // 
-            this.creditHistoryLabel.AutoSize = true;
-            this.creditHistoryLabel.Location = new System.Drawing.Point(210, 252);
-            this.creditHistoryLabel.Name = "creditHistoryLabel";
-            this.creditHistoryLabel.Size = new System.Drawing.Size(105, 13);
-            this.creditHistoryLabel.TabIndex = 36;
-            this.creditHistoryLabel.Text = "Кредитная история";
             // 
             // AddManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 323);
-            this.Controls.Add(this.creditHistoryLabel);
-            this.Controls.Add(this.creditHistoryComboBox);
-            this.Controls.Add(this.personalStatusLabel);
-            this.Controls.Add(this.personalStatusComboBox);
+            this.ClientSize = new System.Drawing.Size(435, 273);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.outcomeTextBox);
             this.Controls.Add(this.outcomeLabel);
@@ -552,9 +504,5 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
-        private System.Windows.Forms.ComboBox personalStatusComboBox;
-        private System.Windows.Forms.Label personalStatusLabel;
-        private System.Windows.Forms.ComboBox creditHistoryComboBox;
-        private System.Windows.Forms.Label creditHistoryLabel;
     }
 }

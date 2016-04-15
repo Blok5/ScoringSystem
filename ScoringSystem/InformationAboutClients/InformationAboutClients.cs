@@ -31,11 +31,5 @@ namespace ScoringSystem.InformationAboutClients {
             InfoAboutCreditForm iacf = new InfoAboutCreditForm();
             iacf.Show();
         }
-
-        private void backToMainMenuButton_Click(object sender, EventArgs e) {
-            MainMenu mm = new MainMenu();
-            this.Hide();
-            mm.Show();
-        }
     }
 }

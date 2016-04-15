@@ -44,18 +44,10 @@
             // 
             this.positionComboBox.FormattingEnabled = true;
             this.positionComboBox.Items.AddRange(new object[] {
-            "Владелец организации",
-            "Генеральный директор",
-            "Руководитель высшего звена",
-            "Руководитель среднего звена",
-            "Руководитель начального звена",
-            "Судья",
-            "Нотариус",
-            "Высококвалифицированный специалист",
-            "Государственный служащий",
-            "Военнослжащий",
-            "Специалист",
-            "Рабочий"});
+            "Безработный/Не квалифицированный сотрудник",
+            "Не квалифицированный сотрудник",
+            "Квалифицированный сотрудник/Чиновник",
+            "Управляющий/Работающий на себя/Высококвалифицированный сотрудник/Сотрудник"});
             this.positionComboBox.Location = new System.Drawing.Point(12, 74);
             this.positionComboBox.Name = "positionComboBox";
             this.positionComboBox.Size = new System.Drawing.Size(216, 21);
@@ -65,13 +57,11 @@
             // 
             this.workDurationComboBox.FormattingEnabled = true;
             this.workDurationComboBox.Items.AddRange(new object[] {
-            "Менее 6 месяцев",
-            "6-12 месяцев",
-            "1-3 года",
-            "3-5 лет",
-            "5-10 лет",
-            "10-20 лет",
-            "Более 20 лет"});
+            "Не работаю",
+            "Менее 1 года",
+            "От 1 до 4 лет",
+            "От 4 до 7 лет",
+            "Более 7 лет"});
             this.workDurationComboBox.Location = new System.Drawing.Point(12, 114);
             this.workDurationComboBox.Name = "workDurationComboBox";
             this.workDurationComboBox.Size = new System.Drawing.Size(121, 21);
@@ -124,7 +114,7 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // addWorkForm
+            // AddWorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -137,7 +127,7 @@
             this.Controls.Add(this.workDurationComboBox);
             this.Controls.Add(this.positionComboBox);
             this.Controls.Add(this.nameTextBox);
-            this.Name = "addWorkForm";
+            this.Name = "AddWorkForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление работы";
             this.ResumeLayout(false);

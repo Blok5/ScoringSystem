@@ -30,6 +30,7 @@
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInfoAboutManFormButton = new System.Windows.Forms.Button();
             this.infoAboutCreditButton = new System.Windows.Forms.Button();
+            this.backToMainMenuButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.infoAboutCreditButton.UseVisualStyleBackColor = true;
             this.infoAboutCreditButton.Click += new System.EventHandler(this.infoAboutCreditButton_Click);
             // 
+            // backToMainMenuButton
+            // 
+            this.backToMainMenuButton.Location = new System.Drawing.Point(13, 226);
+            this.backToMainMenuButton.Name = "backToMainMenuButton";
+            this.backToMainMenuButton.Size = new System.Drawing.Size(75, 23);
+            this.backToMainMenuButton.TabIndex = 6;
+            this.backToMainMenuButton.Text = "Назад";
+            this.backToMainMenuButton.UseVisualStyleBackColor = true;
+            this.backToMainMenuButton.Click += new System.EventHandler(this.backToMainMenuButton_Click);
+            // 
             // InformationAboutClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.backToMainMenuButton);
             this.Controls.Add(this.infoAboutCreditButton);
             this.Controls.Add(this.openInfoAboutManFormButton);
             this.Controls.Add(this.menuStrip1);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.Button openInfoAboutManFormButton;
         private System.Windows.Forms.Button infoAboutCreditButton;
+        private System.Windows.Forms.Button backToMainMenuButton;
     }
 }

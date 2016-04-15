@@ -70,6 +70,9 @@ namespace ScoringSystem {
         public static decimal familyIncome;
         public static decimal income;
         public static decimal outcome;
+        public static string personalStatus;
+        public static string creditHistory;
+        public static decimal checkingAccount;
 
         public static VehicleData[] vehicles;
         public static ContactData[] contacts;
@@ -132,6 +135,18 @@ namespace ScoringSystem {
         }
 
         /// <summary>
+        /// Метод addContacts добавляет контакты к клиенту
+        /// </summary>
+        /// <param name="cd">Массив контактов</param>
+        public static void addContact(ContactData[] cd) {
+            contacts = new ContactData[cd.Length];
+
+            for (int i = 0; i < cd.Length; i++) {
+                contacts[i] = new ContactData();
+                contacts[i] = cd[i];
+            }
+        }
+        /// <summary>
         /// Метод addValuesToDB добавляет все текущие значения в базу данных
         /// </summary>
         public static void addValuesToDB() {
@@ -151,7 +166,35 @@ namespace ScoringSystem {
                 connection.Close();
             }
         }
-                
+
+        /// <summary>
+        /// Метод cleanData очищает данный класс от текущих данных
+        /// </summary> 
+        public static void cleanData() {
+            name = null;
+            surname = null;
+            birthDate = null;
+            id_birthPlace = 0; ;
+            sex = null;
+            education = null;
+            id_city = 0;
+            id_street = 0;
+            home = 0;
+            housing = 0;
+            familyIncome = 0;
+            income = 0;
+            outcome = 0;
+            personalStatus = null;
+            creditHistory = null;
+            checkingAccount = 0;
+
+            vehicles = null;
+            contacts = null;
+            realEstates = null;
+            work = null;
+            relations = null;
+    }
+
         /// <summary>
         /// Метод showValues выводит все значения о текущем клиенте
         /// </summary>
@@ -161,7 +204,8 @@ namespace ScoringSystem {
                 "\nid_Место рождения= " + id_birthPlace +
                 " Пол= " + sex + " Образование= " + education + "\nid_город= " + id_city +
                 " id_улица= " + id_street + " дом= " + home + " строение= " + housing +
-                "\nДоходы= " + income + " Семейные доходы= " + familyIncome + " Расходы= " + outcome);
+                "\nДоходы= " + income + " Семейные доходы= " + familyIncome + " Расходы= " + outcome +
+                "\nСемейное положение= " + personalStatus);
 
             if (vehicles != null) {
                 foreach (var v in vehicles) {
@@ -187,6 +231,13 @@ namespace ScoringSystem {
                 foreach (var r in relations) {
                     MessageBox.Show("id человека: " + r.id_man.ToString() +
                         "id связи: " + r.id_relation.ToString());
+                }
+            }
+
+            if (contacts != null) {
+                foreach (var c in contacts) {
+                    MessageBox.Show("Контакт: " + c.phone.ToString() +
+                        "Почта " + c.mail.ToString());
                 }
             }
         }

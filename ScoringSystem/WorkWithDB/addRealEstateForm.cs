@@ -65,7 +65,7 @@ namespace ScoringSystem.WorkWithDB {
                     red[1].square = Convert.ToInt32(squareTextBox1.Text);
                     red[1].type = typeComboBox1.Text;
 
-                    CurrentData.addRealEstate(red, 2);
+                    CurrentClientData.addRealEstate(red, 2);
 
                 //1 vehicle case
                 } else if (groupBox2.Visible == false && groupBox1.Visible == true) {
@@ -78,7 +78,7 @@ namespace ScoringSystem.WorkWithDB {
                     red[0].square = Convert.ToInt32(squareTextBox.Text);
                     red[0].type = typeComboBox.Text;
 
-                    CurrentData.addRealEstate(red, 1);
+                    CurrentClientData.addRealEstate(red, 1);
                 }
 
                 AddWorkForm awf = new AddWorkForm();

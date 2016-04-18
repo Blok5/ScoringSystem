@@ -139,6 +139,18 @@
     <Compile Include="WorkWithDB\WorkWithDBForm.Designer.cs">
       <DependentUpon>WorkWithDBForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkWithLoan\AssessTheCreditworthinessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithLoan\AssessTheCreditworthinessForm.Designer.cs">
+      <DependentUpon>AssessTheCreditworthinessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkWithLoan\EnterEdditionalInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithLoan\EnterEdditionalInformationForm.Designer.cs">
+      <DependentUpon>EnterEdditionalInformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkWithLoan\GetALoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +204,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithDB\WorkWithDBForm.resx">
       <DependentUpon>WorkWithDBForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithLoan\AssessTheCreditworthinessForm.resx">
+      <DependentUpon>AssessTheCreditworthinessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithLoan\EnterEdditionalInformationForm.resx">
+      <DependentUpon>EnterEdditionalInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithLoan\GetALoanForm.resx">
       <DependentUpon>GetALoanForm.cs</DependentUpon>

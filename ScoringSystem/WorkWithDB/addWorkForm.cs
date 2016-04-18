@@ -25,7 +25,8 @@ namespace ScoringSystem.WorkWithDB {
         /// <param name="e"></param>
         private void nextButton_Click(object sender, EventArgs e) {
             try {
-                CurrentData.addWork(nameTextBox.Text, positionComboBox.Text, workDurationComboBox.Text);
+                CurrentClientData.addWork(nameTextBox.Text, positionComboBox.Text, 
+                    Convert.ToInt32(workDurationComboBox));
 
                 AddRelationsForm arf = new AddRelationsForm();
                 this.Hide();

@@ -19,7 +19,7 @@ namespace ScoringSystem.WorkWithLoan {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void searchButton_Click(object sender, EventArgs e) {
-            CurrentData.cleanData();
+            CurrentClientData.cleanData();
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
             try {
@@ -27,7 +27,7 @@ namespace ScoringSystem.WorkWithLoan {
                 resultListBox.Items.Clear();
 
                 string sqlCommand = "select birthDate, sex, education, income, familyIncome, outcome, personalStatus, " +
-                    " creditHistory, foreignWorker from dbo.Mans " +
+                    " creditHistory, foreignWorker, name, surname from dbo.Mans " +
                    "where name = '" + searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
 
                 SqlCommand cmd = new SqlCommand(sqlCommand, connection);
@@ -39,17 +39,20 @@ namespace ScoringSystem.WorkWithLoan {
 
                     while (dr.Read()) {
 
-                        CurrentData.birthDate = dr[0].ToString();
-                        CurrentData.sex = dr[1].ToString();
-                        CurrentData.education = dr[2].ToString();
-                        CurrentData.income = Convert.ToInt32(dr[3]);
-                        CurrentData.familyIncome = Convert.ToInt32(dr[4]);
-                        CurrentData.outcome = Convert.ToInt32(dr[5]);
-                        CurrentData.personalStatus = dr[6].ToString();
-                        CurrentData.creditHistory = dr[7].ToString();
-                        CurrentData.foreignWorker = Convert.ToBoolean(dr[8]);
+                        CurrentClientData.birthDate = dr[0].ToString();
+                        CurrentClientData.sex = dr[1].ToString();
+                        CurrentClientData.education = dr[2].ToString();
+                        CurrentClientData.income = Convert.ToInt32(dr[3]);
+                        CurrentClientData.familyIncome = Convert.ToInt32(dr[4]);
+                        CurrentClientData.outcome = Convert.ToInt32(dr[5]);
+                        CurrentClientData.personalStatus = dr[6].ToString();
+                        CurrentClientData.creditHistory = dr[7].ToString();
+                        CurrentClientData.foreignWorker = Convert.ToBoolean(dr[8]);
+                        CurrentClientData.name = dr[9].ToString();
+                        CurrentClientData.surname = dr[10].ToString();
 
-                        resultListBox.Items.Add("Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
+                        resultListBox.Items.Add("Имя: " + dr[9].ToString() + " Фамилия: " + dr[10].ToString());
+                        resultListBox.Items.Add(" Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
                         resultListBox.Items.Add("Образование: " + dr[2].ToString());
                         resultListBox.Items.Add("Доход: " + dr[3].ToString() + " руб." +
                         "Семейные доход: " + dr[4].ToString() + " руб.");
@@ -79,17 +82,17 @@ namespace ScoringSystem.WorkWithLoan {
                     while (dr.Read()) {
 
                         if (checkCreate == false) {
-                            CurrentData.vehicles = new VehicleData[Convert.ToInt32(Convert.ToInt32(dr[0]))];
+                            CurrentClientData.vehicles = new VehicleData[Convert.ToInt32(Convert.ToInt32(dr[0]))];
                             checkCreate = true;
                         }
 
-                        CurrentData.vehicles[i] = new VehicleData();
-                        CurrentData.vehicles[i].id_mark = Convert.ToInt32(dr[1]);
-                        CurrentData.vehicles[i].price = Convert.ToDecimal(dr[4]);
-                        CurrentData.vehicles[i].productionDate = dr[2].ToString();
-                        CurrentData.vehicles[i].number = dr[5].ToString();
+                        CurrentClientData.vehicles[i] = new VehicleData();
+                        CurrentClientData.vehicles[i].id_mark = Convert.ToInt32(dr[1]);
+                        CurrentClientData.vehicles[i].price = Convert.ToDecimal(dr[4]);
+                        CurrentClientData.vehicles[i].productionDate = dr[2].ToString();
+                        CurrentClientData.vehicles[i].number = dr[5].ToString();
 
-                        resultListBox.Items.Add("Марка: " + dr[0].ToString() + " Цена:" + dr[1].ToString() + " руб.");
+                        resultListBox.Items.Add("Марка: " + dr[1].ToString() + " Цена:" + dr[4].ToString() + " руб.");
                         resultListBox.Items.Add("Возраст: " + dr[2].ToString());
                         ++i;
                     }
@@ -111,15 +114,15 @@ namespace ScoringSystem.WorkWithLoan {
                     checkCreate = false;
                     while (dr.Read()) {
                         if (checkCreate == false) {
-                            CurrentData.realEstates = new RealEstateData[Convert.ToInt32(dr[5])];
+                            CurrentClientData.realEstates = new RealEstateData[Convert.ToInt32(dr[5])];
                             checkCreate = true;
                         }
-                        CurrentData.realEstates[i] = new RealEstateData();
-                        CurrentData.realEstates[i].type = dr[0].ToString();
-                        CurrentData.realEstates[i].location = Convert.ToInt32(dr[4]);
-                        CurrentData.realEstates[i].price = Convert.ToDecimal(dr[2]);
-                        CurrentData.realEstates[i].square = Convert.ToInt32(dr[3]);
-                        CurrentData.realEstates[i].dateBuy = dr[6].ToString();
+                        CurrentClientData.realEstates[i] = new RealEstateData();
+                        CurrentClientData.realEstates[i].type = dr[0].ToString();
+                        CurrentClientData.realEstates[i].location = Convert.ToInt32(dr[4]);
+                        CurrentClientData.realEstates[i].price = Convert.ToDecimal(dr[2]);
+                        CurrentClientData.realEstates[i].square = Convert.ToInt32(dr[3]);
+                        CurrentClientData.realEstates[i].dateBuy = dr[6].ToString();
 
                         resultListBox.Items.Add("Тип: " + dr[0].ToString() + " Расположение: " + dr[1].ToString());
                         resultListBox.Items.Add("Цена: " + dr[2].ToString() + " руб. Площадь: " + dr[3].ToString() + " м. кв.");
@@ -143,15 +146,64 @@ namespace ScoringSystem.WorkWithLoan {
 
                     while (dr.Read()) {
                         if (checkCreate == false) {
-                            CurrentData.contacts = new ContactData[Convert.ToInt32(dr[2])];
+                            CurrentClientData.contacts = new ContactData[Convert.ToInt32(dr[2])];
                             checkCreate = true;
                         }
-                        CurrentData.contacts[i] = new ContactData();
-                        CurrentData.contacts[i].phone = dr[0].ToString();
-                        CurrentData.contacts[i].mail = dr[1].ToString();
+                        CurrentClientData.contacts[i] = new ContactData();
+                        CurrentClientData.contacts[i].phone = dr[0].ToString();
+                        CurrentClientData.contacts[i].mail = dr[1].ToString();
 
                         resultListBox.Items.Add("Телефон: " + dr[0].ToString() + " Электронная почта: " + dr[1].ToString());
                         ++i;
+                    }
+                    dr.Close();
+
+                    sqlCommand = "select w.name, w.position, w.workDuration from dbo.Work as w " +
+                        "JOIN dbo.Mans as man ON man.name = '" +
+                        searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
+
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    resultListBox.Items.Add("");
+                    resultListBox.Items.Add("Информация о работе: ");
+
+                    i = 0;
+                    while (dr.Read()) {
+                        CurrentClientData.work = new WorkData();
+                        CurrentClientData.work.name = dr[0].ToString();
+                        CurrentClientData.work.position = dr[1].ToString();
+                        CurrentClientData.work.workDuration = Convert.ToInt32(dr[2]);
+
+                        resultListBox.Items.Add("Телефон: " + dr[0].ToString() + " Электронная почта: " + dr[1].ToString());
+                        resultListBox.Items.Add("Продолжительность работы: " + dr[2].ToString() + " мес.");
+                        ++i;
+                    }
+
+                    dr.Close();
+
+                    sqlCommand = "select c.checkingAccount, c.entryDate from dbo.Clients as c " +
+                        "JOIN dbo.Mans as man ON man.name = '" +
+                        searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
+
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows) {
+                        resultListBox.Items.Add("");
+                        resultListBox.Items.Add("Информация о клиенте: ");
+                        while (dr.Read()) {
+
+                            CurrentClientData.checkingAccount = Convert.ToDecimal(dr[0]);
+
+                            resultListBox.Items.Add("Состояние счета: " + dr[0].ToString());
+                            
+                        }
+
+                        dr.Close();
+                    } else {
+                        resultListBox.Items.Add("");
+                        resultListBox.Items.Add("Не является клиентом банка!");
                     }
                 } else {
                     resultListBox.Items.Add("Клиент не найден");
@@ -160,18 +212,15 @@ namespace ScoringSystem.WorkWithLoan {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Source + ex.Message);
             } finally {
-                CurrentData.showValues();
+
                 connection.Close();
             }
         }
 
-        public static void getCandidateAttr () {
-
-        }
-
         private void nextButton_Click(object sender, EventArgs e) {
-            
-
+            this.Hide();
+            EnterEdditionalInformationForm eeif = new EnterEdditionalInformationForm();
+            eeif.Show();
         }
     }
 }

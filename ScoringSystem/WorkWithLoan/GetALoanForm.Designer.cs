@@ -117,6 +117,7 @@
             this.Controls.Add(this.searchNameTextBox);
             this.Controls.Add(this.searchButton);
             this.Name = "GetALoanForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выдача кредита";
             this.Load += new System.EventHandler(this.GetALoanForm_Load);
             this.ResumeLayout(false);

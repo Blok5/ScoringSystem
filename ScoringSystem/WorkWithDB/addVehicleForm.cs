@@ -49,7 +49,7 @@ namespace ScoringSystem.WorkWithDB {
                     vd[1].number = numberTextBox1.Text;
                     vd[1].price = Convert.ToInt32(priceTextBox1.Text);
 
-                    CurrentData.addVehicle(vd,2);
+                    CurrentClientData.addVehicle(vd,2);
 
                 } else if (groupBox2.Visible == false && groupBox1.Visible==true) {
                     VehicleData[] vd = new VehicleData[1];
@@ -60,7 +60,7 @@ namespace ScoringSystem.WorkWithDB {
                     vd[0].number = numberTextBox.Text;
                     vd[0].price = Convert.ToInt32(priceTextBox.Text);
 
-                    CurrentData.addVehicle(vd,1);
+                    CurrentClientData.addVehicle(vd,1);
 
                 }      
                 

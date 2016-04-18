@@ -4,10 +4,29 @@ using System.Data.SqlClient;
 //TODO: Добавить транзакцию добавления всего класса в базу данных
 
 namespace ScoringSystem {
+
+
+    /// <summary>
+    /// Класс currenCreditData хранит ткущие данные о кредите
+    /// </summary>
+    public static class CurrentCreditData {
+        public static int period;
+        public static decimal sum;
+        public static string target;
+        public static string savingAcc;
+        public static string otherDebtors;
+        public static string otherInstallment;
+        public static string housing;
+        public static int numberOfExistingCredits;
+        public static int installmentRate;
+        public static int presentResidenceSince;
+        public static int numberOfMaintenance;
+    }
+
     /// <summary>
     /// Класс RealEstateData хранит данные о недвижимости
-    /// <para name="type">sds</para>
     /// </summary>
+    /// 
     public class RealEstateData {
         public string type;
         public int location;
@@ -40,7 +59,7 @@ namespace ScoringSystem {
     public class WorkData {
         public string name;
         public string position;
-        public string workDuration;
+        public int workDuration;
     }
 
     /// <summary>
@@ -56,7 +75,7 @@ namespace ScoringSystem {
     /// Класс CurrentData хранит все текущие данные,
     /// которые заносятся об очередном клиенте
     /// </summary>
-    public static class CurrentData {
+    public static class CurrentClientData {
         public static string name;
         public static string surname;
         public static string birthDate;
@@ -115,7 +134,7 @@ namespace ScoringSystem {
         /// <param name="name">Параметр типа string - название организации</param>
         /// <param name="position">Параметр типа string - должность</param>
         /// <param name="workDuration">Параметр типа string - Продолжительность работы на одном месте</param>
-        public static void addWork(string name, string position, string workDuration) {
+        public static void addWork(string name, string position, int workDuration) {
             work = new WorkData();
             work.name = name;
             work.position = position;
@@ -218,12 +237,10 @@ namespace ScoringSystem {
                         "\nНомер= " + v.number + " Цена= " + v.price);
                 }
             }
-
-
-            
+           
             if (work!= null) {
-                MessageBox.Show("Название организации: " + work.name + "\nКатегория должности" + work.position +
-                    " Продолжительность работы" + work.workDuration);
+                MessageBox.Show("Название организации: " + work.name + "\nКатегория должности: " + work.position +
+                    " Продолжительность работы: " + work.workDuration + "мес.");
             }
 
             if (relations != null) {

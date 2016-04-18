@@ -48,25 +48,25 @@ namespace ScoringSystem.WorkWithDB {
                 birthDateTimePicker.CustomFormat = "yyyy-MM-dd";
                 birthDateTimePicker.Format = DateTimePickerFormat.Custom;
 
-                CurrentData.name = nameTextBox.Text;
-                CurrentData.surname = surnameTextBox.Text;
-                CurrentData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
-                CurrentData.id_city = cityComboBox.SelectedIndex;
-                CurrentData.id_street = streetComboBox.SelectedIndex;
-                CurrentData.home = Convert.ToInt32(homeTextBox.Text);
-                CurrentData.education = educationComboBox.Text;
-                CurrentData.birthDate = birthDateTimePicker.Text;
-                CurrentData.sex = sexComboBox.Text;
-                CurrentData.income = Convert.ToDecimal(incomeTextBox.Text);
-                CurrentData.familyIncome = Convert.ToDecimal(familyIncomeTextBox.Text);
-                CurrentData.outcome = Convert.ToDecimal(outcomeTextBox.Text);
-                CurrentData.personalStatus = personalStatusComboBox.Text;
-                CurrentData.creditHistory = creditHistoryComboBox.Text;
+                CurrentClientData.name = nameTextBox.Text;
+                CurrentClientData.surname = surnameTextBox.Text;
+                CurrentClientData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
+                CurrentClientData.id_city = cityComboBox.SelectedIndex;
+                CurrentClientData.id_street = streetComboBox.SelectedIndex;
+                CurrentClientData.home = Convert.ToInt32(homeTextBox.Text);
+                CurrentClientData.education = educationComboBox.Text;
+                CurrentClientData.birthDate = birthDateTimePicker.Text;
+                CurrentClientData.sex = sexComboBox.Text;
+                CurrentClientData.income = Convert.ToDecimal(incomeTextBox.Text);
+                CurrentClientData.familyIncome = Convert.ToDecimal(familyIncomeTextBox.Text);
+                CurrentClientData.outcome = Convert.ToDecimal(outcomeTextBox.Text);
+                CurrentClientData.personalStatus = personalStatusComboBox.Text;
+                CurrentClientData.creditHistory = creditHistoryComboBox.Text;
 
                 if (housingTextBox.Text == "") {
-                    CurrentData.housing = 0;
+                    CurrentClientData.housing = 0;
                 } else {
-                    CurrentData.housing = Convert.ToInt32(housingTextBox.Text);
+                    CurrentClientData.housing = Convert.ToInt32(housingTextBox.Text);
                 }
 
                 AddContactsForm acf = new AddContactsForm();

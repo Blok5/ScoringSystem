@@ -109,8 +109,8 @@ namespace ScoringSystem.WorkWithDB {
                                  
                 }
 
-                CurrentData.addRelation(relations);
-                CurrentData.showValues();
+                CurrentClientData.addRelation(relations);
+                CurrentClientData.showValues();
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message + ex.Source);

@@ -21,7 +21,7 @@ namespace ScoringSystem.WorkWithDB {
                 cd[0].phone = phoneTextBox.Text;
                 cd[0].mail = mailTextBox.Text;
 
-                CurrentData.addContact(cd);
+                CurrentClientData.addContact(cd);
 
                 AddVehicleForm avf = new AddVehicleForm();
                 this.Hide();

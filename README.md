@@ -1,2 +1,2 @@
 # ScoringSystem
-My project can be used to determine the client's risk group
+This system allows to determine, based on the incoming data on the client, whether or not to issue credit.

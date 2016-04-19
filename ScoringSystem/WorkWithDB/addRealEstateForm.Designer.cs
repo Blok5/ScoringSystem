@@ -58,11 +58,13 @@
             this.backButton = new System.Windows.Forms.Button();
             this.nextbutton = new System.Windows.Forms.Button();
             this.citiesTableAdapter = new ScoringSystem.BankDataSetTableAdapters.CitiesTableAdapter();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,6 +132,8 @@
             this.squareTextBox.Name = "squareTextBox";
             this.squareTextBox.Size = new System.Drawing.Size(168, 20);
             this.squareTextBox.TabIndex = 10;
+            this.squareTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.squareTextBox_Validating);
+            this.squareTextBox.Validated += new System.EventHandler(this.squareTextBox_Validated);
             // 
             // priceTextBox
             // 
@@ -137,6 +141,8 @@
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(168, 20);
             this.priceTextBox.TabIndex = 1;
+            this.priceTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.priceTextBox_Validating);
+            this.priceTextBox.Validated += new System.EventHandler(this.priceTextBox_Validated);
             // 
             // dateBuyLabel
             // 
@@ -168,6 +174,7 @@
             // typeComboBox
             // 
             this.typeComboBox.DisplayMember = "mark";
+            this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox.FormattingEnabled = true;
             this.typeComboBox.Items.AddRange(new object[] {
             "Квартира",
@@ -267,6 +274,8 @@
             this.squareTextBox1.Name = "squareTextBox1";
             this.squareTextBox1.Size = new System.Drawing.Size(168, 20);
             this.squareTextBox1.TabIndex = 10;
+            this.squareTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.squareTextBox1_Validating);
+            this.squareTextBox1.Validated += new System.EventHandler(this.squareTextBox1_Validated);
             // 
             // priceTextBox1
             // 
@@ -274,6 +283,8 @@
             this.priceTextBox1.Name = "priceTextBox1";
             this.priceTextBox1.Size = new System.Drawing.Size(168, 20);
             this.priceTextBox1.TabIndex = 1;
+            this.priceTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.priceTextBox1_Validating);
+            this.priceTextBox1.Validated += new System.EventHandler(this.priceTextBox1_Validated);
             // 
             // dateBuyLabel1
             // 
@@ -305,6 +316,7 @@
             // typeComboBox1
             // 
             this.typeComboBox1.DisplayMember = "mark";
+            this.typeComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeComboBox1.FormattingEnabled = true;
             this.typeComboBox1.Items.AddRange(new object[] {
             "Квартира",
@@ -388,7 +400,11 @@
             // 
             this.citiesTableAdapter.ClearBeforeFill = true;
             // 
-            // addRealEstateForm
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // AddRealEstateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -399,7 +415,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "addRealEstateForm";
+            this.Name = "AddRealEstateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление недвижимости";
             this.Load += new System.EventHandler(this.addRealEstateForm_Load);
@@ -410,6 +426,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,5 +467,6 @@
         private System.Windows.Forms.BindingSource citiesBindingSource;
         private BankDataSetTableAdapters.CitiesTableAdapter citiesTableAdapter;
         private System.Windows.Forms.BindingSource citiesBindingSource1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

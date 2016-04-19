@@ -37,7 +37,9 @@
             this.rubLabel = new System.Windows.Forms.Label();
             this.yearLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.productionDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.productionDateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.priceTextBox1 = new System.Windows.Forms.TextBox();
             this.ageLabel1 = new System.Windows.Forms.Label();
             this.yearLabel1 = new System.Windows.Forms.Label();
@@ -52,13 +54,13 @@
             this.backButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.productionDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.productionDateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // markComboBox
@@ -88,6 +90,8 @@
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(168, 20);
             this.priceTextBox.TabIndex = 1;
+            this.priceTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.priceTextBox_Validating);
+            this.priceTextBox.Validated += new System.EventHandler(this.priceTextBox_Validated);
             // 
             // numberTextBox
             // 
@@ -174,6 +178,13 @@
             this.groupBox1.Text = "Транспорт 1";
             this.groupBox1.Visible = false;
             // 
+            // productionDateTimePicker1
+            // 
+            this.productionDateTimePicker1.Location = new System.Drawing.Point(74, 96);
+            this.productionDateTimePicker1.Name = "productionDateTimePicker1";
+            this.productionDateTimePicker1.Size = new System.Drawing.Size(168, 20);
+            this.productionDateTimePicker1.TabIndex = 10;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.productionDateTimePicker2);
@@ -194,12 +205,21 @@
             this.groupBox2.Text = "Транспорт 2";
             this.groupBox2.Visible = false;
             // 
+            // productionDateTimePicker2
+            // 
+            this.productionDateTimePicker2.Location = new System.Drawing.Point(73, 99);
+            this.productionDateTimePicker2.Name = "productionDateTimePicker2";
+            this.productionDateTimePicker2.Size = new System.Drawing.Size(168, 20);
+            this.productionDateTimePicker2.TabIndex = 11;
+            // 
             // priceTextBox1
             // 
             this.priceTextBox1.Location = new System.Drawing.Point(74, 46);
             this.priceTextBox1.Name = "priceTextBox1";
             this.priceTextBox1.Size = new System.Drawing.Size(168, 20);
             this.priceTextBox1.TabIndex = 1;
+            this.priceTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.priceTextBox1_Validating);
+            this.priceTextBox1.Validated += new System.EventHandler(this.priceTextBox1_Validated);
             // 
             // ageLabel1
             // 
@@ -318,19 +338,9 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // productionDateTimePicker1
+            // errorProvider1
             // 
-            this.productionDateTimePicker1.Location = new System.Drawing.Point(74, 96);
-            this.productionDateTimePicker1.Name = "productionDateTimePicker1";
-            this.productionDateTimePicker1.Size = new System.Drawing.Size(168, 20);
-            this.productionDateTimePicker1.TabIndex = 10;
-            // 
-            // productionDateTimePicker2
-            // 
-            this.productionDateTimePicker2.Location = new System.Drawing.Point(73, 99);
-            this.productionDateTimePicker2.Name = "productionDateTimePicker2";
-            this.productionDateTimePicker2.Size = new System.Drawing.Size(168, 20);
-            this.productionDateTimePicker2.TabIndex = 11;
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddVehicleForm
             // 
@@ -354,6 +364,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marksBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +401,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DateTimePicker productionDateTimePicker1;
         private System.Windows.Forms.DateTimePicker productionDateTimePicker2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

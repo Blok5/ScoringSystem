@@ -23,14 +23,18 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.positionComboBox = new System.Windows.Forms.ComboBox();
-            this.workDurationComboBox = new System.Windows.Forms.ComboBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
+            this.workDurationTextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // nameTextBox
@@ -42,6 +46,7 @@
             // 
             // positionComboBox
             // 
+            this.positionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.positionComboBox.FormattingEnabled = true;
             this.positionComboBox.Items.AddRange(new object[] {
             "Безработный/Не квалифицированный сотрудник",
@@ -52,20 +57,6 @@
             this.positionComboBox.Name = "positionComboBox";
             this.positionComboBox.Size = new System.Drawing.Size(216, 21);
             this.positionComboBox.TabIndex = 3;
-            // 
-            // workDurationComboBox
-            // 
-            this.workDurationComboBox.FormattingEnabled = true;
-            this.workDurationComboBox.Items.AddRange(new object[] {
-            "Не работаю",
-            "Менее 1 года",
-            "От 1 до 4 лет",
-            "От 4 до 7 лет",
-            "Более 7 лет"});
-            this.workDurationComboBox.Location = new System.Drawing.Point(12, 114);
-            this.workDurationComboBox.Name = "workDurationComboBox";
-            this.workDurationComboBox.Size = new System.Drawing.Size(121, 21);
-            this.workDurationComboBox.TabIndex = 4;
             // 
             // NameLabel
             // 
@@ -114,22 +105,45 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
+            // workDurationTextBox
+            // 
+            this.workDurationTextBox.Location = new System.Drawing.Point(12, 115);
+            this.workDurationTextBox.Name = "workDurationTextBox";
+            this.workDurationTextBox.Size = new System.Drawing.Size(100, 20);
+            this.workDurationTextBox.TabIndex = 10;
+            this.workDurationTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.workDurationTextBox_Validating);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(118, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "мес.";
+            // 
             // AddWorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.workDurationTextBox);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.workDurationComboBox);
             this.Controls.Add(this.positionComboBox);
             this.Controls.Add(this.nameTextBox);
             this.Name = "AddWorkForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление работы";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,11 +153,13 @@
 
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.ComboBox positionComboBox;
-        private System.Windows.Forms.ComboBox workDurationComboBox;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.TextBox workDurationTextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label3;
     }
 }

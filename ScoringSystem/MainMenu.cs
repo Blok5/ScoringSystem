@@ -4,9 +4,12 @@ using System.Windows.Forms;
 namespace ScoringSystem {
 
     /// <summary>
-    /// Класс MainMenu открывает форму с главным меню приложения
+    /// MainMenu form open main user interface
     /// </summary>
     public partial class MainMenu :Form {
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         public MainMenu() {
             InitializeComponent();
         }
@@ -37,6 +40,12 @@ namespace ScoringSystem {
 
         private void workWithNeuralNetworkButton_Click(object sender, EventArgs e) {
             
+        }
+
+        private void openAssessTheCreditworthinessFormBatton_Click(object sender, EventArgs e) {
+            this.Hide();
+            WorkWithLoan.GetALoanForm galf = new WorkWithLoan.GetALoanForm();
+            galf.Show();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ScoringSystem {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WorkWithLoan.GetALoanForm());
+            Application.Run(new AuthorizationForm());
         }
     }
 }

@@ -32,5 +32,16 @@ namespace ScoringSystem.WorkWithDB {
             }
 
         }
+
+        private void phoneTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isPhoneNumber(phoneTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                phoneTextBox.Select(0, Text.Length);
+
+                errorProvider1.SetError(phoneTextBox, errorMsg);
+            }
+        }
     }
 }

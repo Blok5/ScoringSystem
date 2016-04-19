@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 namespace ScoringSystem.WorkWithLoan {
     public partial class GetALoanForm :Form {
 
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         public GetALoanForm() {
             InitializeComponent();
         }
@@ -221,6 +224,13 @@ namespace ScoringSystem.WorkWithLoan {
             this.Hide();
             EnterEdditionalInformationForm eeif = new EnterEdditionalInformationForm();
             eeif.Show();
+        }
+
+        private void endProcessButton_Click(object sender, EventArgs e) {
+            CurrentClientData.cleanData();
+            this.Hide();
+            MainMenu mm = new MainMenu();
+            mm.Show();
         }
     }
 }

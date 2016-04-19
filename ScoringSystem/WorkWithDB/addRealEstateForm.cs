@@ -98,5 +98,65 @@ namespace ScoringSystem.WorkWithDB {
             this.citiesTableAdapter.Fill(this.bankDataSet.Cities);
 
         }
+
+        private void priceTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(priceTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                priceTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(priceTextBox, errorMsg);
+            }
+        }
+
+        private void squareTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(squareTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                squareTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(squareTextBox, errorMsg);
+            }
+        }
+
+        private void priceTextBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(priceTextBox1.Text, out errorMsg)) {
+                e.Cancel = true;
+                priceTextBox1.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(priceTextBox1, errorMsg);
+            }
+        }
+
+        private void squareTextBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(squareTextBox1.Text, out errorMsg)) {
+                e.Cancel = true;
+                squareTextBox1.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(squareTextBox1, errorMsg);
+            }
+        }
+
+        private void priceTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(priceTextBox, "");
+        }
+
+        private void squareTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(squareTextBox, "");
+        }
+
+        private void priceTextBox1_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(priceTextBox1, "");
+        }
+
+        private void squareTextBox1_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(squareTextBox1, "");
+        }
     }
 }

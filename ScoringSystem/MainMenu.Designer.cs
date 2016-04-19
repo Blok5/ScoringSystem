@@ -32,6 +32,7 @@
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informationAboutClientButton = new System.Windows.Forms.Button();
             this.workWithNeuralNetworkButton = new System.Windows.Forms.Button();
+            this.openAssessTheCreditworthinessFormBatton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             // 
             // workWithNeuralNetworkButton
             // 
-            this.workWithNeuralNetworkButton.Location = new System.Drawing.Point(15, 124);
+            this.workWithNeuralNetworkButton.Location = new System.Drawing.Point(12, 156);
             this.workWithNeuralNetworkButton.Name = "workWithNeuralNetworkButton";
             this.workWithNeuralNetworkButton.Size = new System.Drawing.Size(257, 23);
             this.workWithNeuralNetworkButton.TabIndex = 4;
@@ -116,11 +117,22 @@
             this.workWithNeuralNetworkButton.UseVisualStyleBackColor = true;
             this.workWithNeuralNetworkButton.Click += new System.EventHandler(this.workWithNeuralNetworkButton_Click);
             // 
+            // openAssessTheCreditworthinessFormBatton
+            // 
+            this.openAssessTheCreditworthinessFormBatton.Location = new System.Drawing.Point(15, 124);
+            this.openAssessTheCreditworthinessFormBatton.Name = "openAssessTheCreditworthinessFormBatton";
+            this.openAssessTheCreditworthinessFormBatton.Size = new System.Drawing.Size(257, 23);
+            this.openAssessTheCreditworthinessFormBatton.TabIndex = 5;
+            this.openAssessTheCreditworthinessFormBatton.Text = "Выдача кредита";
+            this.openAssessTheCreditworthinessFormBatton.UseVisualStyleBackColor = true;
+            this.openAssessTheCreditworthinessFormBatton.Click += new System.EventHandler(this.openAssessTheCreditworthinessFormBatton_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.openAssessTheCreditworthinessFormBatton);
             this.Controls.Add(this.workWithNeuralNetworkButton);
             this.Controls.Add(this.informationAboutClientButton);
             this.Controls.Add(this.helloLabel);
@@ -149,6 +161,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.Button informationAboutClientButton;
         private System.Windows.Forms.Button workWithNeuralNetworkButton;
+        private System.Windows.Forms.Button openAssessTheCreditworthinessFormBatton;
     }
 }
 

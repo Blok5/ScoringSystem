@@ -6,7 +6,9 @@ namespace ScoringSystem.WorkWithDB {
     /// Класс AddManForm открывает форму для добавления нового клиента
     /// </summary>
     public partial class AddManForm :Form {
-
+        /// <summary>
+        /// Class Constructor
+        /// </summary>
         public AddManForm() {
             InitializeComponent();
             this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.sexComboBox_SelectedIndexChanged);
@@ -89,5 +91,64 @@ namespace ScoringSystem.WorkWithDB {
             MessageBox.Show("Разработал: Симаков Игорь\nГруппа: ИУ5-83");
         }
 
+        private void incomeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(incomeTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                homeTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(incomeTextBox, errorMsg);
+            }
+        }
+
+        private void homeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(homeTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                homeTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(homeTextBox, errorMsg);
+            }
+        }
+
+        private void familyIncomeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(familyIncomeTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                homeTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(familyIncomeTextBox, errorMsg);
+            }
+        }
+
+        private void outcomeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(outcomeTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                homeTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(outcomeTextBox, errorMsg);
+            }
+        }
+
+        private void homeTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(homeTextBox, "");
+        }
+
+        private void incomeTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(incomeTextBox, "");
+        }
+
+        private void familyIncomeTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(familyIncomeTextBox, "");
+        }
+
+        private void outcomeTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(outcomeTextBox, "");
+        }
     }
 }

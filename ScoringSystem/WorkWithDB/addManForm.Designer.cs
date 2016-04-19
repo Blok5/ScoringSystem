@@ -68,11 +68,13 @@
             this.personalStatusLabel = new System.Windows.Forms.Label();
             this.creditHistoryComboBox = new System.Windows.Forms.ComboBox();
             this.creditHistoryLabel = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -105,6 +107,8 @@
             this.homeTextBox.Name = "homeTextBox";
             this.homeTextBox.Size = new System.Drawing.Size(54, 20);
             this.homeTextBox.TabIndex = 6;
+            this.homeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.homeTextBox_Validating);
+            this.homeTextBox.Validated += new System.EventHandler(this.homeTextBox_Validated);
             // 
             // sexComboBox
             // 
@@ -118,7 +122,7 @@
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(54, 21);
             this.sexComboBox.TabIndex = 7;
-          
+            // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
@@ -255,6 +259,7 @@
             this.housingTextBox.Name = "housingTextBox";
             this.housingTextBox.Size = new System.Drawing.Size(54, 20);
             this.housingTextBox.TabIndex = 19;
+            this.housingTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.incomeTextBox_Validating);
             // 
             // label3
             // 
@@ -341,6 +346,8 @@
             this.incomeTextBox.Name = "incomeTextBox";
             this.incomeTextBox.Size = new System.Drawing.Size(54, 20);
             this.incomeTextBox.TabIndex = 27;
+            this.incomeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.incomeTextBox_Validating);
+            this.incomeTextBox.Validated += new System.EventHandler(this.incomeTextBox_Validated);
             // 
             // familyIncomeTextBox
             // 
@@ -348,6 +355,8 @@
             this.familyIncomeTextBox.Name = "familyIncomeTextBox";
             this.familyIncomeTextBox.Size = new System.Drawing.Size(115, 20);
             this.familyIncomeTextBox.TabIndex = 29;
+            this.familyIncomeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.familyIncomeTextBox_Validating);
+            this.familyIncomeTextBox.Validated += new System.EventHandler(this.familyIncomeTextBox_Validated);
             // 
             // familyIncomeLabel
             // 
@@ -364,6 +373,8 @@
             this.outcomeTextBox.Name = "outcomeTextBox";
             this.outcomeTextBox.Size = new System.Drawing.Size(115, 20);
             this.outcomeTextBox.TabIndex = 31;
+            this.outcomeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.outcomeTextBox_Validating);
+            this.outcomeTextBox.Validated += new System.EventHandler(this.outcomeTextBox_Validated);
             // 
             // outcomeLabel
             // 
@@ -418,6 +429,7 @@
             // 
             // personalStatusComboBox
             // 
+            this.personalStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.personalStatusComboBox.FormattingEnabled = true;
             this.personalStatusComboBox.Location = new System.Drawing.Point(7, 221);
             this.personalStatusComboBox.Name = "personalStatusComboBox";
@@ -435,6 +447,7 @@
             // 
             // creditHistoryComboBox
             // 
+            this.creditHistoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.creditHistoryComboBox.FormattingEnabled = true;
             this.creditHistoryComboBox.Items.AddRange(new object[] {
             "Не брал кредитов/Все кредиты выплачены вовремя",
@@ -455,6 +468,10 @@
             this.creditHistoryLabel.Size = new System.Drawing.Size(105, 13);
             this.creditHistoryLabel.TabIndex = 36;
             this.creditHistoryLabel.Text = "Кредитная история";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddManForm
             // 
@@ -505,6 +522,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,5 +574,6 @@
         private System.Windows.Forms.Label personalStatusLabel;
         private System.Windows.Forms.ComboBox creditHistoryComboBox;
         private System.Windows.Forms.Label creditHistoryLabel;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

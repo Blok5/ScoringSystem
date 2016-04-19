@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+//TODO: Add the ability to add credit data to database
 
 namespace ScoringSystem.WorkWithLoan {
 
@@ -7,14 +8,41 @@ namespace ScoringSystem.WorkWithLoan {
     /// Form AssessTheCreditworthinessForm show result neural network
     /// </summary>
     public partial class AssessTheCreditworthinessForm :Form {
-      
+
+        /// <summary>
+        /// credit target in correct format for neural network
+        /// </summary>
         public static int creditTarget;
+        /// <summary>
+        /// Saving account in correct format for neural network
+        /// </summary>
         public static int savingAccount;
+        /// <summary>
+        /// other deptors property in correct format for neural network
+        /// </summary>
         public static int otherDebtors;
+        /// <summary>
+        /// other installment property in correct format for neural network
+        /// </summary>
         public static int otherInstallment;
+        /// <summary>
+        /// housing property in correct format for neural network
+        /// </summary>
         public static int housing;
+        /// <summary>
+        /// Count of credit property in correct format for neural network
+        /// </summary>
         public static int sum;
 
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="credTr">credit target in correct format for neural network</param>
+        /// <param name="saveAcc">Saving account in correct format for neural network</param>
+        /// <param name="othDeb">other deptors property in correct format for neural network</param>
+        /// <param name="othInst">other installment property in correct format for neural network</param>
+        /// <param name="hous">housing property in correct format for neural network</param>
+        /// <param name="s">Count of credit property in correct format for neural network</param>
         public AssessTheCreditworthinessForm(int credTr, int saveAcc, int othDeb,
             int othInst, int hous, int s) {
             creditTarget = credTr;
@@ -26,23 +54,34 @@ namespace ScoringSystem.WorkWithLoan {
             InitializeComponent();
         }
 
-        private void AssessTheCreditworthinessForm_Load(object sender, EventArgs e) {
-            //MessageBox.Show(CurrentClientData.checkingAccount.ToString() + ' ' +
-            //    CurrentCreditData.period.ToString() + ' ' +
-            //    CurrentClientData.creditHistory.ToString() + ' ' +
-            //    creditTarget.ToString() + ' ' + sum.ToString() + ' ' +
-            //    savingAccount.ToString() + ' ' + CurrentClientData.work.workDuration.ToString() + ' ' +
-            //    CurrentCreditData.installmentRate.ToString() + ' ' + CurrentClientData.sex + ' ' +
-            //    CurrentClientData.personalStatus + ' ' + otherDebtors.ToString() + ' ' +
-            //    CurrentCreditData.presentResidenceSince.ToString() + ' ' +
-            //    CurrentClientData.realEstates[0].type.ToString() + ' ' +
-            //    CurrentClientData.birthDate.ToString() + ' ' + otherInstallment.ToString() + ' ' +
-            //    housing.ToString() + ' ' + CurrentCreditData.numberOfExistingCredits.ToString() + ' ' +
-            //    CurrentClientData.work.position.ToString() + ' ' +
-            //    CurrentCreditData.numberOfMaintenance.ToString() + ' ' + CurrentClientData.contacts[0].phone.ToString() + ' ' +
-            //    CurrentClientData.foreignWorker.ToString());
 
-            float[] checkCredit = new float[20];
+        private void AssessTheCreditworthinessForm_Load(object sender, EventArgs e) {
+
+            float[] checkCredit = getCheckCreditArray();
+
+            string result = NeuralNetwork.NeuralNetwork.assessCreditworth(checkCredit);
+
+            o1Label.Text = NeuralNetwork.NeuralNetwork.o1.ToString();
+            o2Label.Text = NeuralNetwork.NeuralNetwork.o2.ToString();
+
+            resultLabel.Text = result;
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e) {
+            this.Hide();
+            EnterEdditionalInformationForm eeif = new EnterEdditionalInformationForm();
+            eeif.Show();
+        }
+
+        /// <summary>
+        /// Function getCheckCreditArray create a array for neuralNetwark with credit's and client's info
+        /// in currect format for neural network
+        /// </summary>
+        /// <returns>Array with information about credit and client in correct format</returns>
+        private float[] getCheckCreditArray () {
+
+            float[] checkCredit = new float[20]; //Empty array with 20 properties
 
             //1 Status of existing checking account
             if (CurrentClientData.checkingAccount < 0) {
@@ -175,22 +214,10 @@ namespace ScoringSystem.WorkWithLoan {
             if (CurrentClientData.foreignWorker == true) {
                 checkCredit[19] = 1;
             } else {
-                checkCredit[19] = 2;   
+                checkCredit[19] = 2;
             }
 
-            string result = NeuralNetwork.NeuralNetwork.assessCreditworth(checkCredit);
-
-            o1Label.Text = NeuralNetwork.NeuralNetwork.o1.ToString();
-            o2Label.Text = NeuralNetwork.NeuralNetwork.o2.ToString();
-
-            resultLabel.Text = result;
-
-        }
-
-        private void backButton_Click(object sender, EventArgs e) {
-            this.Hide();
-            EnterEdditionalInformationForm eeif = new EnterEdditionalInformationForm();
-            eeif.Show();
+            return checkCredit;
         }
     }    
 }

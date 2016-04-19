@@ -91,5 +91,34 @@ namespace ScoringSystem.WorkWithDB {
             }
         }
 
+        private void priceTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(priceTextBox.Text, out errorMsg)) {
+                e.Cancel = true;
+                priceTextBox.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(priceTextBox, errorMsg);
+            }
+        }
+
+        private void priceTextBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            string errorMsg;
+
+            if (!Validation.isNumberValue(priceTextBox1.Text, out errorMsg)) {
+                e.Cancel = true;
+                priceTextBox1.Select(0, Text.Length);
+
+                this.errorProvider1.SetError(priceTextBox1, errorMsg);
+            }
+        }
+
+        private void priceTextBox_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(priceTextBox, "");
+        }
+
+        private void priceTextBox1_Validated(object sender, EventArgs e) {
+            errorProvider1.SetError(priceTextBox1, "");
+        }
     }
 }

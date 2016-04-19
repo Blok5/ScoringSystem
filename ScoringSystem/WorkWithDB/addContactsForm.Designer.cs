@@ -23,12 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.nextButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.mailTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // nextButton
@@ -57,6 +60,7 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(154, 20);
             this.phoneTextBox.TabIndex = 2;
+            this.phoneTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.phoneTextBox_Validating);
             // 
             // label1
             // 
@@ -83,6 +87,10 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Электронная почта";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddContactsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,6 +105,7 @@
             this.Name = "AddContactsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Контактные данные";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +119,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox mailTextBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

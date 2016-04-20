@@ -39,13 +39,17 @@ namespace ScoringSystem.WorkWithDB {
                     for (int i = 0; i <= 1; i++) {
                         vd[i] = new VehicleData();
                     }
+                    productionDateTimePicker1.CustomFormat = "yyyy-MM-dd";
+                    productionDateTimePicker1.Format = DateTimePickerFormat.Custom;
+                    productionDateTimePicker2.CustomFormat = "yyyy-MM-dd";
+                    productionDateTimePicker2.Format = DateTimePickerFormat.Custom;
                     vd[0].productionDate = productionDateTimePicker1.Text.ToString();
-                    vd[0].id_mark = markComboBox.SelectedIndex;
+                    vd[0].id_mark = markComboBox.SelectedIndex + 1;
                     vd[0].number = numberTextBox.Text;
                     vd[0].price = Convert.ToInt32(priceTextBox.Text);
 
                     vd[1].productionDate = productionDateTimePicker2.Text.ToString();
-                    vd[1].id_mark = markComboBox1.SelectedIndex;
+                    vd[1].id_mark = markComboBox1.SelectedIndex + 1;
                     vd[1].number = numberTextBox1.Text;
                     vd[1].price = Convert.ToInt32(priceTextBox1.Text);
 
@@ -53,10 +57,12 @@ namespace ScoringSystem.WorkWithDB {
 
                 } else if (groupBox2.Visible == false && groupBox1.Visible==true) {
                     VehicleData[] vd = new VehicleData[1];
+                    productionDateTimePicker1.CustomFormat = "yyyy-MM-dd";
+                    productionDateTimePicker1.Format = DateTimePickerFormat.Custom;
                     vd[0] = new VehicleData();
                                   
                     vd[0].productionDate = productionDateTimePicker1.Text.ToString();
-                    vd[0].id_mark = markComboBox.SelectedIndex;
+                    vd[0].id_mark = markComboBox.SelectedIndex + 1;
                     vd[0].number = numberTextBox.Text;
                     vd[0].price = Convert.ToInt32(priceTextBox.Text);
 

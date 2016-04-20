@@ -84,13 +84,15 @@ namespace ScoringSystem.WorkWithLoan {
             float[] checkCredit = new float[20]; //Empty array with 20 properties
 
             //1 Status of existing checking account
-            if (CurrentClientData.checkingAccount < 0) {
-                checkCredit[0] = 1;
-            } else if (CurrentClientData.checkingAccount >= 0 && CurrentClientData.checkingAccount < 20000) {
-                checkCredit[0] = 2;
-            } else if (CurrentClientData.checkingAccount >= 20000) {
-                checkCredit[0] = 3;
-            } else if (CurrentClientData.checkingAccount == null) {
+            if (CurrentClientData.bankClient == true) {
+                if (CurrentClientData.checkingAccount < 0) {
+                    checkCredit[0] = 1;
+                } else if (CurrentClientData.checkingAccount >= 0 && CurrentClientData.checkingAccount < 20000) {
+                    checkCredit[0] = 2;
+                } else if (CurrentClientData.checkingAccount >= 20000) {
+                    checkCredit[0] = 3;
+                }
+            } else {
                 checkCredit[0] = 4;
             }
 
@@ -168,9 +170,8 @@ namespace ScoringSystem.WorkWithLoan {
             } else if (forAtr12 == true) {
                 checkCredit[11] = 4;
             }
-            MessageBox.Show(CurrentClientData.birthDate.ToString());
+            
             DateTime bd = DateTime.Parse(CurrentClientData.birthDate);
-            MessageBox.Show(bd.ToString());
 
             DateTime today = DateTime.Today;
             int age = today.Year - bd.Year;

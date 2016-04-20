@@ -14,6 +14,9 @@ namespace ScoringSystem.WorkWithDB {
         public int x = 12;
         public int y = 41;
 
+        /// <summary>
+        /// Class Construtor
+        /// </summary>
         public AddRelationsForm() {
             InitializeComponent();
         }
@@ -110,7 +113,13 @@ namespace ScoringSystem.WorkWithDB {
                 }
 
                 CurrentClientData.addRelation(relations);
-                CurrentClientData.showValues();
+
+                CurrentClientData.addClientDataInDatabase();
+                MessageBox.Show("Данные добавлены успешно!");
+
+                this.Hide();
+                MainMenu mm = new MainMenu();
+                mm.Show();
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message + ex.Source);

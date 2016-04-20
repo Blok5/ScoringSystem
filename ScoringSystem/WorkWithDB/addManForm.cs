@@ -52,9 +52,9 @@ namespace ScoringSystem.WorkWithDB {
 
                 CurrentClientData.name = nameTextBox.Text;
                 CurrentClientData.surname = surnameTextBox.Text;
-                CurrentClientData.id_birthPlace = birthPlaceComboBox.SelectedIndex;
-                CurrentClientData.id_city = cityComboBox.SelectedIndex;
-                CurrentClientData.id_street = streetComboBox.SelectedIndex;
+                CurrentClientData.id_birthPlace = birthPlaceComboBox.SelectedIndex + 1;
+                CurrentClientData.id_city = cityComboBox.SelectedIndex + 1;
+                CurrentClientData.id_street = streetComboBox.SelectedIndex + 1;
                 CurrentClientData.home = Convert.ToInt32(homeTextBox.Text);
                 CurrentClientData.education = educationComboBox.Text;
                 CurrentClientData.birthDate = birthDateTimePicker.Text;

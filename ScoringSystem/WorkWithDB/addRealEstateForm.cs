@@ -52,15 +52,16 @@ namespace ScoringSystem.WorkWithDB {
 
                     dateTimePicker.CustomFormat = "yyyy-MM-dd";
                     dateTimePicker.Format = DateTimePickerFormat.Custom;
-
+                    dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+                    dateTimePicker1.Format = DateTimePickerFormat.Custom;
                     red[0].dateBuy = dateTimePicker.Text;
-                    red[0].location = locationComboBox.SelectedIndex;
+                    red[0].location = locationComboBox.SelectedIndex + 1;
                     red[0].price = Convert.ToDecimal(priceTextBox.Text);
                     red[0].square = Convert.ToInt32(squareTextBox.Text);
                     red[0].type = typeComboBox.Text;
 
                     red[1].dateBuy = dateTimePicker1.Text;
-                    red[1].location = locationComboBox1.SelectedIndex;
+                    red[1].location = locationComboBox1.SelectedIndex +1;
                     red[1].price = Convert.ToDecimal(priceTextBox1.Text);
                     red[1].square = Convert.ToInt32(squareTextBox1.Text);
                     red[1].type = typeComboBox1.Text;
@@ -69,11 +70,15 @@ namespace ScoringSystem.WorkWithDB {
 
                 //1 vehicle case
                 } else if (groupBox2.Visible == false && groupBox1.Visible == true) {
+
+                    dateTimePicker.CustomFormat = "yyyy-MM-dd";
+                    dateTimePicker.Format = DateTimePickerFormat.Custom;
+
                     RealEstateData[] red = new RealEstateData[1];
                     red[0] = new RealEstateData();
 
                     red[0].dateBuy = dateTimePicker.Text;
-                    red[0].location = locationComboBox.SelectedIndex;
+                    red[0].location = locationComboBox.SelectedIndex + 1;
                     red[0].price = Convert.ToDecimal(priceTextBox.Text);
                     red[0].square = Convert.ToInt32(squareTextBox.Text);
                     red[0].type = typeComboBox.Text;

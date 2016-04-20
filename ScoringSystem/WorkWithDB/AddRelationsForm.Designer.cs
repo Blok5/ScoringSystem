@@ -30,7 +30,7 @@
             this.mansTableAdapter = new ScoringSystem.BankDataSetTableAdapters.MansTableAdapter();
             this.relationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.relationsTableAdapter = new ScoringSystem.BankDataSetTableAdapters.RelationsTableAdapter();
-            this.nextButton = new System.Windows.Forms.Button();
+            this.addToDBButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mansBindingSource)).BeginInit();
@@ -70,15 +70,15 @@
             // 
             this.relationsTableAdapter.ClearBeforeFill = true;
             // 
-            // nextButton
+            // addToDBButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(197, 5);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(75, 36);
-            this.nextButton.TabIndex = 1;
-            this.nextButton.Text = "Добавить в базу";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.addToDBButton.Location = new System.Drawing.Point(197, 5);
+            this.addToDBButton.Name = "addToDBButton";
+            this.addToDBButton.Size = new System.Drawing.Size(75, 36);
+            this.addToDBButton.TabIndex = 1;
+            this.addToDBButton.Text = "Добавить в базу";
+            this.addToDBButton.UseVisualStyleBackColor = true;
+            this.addToDBButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // backButton
             // 
@@ -97,7 +97,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.addToDBButton);
             this.Controls.Add(this.addButton);
             this.Name = "AddRelationsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -118,7 +118,7 @@
         private BankDataSetTableAdapters.MansTableAdapter mansTableAdapter;
         private System.Windows.Forms.BindingSource relationsBindingSource;
         private BankDataSetTableAdapters.RelationsTableAdapter relationsTableAdapter;
-        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button addToDBButton;
         private System.Windows.Forms.Button backButton;
     }
 }

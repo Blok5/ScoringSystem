@@ -450,11 +450,11 @@
             this.creditHistoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.creditHistoryComboBox.FormattingEnabled = true;
             this.creditHistoryComboBox.Items.AddRange(new object[] {
-            "Не брал кредитов/Все кредиты выплачены вовремя",
+            "Не брал кредитов / Все кредиты выплачены вовремя",
             "Все кредиты в этом банке выплачены вовремя",
             "Существуют кредиты, которые выплачиваются вовремя до сих пор",
             "Были задержки в погашении в прошлом",
-            "Критический счет/Существуют кредиты в другом банке"});
+            "Критический счет / Существуют кредиты в другом банке"});
             this.creditHistoryComboBox.Location = new System.Drawing.Point(7, 249);
             this.creditHistoryComboBox.Name = "creditHistoryComboBox";
             this.creditHistoryComboBox.Size = new System.Drawing.Size(196, 21);

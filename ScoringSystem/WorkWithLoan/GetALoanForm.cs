@@ -22,7 +22,7 @@ namespace ScoringSystem.WorkWithLoan {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void searchButton_Click(object sender, EventArgs e) {
-            CurrentClientData.cleanData();
+            CurrentClientData.cleanClientData();
             SqlConnection connection = new SqlConnection();
             connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
             try {
@@ -67,11 +67,11 @@ namespace ScoringSystem.WorkWithLoan {
 
                     dr.Close();
 
-                    sqlCommand = "select x.co, v.id_mark, v.productionDate, v.id_man, v.price, v.number " +
-                        "from dbo.Vehicle as v, " +
-                        "(select count(*) as co from dbo.Vehicle " +
-                        "GROUP BY id_man) as x JOIN dbo.Mans as man ON man.name = '" +
-                        searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
+                    sqlCommand = "SELECT inner_veh.col, v.number, v.price, v.productionDate, v.id_mark FROM dbo.Vehicle as v " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.Vehicle GROUP BY id_man) as inner_veh " +
+                    "ON v.id_man=inner_veh.id_m  " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
+                    searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
                     dr = cmd.ExecuteReader();
@@ -90,21 +90,22 @@ namespace ScoringSystem.WorkWithLoan {
                         }
 
                         CurrentClientData.vehicles[i] = new VehicleData();
-                        CurrentClientData.vehicles[i].id_mark = Convert.ToInt32(dr[1]);
-                        CurrentClientData.vehicles[i].price = Convert.ToDecimal(dr[4]);
-                        CurrentClientData.vehicles[i].productionDate = dr[2].ToString();
-                        CurrentClientData.vehicles[i].number = dr[5].ToString();
+                        CurrentClientData.vehicles[i].id_mark = Convert.ToInt32(dr[4]);
+                        CurrentClientData.vehicles[i].price = Convert.ToDecimal(dr[2]);
+                        CurrentClientData.vehicles[i].productionDate = dr[3].ToString();
+                        CurrentClientData.vehicles[i].number = dr[1].ToString();
 
-                        resultListBox.Items.Add("Марка: " + dr[1].ToString() + " Цена:" + dr[4].ToString() + " руб.");
-                        resultListBox.Items.Add("Возраст: " + dr[2].ToString());
+                        resultListBox.Items.Add("Марка: " + dr[4].ToString() + " Цена:" + dr[2].ToString() + " руб.");
+                        resultListBox.Items.Add("Возраст: " + dr[3].ToString());
                         ++i;
                     }
 
                     dr.Close();
 
-                    sqlCommand = "select r.type, r.location, r.price, r.square, r.location, x.co, r.dateBuy from dbo.RealEstate as r, " +
-                    "(select count(*) as co from dbo.RealEstate " +
-                    "GROUP BY id_man) as x JOIN dbo.Mans as man ON man.name = '" +
+                    sqlCommand = "SELECT inner_real.col, r.dateBuy, r.location,r.price, r.square, r.type FROM dbo.RealEstate as r " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.RealEstate GROUP BY id_man) as inner_real " +
+                    "ON r.id_man=inner_real.id_m " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
                     searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
@@ -117,25 +118,27 @@ namespace ScoringSystem.WorkWithLoan {
                     checkCreate = false;
                     while (dr.Read()) {
                         if (checkCreate == false) {
-                            CurrentClientData.realEstates = new RealEstateData[Convert.ToInt32(dr[5])];
+                            CurrentClientData.realEstates = new RealEstateData[Convert.ToInt32(dr[0])];
                             checkCreate = true;
                         }
                         CurrentClientData.realEstates[i] = new RealEstateData();
-                        CurrentClientData.realEstates[i].type = dr[0].ToString();
-                        CurrentClientData.realEstates[i].location = Convert.ToInt32(dr[4]);
-                        CurrentClientData.realEstates[i].price = Convert.ToDecimal(dr[2]);
-                        CurrentClientData.realEstates[i].square = Convert.ToInt32(dr[3]);
-                        CurrentClientData.realEstates[i].dateBuy = dr[6].ToString();
+                        CurrentClientData.realEstates[i].type = dr[5].ToString();
+                        CurrentClientData.realEstates[i].location = Convert.ToInt32(dr[2]);
+                        CurrentClientData.realEstates[i].price = Convert.ToDecimal(dr[3]);
+                        CurrentClientData.realEstates[i].square = Convert.ToInt32(dr[4]);
+                        CurrentClientData.realEstates[i].dateBuy = dr[1].ToString();
 
-                        resultListBox.Items.Add("Тип: " + dr[0].ToString() + " Расположение: " + dr[1].ToString());
-                        resultListBox.Items.Add("Цена: " + dr[2].ToString() + " руб. Площадь: " + dr[3].ToString() + " м. кв.");
+                        resultListBox.Items.Add("Тип: " + dr[5].ToString() + " Расположение: " + dr[2].ToString());
+                        resultListBox.Items.Add("Цена: " + dr[3].ToString() + " руб. Площадь: " + dr[4].ToString() + " м. кв.");
+                        resultListBox.Items.Add("Дата покупки: " + dr[1].ToString());
                         ++i;
                     }
                     dr.Close();
 
-                    sqlCommand = "select c.phone, c.mail, x.co from dbo.Contacts as c, " +
-                    "(select count(*) as co from dbo.Contacts " +
-                    "GROUP BY id_man) as x JOIN dbo.Mans as man ON man.name = '" +
+                    sqlCommand = "SELECT inner_cont.col, c.phone, c.mail FROM dbo.Contacts as c " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.Contacts GROUP BY id_man) as inner_cont " +
+                    "ON c.id_man=inner_cont.id_m " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
                     searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
@@ -149,20 +152,20 @@ namespace ScoringSystem.WorkWithLoan {
 
                     while (dr.Read()) {
                         if (checkCreate == false) {
-                            CurrentClientData.contacts = new ContactData[Convert.ToInt32(dr[2])];
+                            CurrentClientData.contacts = new ContactData[Convert.ToInt32(dr[0])];
                             checkCreate = true;
                         }
                         CurrentClientData.contacts[i] = new ContactData();
-                        CurrentClientData.contacts[i].phone = dr[0].ToString();
-                        CurrentClientData.contacts[i].mail = dr[1].ToString();
+                        CurrentClientData.contacts[i].phone = dr[1].ToString();
+                        CurrentClientData.contacts[i].mail = dr[2].ToString();
 
-                        resultListBox.Items.Add("Телефон: " + dr[0].ToString() + " Электронная почта: " + dr[1].ToString());
+                        resultListBox.Items.Add("Телефон: " + dr[1].ToString() + " Электронная почта: " + dr[2].ToString());
                         ++i;
                     }
                     dr.Close();
 
                     sqlCommand = "select w.name, w.position, w.workDuration from dbo.Work as w " +
-                        "JOIN dbo.Mans as man ON man.name = '" +
+                        "JOIN dbo.Mans as man ON man.id = w.id WHERE man.name = '" +
                         searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
@@ -178,7 +181,7 @@ namespace ScoringSystem.WorkWithLoan {
                         CurrentClientData.work.position = dr[1].ToString();
                         CurrentClientData.work.workDuration = Convert.ToInt32(dr[2]);
 
-                        resultListBox.Items.Add("Телефон: " + dr[0].ToString() + " Электронная почта: " + dr[1].ToString());
+                        resultListBox.Items.Add("Название организации: " + dr[0].ToString() + " Должность: " + dr[1].ToString());
                         resultListBox.Items.Add("Продолжительность работы: " + dr[2].ToString() + " мес.");
                         ++i;
                     }
@@ -186,13 +189,14 @@ namespace ScoringSystem.WorkWithLoan {
                     dr.Close();
 
                     sqlCommand = "select c.checkingAccount, c.entryDate from dbo.Clients as c " +
-                        "JOIN dbo.Mans as man ON man.name = '" +
+                        "JOIN dbo.Mans as man ON man.id = c.id WHERE man.name = '" +
                         searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
                     dr = cmd.ExecuteReader();
 
                     if (dr.HasRows) {
+                        CurrentClientData.bankClient = true;
                         resultListBox.Items.Add("");
                         resultListBox.Items.Add("Информация о клиенте: ");
                         while (dr.Read()) {
@@ -205,6 +209,7 @@ namespace ScoringSystem.WorkWithLoan {
 
                         dr.Close();
                     } else {
+                        CurrentClientData.bankClient = false;
                         resultListBox.Items.Add("");
                         resultListBox.Items.Add("Не является клиентом банка!");
                     }
@@ -227,7 +232,7 @@ namespace ScoringSystem.WorkWithLoan {
         }
 
         private void endProcessButton_Click(object sender, EventArgs e) {
-            CurrentClientData.cleanData();
+            CurrentClientData.cleanClientData();
             this.Hide();
             MainMenu mm = new MainMenu();
             mm.Show();

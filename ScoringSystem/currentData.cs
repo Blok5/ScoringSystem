@@ -21,6 +21,23 @@ namespace ScoringSystem {
         public static int installmentRate;
         public static int presentResidenceSince;
         public static int numberOfMaintenance;
+
+        /// <summary>
+        /// Method cleanCreditData clean data in CurrentCreditData class 
+        /// </summary>
+        public static void cleanCreditData() {
+            period = 0;
+            sum = 0;
+            target = "";
+            savingAcc = "";
+            otherDebtors = "";
+            otherInstallment = "";
+            housing = "";
+            numberOfExistingCredits = 0;
+            installmentRate = 0;
+            presentResidenceSince = 0;
+            numberOfMaintenance = 0;
+        }
     }
 
     /// <summary>
@@ -93,7 +110,7 @@ namespace ScoringSystem {
         public static string creditHistory;
         public static decimal checkingAccount;
         public static bool foreignWorker;
-        
+        public static bool bankClient;
 
         public static VehicleData[] vehicles;
         public static ContactData[] contacts;
@@ -102,11 +119,107 @@ namespace ScoringSystem {
         public static RelationsData[] relations;
 
         /// <summary>
+        /// Method addClientDataInDatabase add all client data to database
+        /// </summary>
+        public static void addClientDataInDatabase() {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
+
+            try {
+                connection.Open();
+
+                string sqlQuery = "insert into dbo.Mans  (name, surname, birthDate, id_birthPlace, sex, " + //insert into dbo.Mans
+                    "education, id_city, id_street, home, housing, familyIncome, income, " +
+                    "outcome, personalStatus, creditHistory, foreignWorker) " +
+                    "values (@name, @surname, @birthDate, @id_birthPlace, @sex, " +
+                    "@education, @id_city, @id_street, @home, @housing, @familyIncome, @income, " +
+                    "@outcome, @personalStatus, @creditHistory, @foreignWorker); " +
+                    "insert into dbo.Work (id, name, position, workDuration) " + //insert into dbo.work
+                    "values (SCOPE_IDENTITY(), @workName, @workPosition, @workDuration);";
+
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@surname", surname);
+                command.Parameters.AddWithValue("@birthDate", birthDate);
+                command.Parameters.AddWithValue("@id_birthPlace", id_birthPlace);
+                command.Parameters.AddWithValue("@sex", sex);
+                command.Parameters.AddWithValue("@education", education);
+                command.Parameters.AddWithValue("@id_city", id_city);
+                command.Parameters.AddWithValue("@id_street", id_street);
+                command.Parameters.AddWithValue("@home", home);
+                command.Parameters.AddWithValue("@housing", housing);
+                command.Parameters.AddWithValue("@familyIncome", familyIncome);
+                command.Parameters.AddWithValue("@income", income);
+                command.Parameters.AddWithValue("@outcome", outcome);
+                command.Parameters.AddWithValue("@personalStatus", personalStatus);
+                command.Parameters.AddWithValue("@creditHistory", creditHistory);
+                command.Parameters.AddWithValue("@foreignWorker", foreignWorker);
+
+                command.Parameters.AddWithValue("@workName", work.name);
+                command.Parameters.AddWithValue("@workPosition", work.position);
+                command.Parameters.AddWithValue("@workDuration", work.workDuration);
+
+                command.ExecuteNonQuery();
+
+                if (realEstates != null) {
+                    foreach (var r in realEstates) {
+                        sqlQuery = "INSERT INTO dbo.RealEstate values (@type, @location, @dateBuy, @square, @price, " +
+                             "IDENT_CURRENT('dbo.Mans'))";
+
+                        command = new SqlCommand(sqlQuery, connection);
+                        command.Parameters.AddWithValue("@type", r.type);
+                        command.Parameters.AddWithValue("@location", r.location);
+                        command.Parameters.AddWithValue("@dateBuy", r.dateBuy);
+                        command.Parameters.AddWithValue("@square", r.square);
+                        command.Parameters.AddWithValue("@price", r.price);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                if (vehicles != null) {
+                    foreach (var v in vehicles) {
+                        sqlQuery = "INSERT INTO dbo.Vehicle values (@id_mark, @price, @number, IDENT_CURRENT('dbo.Mans'), " +
+                            "@productionDate)";
+
+                        command = new SqlCommand(sqlQuery, connection);
+                        command.Parameters.AddWithValue("@id_mark", v.id_mark);
+                        command.Parameters.AddWithValue("@price", v.price);
+                        command.Parameters.AddWithValue("@number", v.number);
+                        command.Parameters.AddWithValue("@productionDate", v.productionDate);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                if (contacts != null) {
+                    foreach (var c in contacts) {
+                        sqlQuery = "INSERT INTO dbo.Contacts values (IDENT_CURRENT('dbo.Mans'), @phone, @mail);";
+
+                        command = new SqlCommand(sqlQuery, connection);
+                        command.Parameters.AddWithValue("@phone", c.phone);
+                        command.Parameters.AddWithValue("@mail", c.mail);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+            } catch (Exception ex) {
+
+                    MessageBox.Show(ex.Message + ' ' + ex.Source + ex.TargetSite);
+            }
+            finally {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
         /// Метод addVehicle добавляет странспортные средства к клиенту
         /// </summary>
         /// <param name="vd">Массив с транспортными средствами</param>
         /// <param name="j">Их количество</param>
         public static void addVehicle (VehicleData[] vd, int j) {
+            
            vehicles = new VehicleData[j];
            for (int i = 0; i < j; i++ ) {
                 vehicles[i] = new VehicleData();
@@ -188,10 +301,12 @@ namespace ScoringSystem {
             }
         }
 
+
+
         /// <summary>
         /// Метод cleanData очищает данный класс от текущих данных
         /// </summary> 
-        public static void cleanData() {
+        public static void cleanClientData() {
             name = null;
             surname = null;
             birthDate = null;

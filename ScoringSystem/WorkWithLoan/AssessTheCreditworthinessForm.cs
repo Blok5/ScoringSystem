@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 //TODO: Add the ability to add credit data to database
 
 namespace ScoringSystem.WorkWithLoan {
@@ -33,6 +34,14 @@ namespace ScoringSystem.WorkWithLoan {
         /// Count of credit property in correct format for neural network
         /// </summary>
         public static int sum;
+        /// <summary>
+        /// Credit issuance date
+        /// </summary>
+        public static DateTime from;
+        /// <summary>
+        /// Latest date for payment of the credit
+        /// </summary>
+        public static DateTime toDate;
 
         /// <summary>
         /// Class constructor
@@ -65,6 +74,13 @@ namespace ScoringSystem.WorkWithLoan {
             o2Label.Text = NeuralNetwork.NeuralNetwork.o2.ToString();
 
             resultLabel.Text = result;
+
+            creditSumLabel.Text = "Кредит на сумму: " + (sum * 100).ToString() + " р.";
+            creditPeriodLabel.Text = "На " + CurrentCreditData.period + " мес.";
+            from = DateTime.Now;
+            fromLabel.Text = "С " + from.Date.ToString("d");
+            toDate = from.AddDays(CurrentCreditData.period * 30);
+            toLabel.Text = "По " + toDate.Date.ToString("d");
 
         }
 
@@ -220,5 +236,44 @@ namespace ScoringSystem.WorkWithLoan {
 
             return checkCredit;
         }
+
+        private void approveButton_Click(object sender, EventArgs e) {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
+
+            try {
+                connection.Open();
+
+                string SqlQuery = "insert into dbo.Credit (summ, dateBegin, dateEnd, alreadyPaid, " +
+                    "id_client, isComplited) values (@summ, @dateBegin, @dateEnd, @alreadyPaid, @id_client, @isComplited);";
+
+                SqlCommand command = new SqlCommand(SqlQuery, connection);
+
+                from.ToString("yyyy-MM-dd");
+                toDate.ToString("yyyy-MM-dd");
+
+                command.Parameters.AddWithValue("@summ", sum * 100);
+                command.Parameters.AddWithValue("@dateBegin", from);
+                command.Parameters.AddWithValue("@dateEnd", toDate);
+                command.Parameters.AddWithValue("@alreadyPaid", 0);
+                command.Parameters.AddWithValue("@id_client", CurrentClientData.id);
+                command.Parameters.AddWithValue("@isComplited", false);
+
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Данные о кредите успешно добавлены в базу данных!");
+
+                this.Hide();
+                MainMenu mm = new MainMenu();
+                mm.Show();
+
+            } catch (Exception) {
+                MessageBox.Show("Ошибка в базе данных");             
+            } finally {
+                connection.Close();
+            }
+
+
+}
     }    
 }

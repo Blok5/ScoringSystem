@@ -34,12 +34,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.creditSumLabel = new System.Windows.Forms.Label();
+            this.creditPeriodLabel = new System.Windows.Forms.Label();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.toLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(15, 249);
+            this.backButton.Location = new System.Drawing.Point(12, 299);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 2;
@@ -49,16 +55,17 @@
             // 
             // approveButton
             // 
-            this.approveButton.Location = new System.Drawing.Point(254, 248);
+            this.approveButton.Location = new System.Drawing.Point(251, 298);
             this.approveButton.Name = "approveButton";
             this.approveButton.Size = new System.Drawing.Size(75, 23);
             this.approveButton.TabIndex = 3;
             this.approveButton.Text = "Одобрить";
             this.approveButton.UseVisualStyleBackColor = true;
+            this.approveButton.Click += new System.EventHandler(this.approveButton_Click);
             // 
             // refuseButton
             // 
-            this.refuseButton.Location = new System.Drawing.Point(173, 249);
+            this.refuseButton.Location = new System.Drawing.Point(170, 299);
             this.refuseButton.Name = "refuseButton";
             this.refuseButton.Size = new System.Drawing.Size(75, 23);
             this.refuseButton.TabIndex = 4;
@@ -134,17 +141,63 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(170, 232);
+            this.label1.Location = new System.Drawing.Point(167, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Общее решение:";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.toLabel);
+            this.groupBox2.Controls.Add(this.fromLabel);
+            this.groupBox2.Controls.Add(this.creditPeriodLabel);
+            this.groupBox2.Controls.Add(this.creditSumLabel);
+            this.groupBox2.Location = new System.Drawing.Point(12, 171);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(314, 100);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Информация о кредите";
+            // 
+            // creditSumLabel
+            // 
+            this.creditSumLabel.AutoSize = true;
+            this.creditSumLabel.Location = new System.Drawing.Point(7, 20);
+            this.creditSumLabel.Name = "creditSumLabel";
+            this.creditSumLabel.Size = new System.Drawing.Size(0, 13);
+            this.creditSumLabel.TabIndex = 0;
+            // 
+            // creditPeriodLabel
+            // 
+            this.creditPeriodLabel.AutoSize = true;
+            this.creditPeriodLabel.Location = new System.Drawing.Point(197, 20);
+            this.creditPeriodLabel.Name = "creditPeriodLabel";
+            this.creditPeriodLabel.Size = new System.Drawing.Size(0, 13);
+            this.creditPeriodLabel.TabIndex = 1;
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(7, 44);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(0, 13);
+            this.fromLabel.TabIndex = 2;
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(132, 44);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(0, 13);
+            this.toLabel.TabIndex = 3;
+            // 
             // AssessTheCreditworthinessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 284);
+            this.ClientSize = new System.Drawing.Size(341, 334);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.refuseButton);
@@ -156,6 +209,8 @@
             this.Load += new System.EventHandler(this.AssessTheCreditworthinessForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +228,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.Label creditPeriodLabel;
+        private System.Windows.Forms.Label creditSumLabel;
     }
 }

@@ -30,7 +30,7 @@ namespace ScoringSystem.WorkWithLoan {
                 resultListBox.Items.Clear();
 
                 string sqlCommand = "select birthDate, sex, education, income, familyIncome, outcome, personalStatus, " +
-                    " creditHistory, foreignWorker, name, surname from dbo.Mans " +
+                    " creditHistory, foreignWorker, name, surname, id from dbo.Mans " +
                    "where name = '" + searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
 
                 SqlCommand cmd = new SqlCommand(sqlCommand, connection);
@@ -41,7 +41,7 @@ namespace ScoringSystem.WorkWithLoan {
                     resultListBox.Items.Add("Личная информация:");
 
                     while (dr.Read()) {
-
+                        CurrentClientData.id = Convert.ToInt32(dr[11]);
                         CurrentClientData.birthDate = dr[0].ToString();
                         CurrentClientData.sex = dr[1].ToString();
                         CurrentClientData.education = dr[2].ToString();

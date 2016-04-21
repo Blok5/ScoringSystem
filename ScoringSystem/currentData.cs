@@ -93,6 +93,7 @@ namespace ScoringSystem {
     /// которые заносятся об очередном клиенте
     /// </summary>
     public static class CurrentClientData {
+        public static int id;
         public static string name;
         public static string surname;
         public static string birthDate;

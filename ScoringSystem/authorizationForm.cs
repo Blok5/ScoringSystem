@@ -11,17 +11,32 @@ namespace ScoringSystem {
     /// При успехе открывается класс MainMenu
     /// </summary>
     public partial class AuthorizationForm :Form {
-
+        /// <summary>
+        /// Connection to database
+        /// </summary>
+        public SqlConnection connection;
+        /// <summary>
+        /// 3 attempts to connect
+        /// </summary>
         static int tryEnter = 3;
-            
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         public AuthorizationForm() {
             InitializeComponent();
+            try {
+                connection = new SqlConnection(Properties.Settings.Default.BankConnectionString);
+                connection.Open();
+            } catch (Exception ex) {
+
+                MessageBox.Show("Ошибка в базе данных! " + ex.Message);
+            }
         }
 
         private void authorizationForm_Load(object sender, EventArgs e) {
-            
-            this.roleTableAdapter.Fill(this.bankDataSet.Role);
 
+                this.roleTableAdapter.Fill(this.bankDataSet.Role);                      
         }
 
         private void exitButton_Click(object sender, EventArgs e) {
@@ -29,11 +44,9 @@ namespace ScoringSystem {
         }
 
         private void enterButton_Click(object sender, EventArgs e) {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Properties.Settings.Default.BankConnectionString;
+
             try {
-                ;
-                connection.Open();
+                              
                 string role = accountComboBox.Text;
                 string checkPass = "";
                 string sqlCommand = "select password from dbo.Role where role ='" + role + "'";
@@ -59,13 +72,14 @@ namespace ScoringSystem {
                 if (tryEnter == 0) {
                     Application.Exit();
                 }
-            } catch {
-                MessageBox.Show(string.Format("Ошибка в Базе Данных"));
+            } catch (Exception ex) {
+                MessageBox.Show("Ошибка в базе данных " + ex.Message);
+                
             } finally {
                 connection.Close();
             }
-            
 
+            
         }
 
         /// <summary>

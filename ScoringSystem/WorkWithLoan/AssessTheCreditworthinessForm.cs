@@ -170,8 +170,11 @@ namespace ScoringSystem.WorkWithLoan {
             checkCredit[9] = otherDebtors;
 
             //11 Present residence since
-            checkCredit[10] = CurrentCreditData.presentResidenceSince;
-
+            if (CurrentCreditData.presentResidenceSince > 4) {
+                checkCredit[10] = 4;
+            } else {
+                checkCredit[10] = CurrentCreditData.presentResidenceSince;
+            }
             //12  Property
             bool forAtr12 = true;
             if (CurrentClientData.realEstates != null) {
@@ -268,10 +271,10 @@ namespace ScoringSystem.WorkWithLoan {
                 mm.Show();
 
             } catch (Exception) {
-                MessageBox.Show("Ошибка в базе данных");             
-            } finally {
-                connection.Close();
-            }
+                    MessageBox.Show("Ошибка в базе данных");             
+                } finally {
+                    connection.Close();
+                }
 
 
 }

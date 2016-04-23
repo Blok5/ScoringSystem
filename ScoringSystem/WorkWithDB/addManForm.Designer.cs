@@ -69,6 +69,7 @@
             this.creditHistoryComboBox = new System.Windows.Forms.ComboBox();
             this.creditHistoryLabel = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.foreignWorkerCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.citiesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streetsBindingSource)).BeginInit();
@@ -438,10 +439,9 @@
             // 
             // personalStatusLabel
             // 
-            this.personalStatusLabel.AutoSize = true;
-            this.personalStatusLabel.Location = new System.Drawing.Point(210, 224);
+            this.personalStatusLabel.Location = new System.Drawing.Point(209, 219);
             this.personalStatusLabel.Name = "personalStatusLabel";
-            this.personalStatusLabel.Size = new System.Drawing.Size(117, 13);
+            this.personalStatusLabel.Size = new System.Drawing.Size(92, 28);
             this.personalStatusLabel.TabIndex = 34;
             this.personalStatusLabel.Text = "Семейное положение";
             // 
@@ -462,10 +462,9 @@
             // 
             // creditHistoryLabel
             // 
-            this.creditHistoryLabel.AutoSize = true;
-            this.creditHistoryLabel.Location = new System.Drawing.Point(210, 252);
+            this.creditHistoryLabel.Location = new System.Drawing.Point(209, 247);
             this.creditHistoryLabel.Name = "creditHistoryLabel";
-            this.creditHistoryLabel.Size = new System.Drawing.Size(105, 13);
+            this.creditHistoryLabel.Size = new System.Drawing.Size(75, 30);
             this.creditHistoryLabel.TabIndex = 36;
             this.creditHistoryLabel.Text = "Кредитная история";
             // 
@@ -473,11 +472,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // foreignWorkerCheckBox
+            // 
+            this.foreignWorkerCheckBox.AutoSize = true;
+            this.foreignWorkerCheckBox.Location = new System.Drawing.Point(309, 223);
+            this.foreignWorkerCheckBox.Name = "foreignWorkerCheckBox";
+            this.foreignWorkerCheckBox.Size = new System.Drawing.Size(87, 17);
+            this.foreignWorkerCheckBox.TabIndex = 38;
+            this.foreignWorkerCheckBox.Text = "Иностранец";
+            this.foreignWorkerCheckBox.UseVisualStyleBackColor = true;
+            // 
             // AddManForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 323);
+            this.Controls.Add(this.foreignWorkerCheckBox);
             this.Controls.Add(this.creditHistoryLabel);
             this.Controls.Add(this.creditHistoryComboBox);
             this.Controls.Add(this.personalStatusLabel);
@@ -575,5 +585,6 @@
         private System.Windows.Forms.ComboBox creditHistoryComboBox;
         private System.Windows.Forms.Label creditHistoryLabel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox foreignWorkerCheckBox;
     }
 }

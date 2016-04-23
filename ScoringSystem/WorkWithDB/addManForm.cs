@@ -64,6 +64,7 @@ namespace ScoringSystem.WorkWithDB {
                 CurrentClientData.outcome = Convert.ToDecimal(outcomeTextBox.Text);
                 CurrentClientData.personalStatus = personalStatusComboBox.Text;
                 CurrentClientData.creditHistory = creditHistoryComboBox.Text;
+                CurrentClientData.foreignWorker = foreignWorkerCheckBox.Checked;
 
                 if (housingTextBox.Text == "") {
                     CurrentClientData.housing = 0;

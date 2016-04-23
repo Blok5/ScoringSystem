@@ -154,7 +154,7 @@ namespace ScoringSystem {
                 command.Parameters.AddWithValue("@outcome", outcome);
                 command.Parameters.AddWithValue("@personalStatus", personalStatus);
                 command.Parameters.AddWithValue("@creditHistory", creditHistory);
-                command.Parameters.AddWithValue("@foreignWorker", foreignWorker);
+                command.Parameters.AddWithValue("@foreignWorker", Convert.ToInt32(foreignWorker));
 
                 command.Parameters.AddWithValue("@workName", work.name);
                 command.Parameters.AddWithValue("@workPosition", work.position);

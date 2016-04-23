@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace ScoringSystem.WorkWithLoan {
     public partial class EnterEdditionalInformationForm :Form {
+        /// <summary>
+        /// class constructor
+        /// </summary>
         public EnterEdditionalInformationForm() {
             InitializeComponent();
         }
@@ -28,6 +31,7 @@ namespace ScoringSystem.WorkWithLoan {
                 CurrentCreditData.housing = housingComboBox.Text;
                 CurrentCreditData.numberOfExistingCredits = Convert.ToInt32(numberOfExistingCreditsTextBox.Text);
                 CurrentCreditData.installmentRate = Convert.ToInt32(installmentRateTextBox.Text);
+
                 CurrentCreditData.presentResidenceSince = Convert.ToInt32(presentResidenceSinceTextBox.Text);
                 CurrentCreditData.numberOfMaintenance = Convert.ToInt32(numberOfMaintenanceTextBox.Text);
 

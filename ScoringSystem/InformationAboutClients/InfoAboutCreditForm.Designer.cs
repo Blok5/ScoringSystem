@@ -128,7 +128,6 @@
             this.Name = "InfoAboutCreditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Информация по кредиту";
-            this.Load += new System.EventHandler(this.InfoAboutCreditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mansBindingSource)).EndInit();
             this.ResumeLayout(false);

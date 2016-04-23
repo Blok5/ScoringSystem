@@ -10,7 +10,9 @@ namespace ScoringSystem.InformationAboutClients {
     /// Форма для вывода всей информации о человеке
     /// </summary>
     public partial class InfoAboutMan :Form {
-
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         public InfoAboutMan() {
             InitializeComponent();
         }
@@ -40,7 +42,8 @@ namespace ScoringSystem.InformationAboutClients {
                 connection.Open();
                 resultListBox.Items.Clear();
 
-                string sqlCommand = "select birthDate, sex, education, income, familyIncome, outcome from dbo.Mans " +
+                string sqlCommand = "select birthDate, sex, education, income, familyIncome, outcome, personalStatus, " +
+                    " creditHistory, foreignWorker, name, surname, id from dbo.Mans " +
                    "where name = '" + searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
 
                 SqlCommand cmd = new SqlCommand(sqlCommand, connection);
@@ -51,20 +54,24 @@ namespace ScoringSystem.InformationAboutClients {
                     resultListBox.Items.Add("Личная информация:");
 
                     while (dr.Read()) {
-                        resultListBox.Items.Add("Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
+                        resultListBox.Items.Add("Имя: " + dr[9].ToString() + " Фамилия: " + dr[10].ToString());
+                        resultListBox.Items.Add(" Дата рождения: " + dr[0].ToString() + " Пол:" + dr[1].ToString());
                         resultListBox.Items.Add("Образование: " + dr[2].ToString());
                         resultListBox.Items.Add("Доход: " + dr[3].ToString() + " руб." +
                         "Семейные доход: " + dr[4].ToString() + " руб.");
-                        resultListBox.Items.Add("Расход: " + dr[4].ToString() + " руб.");
+                        resultListBox.Items.Add("Расход: " + dr[5].ToString() + " руб.");
+                        resultListBox.Items.Add("Семейное положение: " + dr[6].ToString());
+                        resultListBox.Items.Add("Кредитная история: " + dr[7].ToString());
+                        resultListBox.Items.Add("Иностранный работник: " + dr[8]);
                     }
 
                     dr.Close();
 
-                    sqlCommand = "select mark.mark, v.price, v.age " +
-                        "from dbo.Vehicle as v " +
-                        "JOIN dbo.Marks as mark ON mark.id = v.id_mark " +
-                        "JOIN dbo.Mans as man  ON v.id_man = man.id  where name ='" +
-                        searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
+                    sqlCommand = "SELECT inner_veh.col, v.number, v.price, v.productionDate, v.id_mark FROM dbo.Vehicle as v " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.Vehicle GROUP BY id_man) as inner_veh " +
+                    "ON v.id_man=inner_veh.id_m  " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
+                    searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
                     dr = cmd.ExecuteReader();
@@ -73,16 +80,17 @@ namespace ScoringSystem.InformationAboutClients {
                     resultListBox.Items.Add("Транспортные средства:");
 
                     while (dr.Read()) {
-                        resultListBox.Items.Add("Марка: " + dr[0].ToString() + " Цена:" + dr[1].ToString() + " руб.");
-                        resultListBox.Items.Add("Возраст: " + dr[2].ToString());
+                        resultListBox.Items.Add("Марка: " + dr[4].ToString() + " Цена:" + dr[2].ToString() + " руб.");
+                        resultListBox.Items.Add("Возраст: " + dr[3].ToString());
                     }
 
                     dr.Close();
 
-                    sqlCommand = "select r.type, c.city, r.price, r.square from dbo.RealEstate as r " +
-                    "JOIN dbo.Cities as c ON c.id = r.location " +
-                    "JOIN dbo.Mans as man ON r.id_man = man.id where man.name = '" +
-                    searchNameTextBox.Text + "' and surname = '" + searchSurnametextBox.Text + "'";
+                    sqlCommand = "SELECT inner_real.col, r.dateBuy, r.location,r.price, r.square, r.type FROM dbo.RealEstate as r " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.RealEstate GROUP BY id_man) as inner_real " +
+                    "ON r.id_man=inner_real.id_m " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
+                    searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
                     cmd = new SqlCommand(sqlCommand, connection);
                     dr = cmd.ExecuteReader();
@@ -91,12 +99,66 @@ namespace ScoringSystem.InformationAboutClients {
                     resultListBox.Items.Add("Недвижимость:");
 
                     while (dr.Read()) {
-                        resultListBox.Items.Add("Тип: " + dr[0].ToString() + " Расположение: " + dr[1].ToString());
-                        resultListBox.Items.Add("Цена: " + dr[2].ToString() + " руб. Площадь: " + dr[3].ToString() + " м. кв.");
+                        resultListBox.Items.Add("Тип: " + dr[5].ToString() + " Расположение: " + dr[2].ToString());
+                        resultListBox.Items.Add("Цена: " + dr[3].ToString() + " руб. Площадь: " + dr[4].ToString() + " м. кв.");
+                        resultListBox.Items.Add("Дата покупки: " + dr[1].ToString());
                     }
                     dr.Close();
 
+                    sqlCommand = "SELECT inner_cont.col, c.phone, c.mail FROM dbo.Contacts as c " +
+                    "JOIN (SELECT id_man as id_m, COUNT(*) as col FROM dbo.Contacts GROUP BY id_man) as inner_cont " +
+                    "ON c.id_man=inner_cont.id_m " +
+                    "JOIN dbo.Mans as man ON id_m = man.id WHERE man.name = '" +
+                    searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
 
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    resultListBox.Items.Add("");
+                    resultListBox.Items.Add("Контактные данные: ");
+
+                    while (dr.Read()) {
+                        resultListBox.Items.Add("Телефон: " + dr[1].ToString() + " Электронная почта: " + dr[2].ToString());
+                    }
+                    dr.Close();
+
+                    sqlCommand = "select w.name, w.position, w.workDuration from dbo.Work as w " +
+                        "JOIN dbo.Mans as man ON man.id = w.id WHERE man.name = '" +
+                        searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
+
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    resultListBox.Items.Add("");
+                    resultListBox.Items.Add("Информация о работе: ");
+
+                    while (dr.Read()) {
+                        resultListBox.Items.Add("Название организации: " + dr[0].ToString() + " Должность: " + dr[1].ToString());
+                        resultListBox.Items.Add("Продолжительность работы: " + dr[2].ToString() + " мес.");
+                    }
+
+                    dr.Close();
+
+                    sqlCommand = "select c.checkingAccount, c.entryDate from dbo.Clients as c " +
+                        "JOIN dbo.Mans as man ON man.id = c.id WHERE man.name = '" +
+                        searchNameTextBox.Text + "' and man.surname = '" + searchSurnametextBox.Text + "'";
+
+                    cmd = new SqlCommand(sqlCommand, connection);
+                    dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows) {
+                        resultListBox.Items.Add("");
+                        resultListBox.Items.Add("Информация о клиенте: ");
+                        while (dr.Read()) {
+                            resultListBox.Items.Add("Состояние счета: " + dr[0].ToString());
+
+                        }
+
+                        dr.Close();
+                    } else {
+                        resultListBox.Items.Add("");
+                        resultListBox.Items.Add("Не является клиентом банка!");
+                    }
                 } else {
                     resultListBox.Items.Add("Клиент не найден");
                 }
@@ -104,6 +166,7 @@ namespace ScoringSystem.InformationAboutClients {
             } catch (Exception ex) {
                 MessageBox.Show(ex.Source + ex.Message);
             } finally {
+
                 connection.Close();
             }
         }

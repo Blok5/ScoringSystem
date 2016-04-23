@@ -39,7 +39,9 @@ namespace ScoringSystem {
         }
 
         private void workWithNeuralNetworkButton_Click(object sender, EventArgs e) {
-            
+            this.Hide();
+            WorkWithLoan.PayForCreditForm pfcf = new WorkWithLoan.PayForCreditForm();
+            pfcf.Show();
         }
 
         private void openAssessTheCreditworthinessFormBatton_Click(object sender, EventArgs e) {

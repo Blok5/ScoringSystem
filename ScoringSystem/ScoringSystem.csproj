@@ -158,6 +158,12 @@
     <Compile Include="WorkWithLoan\GetALoanForm.Designer.cs">
       <DependentUpon>GetALoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkWithLoan\PayForCreditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkWithLoan\PayForCreditForm.Designer.cs">
+      <DependentUpon>PayForCreditForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="authorizationForm.resx">
       <DependentUpon>authorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithLoan\GetALoanForm.resx">
       <DependentUpon>GetALoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkWithLoan\PayForCreditForm.resx">
+      <DependentUpon>PayForCreditForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BankDataSet.xsc">
       <DependentUpon>BankDataSet.xsd</DependentUpon>

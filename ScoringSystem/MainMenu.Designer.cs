@@ -31,7 +31,7 @@
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informationAboutClientButton = new System.Windows.Forms.Button();
-            this.workWithNeuralNetworkButton = new System.Windows.Forms.Button();
+            this.payTheCreditButton = new System.Windows.Forms.Button();
             this.openAssessTheCreditworthinessFormBatton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,15 +107,15 @@
             this.informationAboutClientButton.UseVisualStyleBackColor = true;
             this.informationAboutClientButton.Click += new System.EventHandler(this.informationAboutClientButton_Click);
             // 
-            // workWithNeuralNetworkButton
+            // payTheCreditButton
             // 
-            this.workWithNeuralNetworkButton.Location = new System.Drawing.Point(12, 156);
-            this.workWithNeuralNetworkButton.Name = "workWithNeuralNetworkButton";
-            this.workWithNeuralNetworkButton.Size = new System.Drawing.Size(257, 23);
-            this.workWithNeuralNetworkButton.TabIndex = 4;
-            this.workWithNeuralNetworkButton.Text = "Работа с нейронной сетью";
-            this.workWithNeuralNetworkButton.UseVisualStyleBackColor = true;
-            this.workWithNeuralNetworkButton.Click += new System.EventHandler(this.workWithNeuralNetworkButton_Click);
+            this.payTheCreditButton.Location = new System.Drawing.Point(12, 156);
+            this.payTheCreditButton.Name = "payTheCreditButton";
+            this.payTheCreditButton.Size = new System.Drawing.Size(257, 23);
+            this.payTheCreditButton.TabIndex = 4;
+            this.payTheCreditButton.Text = "Оплатить кредит";
+            this.payTheCreditButton.UseVisualStyleBackColor = true;
+            this.payTheCreditButton.Click += new System.EventHandler(this.workWithNeuralNetworkButton_Click);
             // 
             // openAssessTheCreditworthinessFormBatton
             // 
@@ -133,7 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.openAssessTheCreditworthinessFormBatton);
-            this.Controls.Add(this.workWithNeuralNetworkButton);
+            this.Controls.Add(this.payTheCreditButton);
             this.Controls.Add(this.informationAboutClientButton);
             this.Controls.Add(this.helloLabel);
             this.Controls.Add(this.openWorkWithDBForm);
@@ -160,7 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
         private System.Windows.Forms.Button informationAboutClientButton;
-        private System.Windows.Forms.Button workWithNeuralNetworkButton;
+        private System.Windows.Forms.Button payTheCreditButton;
         private System.Windows.Forms.Button openAssessTheCreditworthinessFormBatton;
     }
 }

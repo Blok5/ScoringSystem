@@ -112,6 +112,7 @@ namespace ScoringSystem {
         public static decimal checkingAccount;
         public static bool foreignWorker;
         public static bool bankClient;
+        public static string fullName;
 
         public static VehicleData[] vehicles;
         public static ContactData[] contacts;
@@ -131,10 +132,10 @@ namespace ScoringSystem {
 
                 string sqlQuery = "insert into dbo.Mans  (name, surname, birthDate, id_birthPlace, sex, " + //insert into dbo.Mans
                     "education, id_city, id_street, home, housing, familyIncome, income, " +
-                    "outcome, personalStatus, creditHistory, foreignWorker) " +
+                    "outcome, personalStatus, creditHistory, foreignWorker, fullName) " +
                     "values (@name, @surname, @birthDate, @id_birthPlace, @sex, " +
                     "@education, @id_city, @id_street, @home, @housing, @familyIncome, @income, " +
-                    "@outcome, @personalStatus, @creditHistory, @foreignWorker); " +
+                    "@outcome, @personalStatus, @creditHistory, @foreignWorker, @fullName); " +
                     "insert into dbo.Work (id, name, position, workDuration) " + //insert into dbo.work
                     "values (SCOPE_IDENTITY(), @workName, @workPosition, @workDuration);";
 
@@ -155,6 +156,7 @@ namespace ScoringSystem {
                 command.Parameters.AddWithValue("@personalStatus", personalStatus);
                 command.Parameters.AddWithValue("@creditHistory", creditHistory);
                 command.Parameters.AddWithValue("@foreignWorker", Convert.ToInt32(foreignWorker));
+                command.Parameters.AddWithValue("@fullName", fullName);
 
                 command.Parameters.AddWithValue("@workName", work.name);
                 command.Parameters.AddWithValue("@workPosition", work.position);
@@ -162,54 +164,53 @@ namespace ScoringSystem {
 
                 command.ExecuteNonQuery();
 
-                if (realEstates != null) {
-                    foreach (var r in realEstates) {
-                        sqlQuery = "INSERT INTO dbo.RealEstate values (@type, @location, @dateBuy, @square, @price, " +
-                             "IDENT_CURRENT('dbo.Mans'))";
+            if (realEstates != null) {
+                foreach (var r in realEstates) {
+                    sqlQuery = "INSERT INTO dbo.RealEstate values (@type, @location, @dateBuy, @square, @price, " +
+                         "IDENT_CURRENT('dbo.Mans'))";
 
-                        command = new SqlCommand(sqlQuery, connection);
-                        command.Parameters.AddWithValue("@type", r.type);
-                        command.Parameters.AddWithValue("@location", r.location);
-                        command.Parameters.AddWithValue("@dateBuy", r.dateBuy);
-                        command.Parameters.AddWithValue("@square", r.square);
-                        command.Parameters.AddWithValue("@price", r.price);
+                    command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@type", r.type);
+                    command.Parameters.AddWithValue("@location", r.location);
+                    command.Parameters.AddWithValue("@dateBuy", r.dateBuy);
+                    command.Parameters.AddWithValue("@square", r.square);
+                    command.Parameters.AddWithValue("@price", r.price);
 
-                        command.ExecuteNonQuery();
-                    }
+                    command.ExecuteNonQuery();
                 }
+            }
 
-                if (vehicles != null) {
-                    foreach (var v in vehicles) {
-                        sqlQuery = "INSERT INTO dbo.Vehicle values (@id_mark, @price, @number, IDENT_CURRENT('dbo.Mans'), " +
-                            "@productionDate)";
+            if (vehicles != null) {
+                foreach (var v in vehicles) {
+                    sqlQuery = "INSERT INTO dbo.Vehicle values (@id_mark, @price, @number, IDENT_CURRENT('dbo.Mans'), " +
+                        "@productionDate)";
 
-                        command = new SqlCommand(sqlQuery, connection);
-                        command.Parameters.AddWithValue("@id_mark", v.id_mark);
-                        command.Parameters.AddWithValue("@price", v.price);
-                        command.Parameters.AddWithValue("@number", v.number);
-                        command.Parameters.AddWithValue("@productionDate", v.productionDate);
+                    command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@id_mark", v.id_mark);
+                    command.Parameters.AddWithValue("@price", v.price);
+                    command.Parameters.AddWithValue("@number", v.number);
+                    command.Parameters.AddWithValue("@productionDate", v.productionDate);
 
-                        command.ExecuteNonQuery();
-                    }
+                    command.ExecuteNonQuery();
                 }
+            }
 
-                if (contacts != null) {
-                    foreach (var c in contacts) {
-                        sqlQuery = "INSERT INTO dbo.Contacts values (IDENT_CURRENT('dbo.Mans'), @phone, @mail);";
+            if (contacts != null) {
+                foreach (var c in contacts) {
+                    sqlQuery = "INSERT INTO dbo.Contacts values (IDENT_CURRENT('dbo.Mans'), @phone, @mail);";
 
-                        command = new SqlCommand(sqlQuery, connection);
-                        command.Parameters.AddWithValue("@phone", c.phone);
-                        command.Parameters.AddWithValue("@mail", c.mail);
+                    command = new SqlCommand(sqlQuery, connection);
+                    command.Parameters.AddWithValue("@phone", c.phone);
+                    command.Parameters.AddWithValue("@mail", c.mail);
 
-                        command.ExecuteNonQuery();
-                    }
+                    command.ExecuteNonQuery();
                 }
+            }
 
             } catch (Exception ex) {
 
-                    MessageBox.Show(ex.Message + ' ' + ex.Source + ex.TargetSite);
-            }
-            finally {
+                MessageBox.Show(ex.Message + ' ' + ex.Source + ex.TargetSite);
+            } finally {
                 connection.Close();
             }
         }

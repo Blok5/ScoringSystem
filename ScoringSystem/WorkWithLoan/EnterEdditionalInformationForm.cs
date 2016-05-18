@@ -34,8 +34,7 @@ namespace ScoringSystem.WorkWithLoan {
 
                 CurrentCreditData.presentResidenceSince = Convert.ToInt32(presentResidenceSinceTextBox.Text);
                 CurrentCreditData.numberOfMaintenance = Convert.ToInt32(numberOfMaintenanceTextBox.Text);
-
-                MessageBox.Show(creditTargetComboBox.SelectedIndex.ToString());
+               
                 AssessTheCreditworthinessForm atcf = new AssessTheCreditworthinessForm(creditTargetComboBox.SelectedIndex,
                     savingAccountComboBox.SelectedIndex + 1, otherDebtorsComboBox.SelectedIndex + 1, 
                     otherInstallmentComboBox.SelectedIndex + 1, housingComboBox.SelectedIndex + 1,

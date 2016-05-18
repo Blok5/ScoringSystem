@@ -34,12 +34,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.payDateLabel = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.bankDataSet = new ScoringSystem.BankDataSet();
-            this.mansBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mansTableAdapter = new ScoringSystem.BankDataSetTableAdapters.MansTableAdapter();
             this.PayButton = new System.Windows.Forms.Button();
             this.backToMainMenuButton = new System.Windows.Forms.Button();
             this.sumTextBox = new System.Windows.Forms.TextBox();
+            this.bankDataSet = new ScoringSystem.BankDataSet();
+            this.mansBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mansTableAdapter = new ScoringSystem.BankDataSetTableAdapters.MansTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bankDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mansBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -129,6 +129,8 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox2.DataSource = this.mansBindingSource;
             this.comboBox2.DisplayMember = "fullName";
             this.comboBox2.FormattingEnabled = true;
@@ -138,20 +140,6 @@
             this.comboBox2.TabIndex = 11;
             this.comboBox2.ValueMember = "id";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // bankDataSet
-            // 
-            this.bankDataSet.DataSetName = "BankDataSet";
-            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mansBindingSource
-            // 
-            this.mansBindingSource.DataMember = "Mans";
-            this.mansBindingSource.DataSource = this.bankDataSet;
-            // 
-            // mansTableAdapter
-            // 
-            this.mansTableAdapter.ClearBeforeFill = true;
             // 
             // PayButton
             // 
@@ -179,6 +167,20 @@
             this.sumTextBox.Name = "sumTextBox";
             this.sumTextBox.Size = new System.Drawing.Size(100, 20);
             this.sumTextBox.TabIndex = 14;
+            // 
+            // bankDataSet
+            // 
+            this.bankDataSet.DataSetName = "BankDataSet";
+            this.bankDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mansBindingSource
+            // 
+            this.mansBindingSource.DataMember = "Mans";
+            this.mansBindingSource.DataSource = this.bankDataSet;
+            // 
+            // mansTableAdapter
+            // 
+            this.mansTableAdapter.ClearBeforeFill = true;
             // 
             // PayForCreditForm
             // 
@@ -220,11 +222,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label payDateLabel;
         private System.Windows.Forms.ComboBox comboBox2;
-        private BankDataSet bankDataSet;
-        private System.Windows.Forms.BindingSource mansBindingSource;
-        private BankDataSetTableAdapters.MansTableAdapter mansTableAdapter;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.Button backToMainMenuButton;
         private System.Windows.Forms.TextBox sumTextBox;
+        private BankDataSet bankDataSet;
+        private System.Windows.Forms.BindingSource mansBindingSource;
+        private BankDataSetTableAdapters.MansTableAdapter mansTableAdapter;
     }
 }

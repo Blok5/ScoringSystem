@@ -276,7 +276,13 @@ namespace ScoringSystem.WorkWithLoan {
                     connection.Close();
                 }
 
+    }
 
-}
+        private void refuseButton_Click(object sender, EventArgs e) {
+            CurrentCreditData.cleanCreditData();
+            this.Hide();
+            MainMenu mm = new MainMenu();
+            mm.Show();
+        }
     }    
 }

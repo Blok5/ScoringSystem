@@ -65,7 +65,7 @@ namespace ScoringSystem.WorkWithDB {
                 CurrentClientData.personalStatus = personalStatusComboBox.Text;
                 CurrentClientData.creditHistory = creditHistoryComboBox.Text;
                 CurrentClientData.foreignWorker = foreignWorkerCheckBox.Checked;
-
+                CurrentClientData.fullName = surnameTextBox.Text + ' ' + nameTextBox.Text;
                 if (housingTextBox.Text == "") {
                     CurrentClientData.housing = 0;
                 } else {

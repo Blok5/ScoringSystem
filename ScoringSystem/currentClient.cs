@@ -1,8 +1,9 @@
-﻿namespace ScoringSystem {
+﻿
+namespace ScoringSystem {
     /// <summary>
     /// Класс CurrentClient хранит данные о залогиненом пользователе
     /// </summary>
-    class СurrentClient {
+    public static class currentClient {
         public static string role;
     }
 }

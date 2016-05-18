@@ -121,10 +121,10 @@ namespace ScoringSystem.WorkWithDB {
                 MainMenu mm = new MainMenu();
                 mm.Show();
 
-            } catch (Exception ex) {
+        } catch (Exception ex) {
                 MessageBox.Show(ex.Message + ex.Source);
                 
             }
-        }
+}
     }
 }

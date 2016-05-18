@@ -58,7 +58,7 @@ namespace ScoringSystem {
                 }
                 
                 if (GetHashString(passwordTextBox.Text) == checkPass && checkPass != "") {
-                    СurrentClient.role = role;
+                    currentClient.role = role;
                     this.Hide();
                     MainMenu mm = new MainMenu();
                     mm.Show();

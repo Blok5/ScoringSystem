@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace ScoringSystem {
 
+    
     /// <summary>
     /// MainMenu form open main user interface
     /// </summary>
@@ -10,8 +11,11 @@ namespace ScoringSystem {
         /// <summary>
         /// Class constructor
         /// </summary>
+        /// 
+        
         public MainMenu() {
             InitializeComponent();
+            
         }
 
         private void openWorkWithDBForm_Click(object sender, EventArgs e) {
@@ -21,7 +25,26 @@ namespace ScoringSystem {
         }
 
         private void MainMenu_Load(object sender, EventArgs e) {
-            helloLabel.Text = "Здравствуйте " + СurrentClient.role + "!";
+
+            
+            helloLabel.Text = "Здравствуйте " + currentClient.role + "!";
+
+            string sqlCmd = "select button, " + currentClient.role + " from dbo.isVisibility";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.BankConnectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(sqlCmd, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read()) {
+
+                Console.WriteLine(dr[0].ToString());
+
+                Control ctn = this.Controls[dr[0].ToString()];
+                if (ctn != null) {
+                    ctn.Visible = Convert.ToBoolean(dr[1]);
+                }
+            }
         }
 
         private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e) {

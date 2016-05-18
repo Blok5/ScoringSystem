@@ -233,7 +233,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(119, 44);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Кол-во действ. кредитов в этом банке";
+            this.label10.Text = "Кол-во действ. кредитов в этом банке (вкл. данный)";
             // 
             // label11
             // 
@@ -254,9 +254,9 @@
             // 
             this.label12.Location = new System.Drawing.Point(288, 112);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 29);
+            this.label12.Size = new System.Drawing.Size(119, 49);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Живете на одном месте уже";
+            this.label12.Text = "Проживание на одном месте             (> 4 лет = 4года)";
             // 
             // presentResidenceSinceTextBox
             // 

@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.openAddManForm = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.openDeleteManFormButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openAddManForm
@@ -48,21 +47,11 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // openDeleteManFormButton
-            // 
-            this.openDeleteManFormButton.Location = new System.Drawing.Point(12, 77);
-            this.openDeleteManFormButton.Name = "openDeleteManFormButton";
-            this.openDeleteManFormButton.Size = new System.Drawing.Size(259, 23);
-            this.openDeleteManFormButton.TabIndex = 2;
-            this.openDeleteManFormButton.Text = "Удалить человека";
-            this.openDeleteManFormButton.UseVisualStyleBackColor = true;
-            // 
             // WorkWithDBForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.openDeleteManFormButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.openAddManForm);
             this.Name = "WorkWithDBForm";
@@ -76,6 +65,5 @@
 
         private System.Windows.Forms.Button openAddManForm;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Button openDeleteManFormButton;
     }
 }
